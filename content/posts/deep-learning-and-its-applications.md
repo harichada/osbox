@@ -1,7 +1,6 @@
 ---
 title: "Deep Learning and Its Applications"
 date: 2023-03-15T13:23:12-04:00
-draft: true
 ---
 
 <!DOCTYPE html>
