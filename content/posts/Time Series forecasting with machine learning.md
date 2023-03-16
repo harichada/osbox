@@ -1,315 +1,89 @@
 ---
 title: "Time Series forecasting with machine learning"
-date: 2022-10-15
+date: 2022-09-20
 ---
 
 
-Time series forecasting with machine learning is a powerful tool that can be used to predict future trends and patterns from past data. This technique has been applied in various fields such as finance, weather prediction, and stock market analysis. In this blog post, we will explore the step-by-step process of creating a project that leverages AI, ML, and open-source hardware and software to predict stock prices. 
-### Selecting the right hardware and software
-To begin this project, we need a hardware platform that can connect to an online data source and perform the necessary computations. Raspberry Pi is an excellent choice for this purpose as it is a low-cost computer that can handle complex data processing tasks. We also need software tools such as Python, Pandas, and Scikit-Learn to implement and train our model.
-Next, we need to install Python and necessary packages to get started. We can do this by running the following command in our Raspberry Pi terminal:
-```bash
-sudo apt-get update
-sudo apt-get install python3 python3-dev python3-pip
-```
-### Collecting Data
-We need historical data on the stock price to train our model. We can get this data from online sources such as Yahoo Finance, Quandl, or Alpha Vantage. For this project, we will be using the Alpha Vantage API to collect our data. The Alpha Vantage API provides real-time and historical price data on various stocks.
-We can use `requests` and `json` packages in Python to retrieve data from the API. Here's an example code snippet to get ten years of data for Apple Inc:
-```python
-import requests
-import json
-api_key = 'INSERT_YOUR_API_KEY_HERE'
-symbol = 'AAPL'
-url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={symbol}&apikey={api_key}'
-response = requests.get(url)
-data = json.loads(response.text)
-# save data to a file
-with open('aapl.json', 'w') as f:
-    json.dump(data['Time Series (Daily)'], f)
-```
-### Preprocessing Data
-Before we can train our model, we need to preprocess our data. We can use the Pandas package to perform various data preprocessing tasks such as removing missing values, scaling data, and splitting data into training and test sets.
-Here's an example code snippet to preprocess our data:
-```python
+
+
+Time Series Forecasting with Machine Learning
+
+Time Series Forecasting is the process of predicting future values of a time-dependent variable based on its past values. Time series data is prevalent in various domains, including finance, economics, healthcare, and many others. Machine learning techniques are gaining popularity in time series forecasting for their ability to handle non-linear relationships between the input features and target variable. In this blog post, we will discuss the process of time series forecasting with machine learning and the different techniques that we can use to make predictions.
+
+1. Data Preprocessing
+
+The first step in any machine learning process is to preprocess the data properly. In the case of time series data, we need to ensure that the data is stationary. Stationarity refers to the statistical properties of a time series that remain constant over time. That is, the mean, variance, and covariance of a time series should be constant over time. If the time series data is not stationary, we need to transform it into a stationary time series through differencing.
+
 import pandas as pd
 import numpy as np
-# read data from file
-df = pd.read_json('aapl.json').T
-df.index = pd.to_datetime(df.index)
-# drop unnecessary columns
-df.drop(columns=['1. open', '2. high', '3. low', '5. volume'], inplace=True)
-df.rename(columns={'4. close': 'Price'}, inplace=True)
-# fill missing values
-df = df.fillna(method='ffill')
-# split data into training and test sets
-train_data = df[:int(0.8*len(df))]
-test_data = df[int(0.8*len(df)):]
-```
-### Training the Model
-Now that we have preprocessed our data, we can train our model. We will be using the Scikit-Learn package to build our time series model. Specifically, we will be using the Gradient Boosting Regressor algorithm as it has been shown to be effective for time series forecasting tasks.
-Here's an example code snippet to train our model:
-```python
-from sklearn.ensemble import GradientBoostingRegressor
-from sklearn.metrics import mean_squared_error
-# create model
-model = GradientBoostingRegressor(n_estimators=100, learning_rate=0.1,
-                                   max_depth=1, random_state=0, loss='ls')
-# train model
-X_train = np.arange(len(train_data)).reshape(-1, 1)
-y_train = train_data['Price'].values
-model.fit(X_train, y_train)
-# make predictions
-X_test = np.arange(len(train_data), len(train_data)+len(test_data)).reshape(-1, 1)
-y_test = test_data['Price'].values
+
+# Load the data
+df = pd.read_csv('dataset.csv')
+
+# Make the time series stationary
+df['Diff'] = df['Value'].diff()
+df.dropna(inplace=True)
+
+2. Feature Extraction
+
+After making the time series stationary, we need to extract relevant features that will help us make predictions. Some of the commonly used features for time series forecasting include:
+
+- Lag features: These are the past values of the time series that we use as input features for predicting future values.
+- Moving averages: These are the rolling mean values over a specified time frame.
+- Rolling standard deviation: These are the rolling standard deviation values over a specified time frame.
+
+# Extract the features
+df['Lag1'] = df['Diff'].shift(1)
+df['MA7'] = df['Value'].rolling(window=7).mean()
+df['MA30'] = df['Value'].rolling(window=30).mean()
+df['STD30'] = df['Value'].rolling(window=30).std()
+df.dropna(inplace=True)
+X = df[['Lag1', 'MA7', 'MA30', 'STD30']]
+y = df['Value']
+
+3. Model Selection
+
+Once we have extracted the features, we need to select the appropriate model for making predictions. There are various machine learning models that we can use for time series forecasting, including:
+
+- Linear Regression: A popular linear model that can handle both linear and non-linear relationships between the features and the target variable.
+- ARIMA: A time series model that can model the autocorrelation, seasonality, and trend in the time series data.
+- Prophet: A time series model developed by Facebook that can model seasonality, trends, and holidays in the time series data.
+
+# Train the linear regression model
+from sklearn.linear_model import LinearRegression
+model = LinearRegression()
+model.fit(X, y)
+
+4. Model Evaluation
+
+After training the model, we need to evaluate its performance on the test data. We can use various metrics to evaluate the performance of the model, including:
+
+- Mean Absolute Error (MAE): The average absolute difference between the predicted and actual values.
+- Mean Squared Error (MSE): The average squared difference between the predicted and actual values.
+- Root Mean Squared Error (RMSE): The square root of MSE.
+
+# Evaluate the model
+from sklearn.metrics import mean_absolute_error, mean_squared_error
 y_pred = model.predict(X_test)
-# calculate error
-mse = mean_squared_error(y_test, y_pred)
-```
-### Visualizing Results
-Finally, we can visualize our results by plotting actual vs predicted stock prices. We can use the Matplotlib package to create our plots.
-Here's an example code snippet to plot our results:
-```python
-import matplotlib.pyplot as plt
-# plot actual vs predicted
-plt.plot(df.index, df['Price'], label='Actual')
-plt.plot(test_data.index, y_pred, label='Predicted')
-plt.legend()
-plt.show()
-```
-### Conclusion
-In this blog post, we've explored the step-by-step process of creating a time series forecasting model using machine learning and open-source hardware and software. We began by selecting the right hardware and software platform and then collected data from an online API. Next, we preprocessed our data, trained our model using the Gradient Boosting Regressor algorithm, and finally visualized our results. By following this guide, you can create your own machine learning projects that leverage the power of open-source software and hardware. 
-```markdown
-## Final Thoughts
-Creating machine learning projects that combine open-source hardware and software is a great way to innovate and learn new skills. By following the steps outlined in this blog post, you can create your own time series forecasting model using Python, Pandas, Scikit-Learn, and Raspberry Pi. The final product should be able to predict future trends and patterns from past data. This project is just the beginning, and you can get creative with the data sources and algorithms you use to build your models. Start experimenting today and see where your ideas take you!
-```Time series forecasting with machine learning is a powerful tool that can be used to predict future trends and patterns from past data. This technique has been applied in various fields such as finance, weather prediction, and stock market analysis. In this blog post, we will explore the step-by-step process of creating a project that leverages AI, ML, and open-source hardware and software to predict stock prices. 
-### Selecting the right hardware and software
-To begin this project, we need a hardware platform that can connect to an online data source and perform the necessary computations. Raspberry Pi is an excellent choice for this purpose as it is a low-cost computer that can handle complex data processing tasks. We also need software tools such as Python, Pandas, and Scikit-Learn to implement and train our model.
-Next, we need to install Python and necessary packages to get started. We can do this by running the following command in our Raspberry Pi terminal:
-```bash
-sudo apt-get update
-sudo apt-get install python3 python3-dev python3-pip
-```
-### Collecting Data
-We need historical data on the stock price to train our model. We can get this data from online sources such as Yahoo Finance, Quandl, or Alpha Vantage. For this project, we will be using the Alpha Vantage API to collect our data. The Alpha Vantage API provides real-time and historical price data on various stocks.
-We can use `requests` and `json` packages in Python to retrieve data from the API. Here's an example code snippet to get ten years of data for Apple Inc:
-```python
-import requests
-import json
-api_key = 'INSERT_YOUR_API_KEY_HERE'
-symbol = 'AAPL'
-url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={symbol}&apikey={api_key}'
-response = requests.get(url)
-data = json.loads(response.text)
-# save data to a file
-with open('aapl.json', 'w') as f:
-    json.dump(data['Time Series (Daily)'], f)
-```
-### Preprocessing Data
-Before we can train our model, we need to preprocess our data. We can use the Pandas package to perform various data preprocessing tasks such as removing missing values, scaling data, and splitting data into training and test sets.
-Here's an example code snippet to preprocess our data:
-```python
-import pandas as pd
-import numpy as np
-# read data from file
-df = pd.read_json('aapl.json').T
-df.index = pd.to_datetime(df.index)
-# drop unnecessary columns
-df.drop(columns=['1. open', '2. high', '3. low', '5. volume'], inplace=True)
-df.rename(columns={'4. close': 'Price'}, inplace=True)
-# fill missing values
-df = df.fillna(method='ffill')
-# split data into training and test sets
-train_data = df[:int(0.8*len(df))]
-test_data = df[int(0.8*len(df)):]
-```
-### Training the Model
-Now that we have preprocessed our data, we can train our model. We will be using the Scikit-Learn package to build our time series model. Specifically, we will be using the Gradient Boosting Regressor algorithm as it has been shown to be effective for time series forecasting tasks.
-Here's an example code snippet to train our model:
-```python
-from sklearn.ensemble import GradientBoostingRegressor
-from sklearn.metrics import mean_squared_error
-# create model
-model = GradientBoostingRegressor(n_estimators=100, learning_rate=0.1,
-                                   max_depth=1, random_state=0, loss='ls')
-# train model
-X_train = np.arange(len(train_data)).reshape(-1, 1)
-y_train = train_data['Price'].values
-model.fit(X_train, y_train)
-# make predictions
-X_test = np.arange(len(train_data), len(train_data)+len(test_data)).reshape(-1, 1)
-y_test = test_data['Price'].values
-y_pred = model.predict(X_test)
-# calculate error
-mse = mean_squared_error(y_test, y_pred)
-```
-### Visualizing Results
-Finally, we can visualize our results by plotting actual vs predicted stock prices. We can use the Matplotlib package to create our plots.
-Here's an example code snippet to plot our results:
-```python
-import matplotlib.pyplot as plt
-# plot actual vs predicted
-plt.plot(df.index, df['Price'], label='Actual')
-plt.plot(test_data.index, y_pred, label='Predicted')
-plt.legend()
-plt.show()
-```
-### Conclusion
-In this blog post, we've explored the step-by-step process of creating a time series forecasting model using machine learning and open-source hardware and software. We began by selecting the right hardware and software platform and then collected data from an online API. Next, we preprocessed our data, trained our model using the Gradient Boosting Regressor algorithm, and finally visualized our results. By following this guide, you can create your own machine learning projects that leverage the power of open-source software and hardware. 
-```markdown
-## Final Thoughts
-Creating machine learning projects that combine open-source hardware and software is a great way to innovate and learn new skills. By following the steps outlined in this blog post, you can create your own time series forecasting model using Python, Pandas, Scikit-Learn, and Raspberry Pi. The final product should be able to predict future trends and patterns from past data. This project is just the beginning, and you can get creative with the data sources and algorithms you use to build your models. Start experimenting today and see where your ideas take you!
-```Time series forecasting with machine learning is a powerful tool that can be used to predict future trends and patterns from past data. This technique has been applied in various fields such as finance, weather prediction, and stock market analysis. In this blog post, we will explore the step-by-step process of creating a project that leverages AI, ML, and open-source hardware and software to predict stock prices. 
-### Selecting the right hardware and software
-To begin this project, we need a hardware platform that can connect to an online data source and perform the necessary computations. Raspberry Pi is an excellent choice for this purpose as it is a low-cost computer that can handle complex data processing tasks. We also need software tools such as Python, Pandas, and Scikit-Learn to implement and train our model.
-Next, we need to install Python and necessary packages to get started. We can do this by running the following command in our Raspberry Pi terminal:
-```bash
-sudo apt-get update
-sudo apt-get install python3 python3-dev python3-pip
-```
-### Collecting Data
-We need historical data on the stock price to train our model. We can get this data from online sources such as Yahoo Finance, Quandl, or Alpha Vantage. For this project, we will be using the Alpha Vantage API to collect our data. The Alpha Vantage API provides real-time and historical price data on various stocks.
-We can use `requests` and `json` packages in Python to retrieve data from the API. Here's an example code snippet to get ten years of data for Apple Inc:
-```python
-import requests
-import json
-api_key = 'INSERT_YOUR_API_KEY_HERE'
-symbol = 'AAPL'
-url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={symbol}&apikey={api_key}'
-response = requests.get(url)
-data = json.loads(response.text)
-# save data to a file
-with open('aapl.json', 'w') as f:
-    json.dump(data['Time Series (Daily)'], f)
-```
-### Preprocessing Data
-Before we can train our model, we need to preprocess our data. We can use the Pandas package to perform various data preprocessing tasks such as removing missing values, scaling data, and splitting data into training and test sets.
-Here's an example code snippet to preprocess our data:
-```python
-import pandas as pd
-import numpy as np
-# read data from file
-df = pd.read_json('aapl.json').T
-df.index = pd.to_datetime(df.index)
-# drop unnecessary columns
-df.drop(columns=['1. open', '2. high', '3. low', '5. volume'], inplace=True)
-df.rename(columns={'4. close': 'Price'}, inplace=True)
-# fill missing values
-df = df.fillna(method='ffill')
-# split data into training and test sets
-train_data = df[:int(0.8*len(df))]
-test_data = df[int(0.8*len(df)):]
-```
-### Training the Model
-Now that we have preprocessed our data, we can train our model. We will be using the Scikit-Learn package to build our time series model. Specifically, we will be using the Gradient Boosting Regressor algorithm as it has been shown to be effective for time series forecasting tasks.
-Here's an example code snippet to train our model:
-```python
-from sklearn.ensemble import GradientBoostingRegressor
-from sklearn.metrics import mean_squared_error
-# create model
-model = GradientBoostingRegressor(n_estimators=100, learning_rate=0.1,
-                                   max_depth=1, random_state=0, loss='ls')
-# train model
-X_train = np.arange(len(train_data)).reshape(-1, 1)
-y_train = train_data['Price'].values
-model.fit(X_train, y_train)
-# make predictions
-X_test = np.arange(len(train_data), len(train_data)+len(test_data)).reshape(-1, 1)
-y_test = test_data['Price'].values
-y_pred = model.predict(X_test)
-# calculate error
-mse = mean_squared_error(y_test, y_pred)
-```
-### Visualizing Results
-Finally, we can visualize our results by plotting actual vs predicted stock prices. We can use the Matplotlib package to create our plots.
-Here's an example code snippet to plot our results:
-```python
-import matplotlib.pyplot as plt
-# plot actual vs predicted
-plt.plot(df.index, df['Price'], label='Actual')
-plt.plot(test_data.index, y_pred, label='Predicted')
-plt.legend()
-plt.show()
-```
-### Conclusion
-In this blog post, we've explored the step-by-step process of creating a time series forecasting model using machine learning and open-source hardware and software. We began by selecting the right hardware and software platform and then collected data from an online API. Next, we preprocessed our data, trained our model using the Gradient Boosting Regressor algorithm, and finally visualized our results. By following this guide, you can create your own machine learning projects that leverage the power of open-source software and hardware. 
-```markdown
-## Final Thoughts
-Creating machine learning projects that combine open-source hardware and software is a great way to innovate and learn new skills. By following the steps outlined in this blog post, you can create your own time series forecasting model using Python, Pandas, Scikit-Learn, and Raspberry Pi. The final product should be able to predict future trends and patterns from past data. This project is just the beginning, and you can get creative with the data sources and algorithms you use to build your models. Start experimenting today and see where your ideas take you!
-```Time series forecasting with machine learning is a powerful tool that can be used to predict future trends and patterns from past data. This technique has been applied in various fields such as finance, weather prediction, and stock market analysis. In this blog post, we will explore the step-by-step process of creating a project that leverages AI, ML, and open-source hardware and software to predict stock prices. 
-### Selecting the right hardware and software
-To begin this project, we need a hardware platform that can connect to an online data source and perform the necessary computations. Raspberry Pi is an excellent choice for this purpose as it is a low-cost computer that can handle complex data processing tasks. We also need software tools such as Python, Pandas, and Scikit-Learn to implement and train our model.
-Next, we need to install Python and necessary packages to get started. We can do this by running the following command in our Raspberry Pi terminal:
-```bash
-sudo apt-get update
-sudo apt-get install python3 python3-dev python3-pip
-```
-### Collecting Data
-We need historical data on the stock price to train our model. We can get this data from online sources such as Yahoo Finance, Quandl, or Alpha Vantage. For this project, we will be using the Alpha Vantage API to collect our data. The Alpha Vantage API provides real-time and historical price data on various stocks.
-We can use `requests` and `json` packages in Python to retrieve data from the API. Here's an example code snippet to get ten years of data for Apple Inc:
-```python
-import requests
-import json
-api_key = 'INSERT_YOUR_API_KEY_HERE'
-symbol = 'AAPL'
-url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={symbol}&apikey={api_key}'
-response = requests.get(url)
-data = json.loads(response.text)
-# save data to a file
-with open('aapl.json', 'w') as f:
-    json.dump(data['Time Series (Daily)'], f)
-```
-### Preprocessing Data
-Before we can train our model, we need to preprocess our data. We can use the Pandas package to perform various data preprocessing tasks such as removing missing values, scaling data, and splitting data into training and test sets.
-Here's an example code snippet to preprocess our data:
-```python
-import pandas as pd
-import numpy as np
-# read data from file
-df = pd.read_json('aapl.json').T
-df.index = pd.to_datetime(df.index)
-# drop unnecessary columns
-df.drop(columns=['1. open', '2. high', '3. low', '5. volume'], inplace=True)
-df.rename(columns={'4. close': 'Price'}, inplace=True)
-# fill missing values
-df = df.fillna(method='ffill')
-# split data into training and test sets
-train_data = df[:int(0.8*len(df))]
-test_data = df[int(0.8*len(df)):]
-```
-### Training the Model
-Now that we have preprocessed our data, we can train our model. We will be using the Scikit-Learn package to build our time series model. Specifically, we will be using the Gradient Boosting Regressor algorithm as it has been shown to be effective for time series forecasting tasks.
-Here's an example code snippet to train our model:
-```python
-from sklearn.ensemble import GradientBoostingRegressor
-from sklearn.metrics import mean_squared_error
-# create model
-model = GradientBoostingRegressor(n_estimators=100, learning_rate=0.1,
-                                   max_depth=1, random_state=0, loss='ls')
-# train model
-X_train = np.arange(len(train_data)).reshape(-1, 1)
-y_train = train_data['Price'].values
-model.fit(X_train, y_train)
-# make predictions
-X_test = np.arange(len(train_data), len(train_data)+len(test_data)).reshape(-1, 1)
-y_test = test_data['Price'].values
-y_pred = model.predict(X_test)
-# calculate error
-mse = mean_squared_error(y_test, y_pred)
-```
-### Visualizing Results
-Finally, we can visualize our results by plotting actual vs predicted stock prices. We can use the Matplotlib package to create our plots.
-Here's an example code snippet to plot our results:
-```python
-import matplotlib.pyplot as plt
-# plot actual vs predicted
-plt.plot(df.index, df['Price'], label='Actual')
-plt.plot(test_data.index, y_pred, label='Predicted')
-plt.legend()
-plt.show()
-```
-### Conclusion
-In this blog post, we've explored the step-by-step process of creating a time series forecasting model using machine learning and open-source hardware and software. We began by selecting the right hardware and software platform and then collected data from an online API. Next, we preprocessed our data, trained our model using the Gradient Boosting Regressor algorithm, and finally visualized our results. By following this guide, you can create your own machine learning projects that leverage the power of open-source software and hardware. 
-```markdown
-## Final Thoughts
-Creating machine learning projects that combine open-source hardware and software is a great way to innovate and learn new skills. By following the steps outlined in this blog post, you can create your own time series forecasting model using Python, Pandas, Scikit-Learn, and Raspberry Pi. The final product should be able to predict future trends and patterns from past data. This project is just the beginning, and you can get creative with the data sources and algorithms you use to build your models. Start experimenting today and see where your ideas take you!
-```
+print('MAE:', mean_absolute_error(y_test, y_pred))
+print('MSE:', mean_squared_error(y_test, y_pred))
+print('RMSE:', np.sqrt(mean_squared_error(y_test, y_pred)))
+
+5. Future Forecasting
+
+After evaluating the model, we can use it to make predictions for future time periods. To make future predictions, we need to use the last few observed values of the time series to predict the next value.
+
+# Make future predictions
+last_row = df.tail(1)
+last_row.drop('Value', axis=1, inplace=True)
+future_values = model.predict(last_row)
+
+Conclusion
+
+Time series forecasting with machine learning is a complex yet crucial process for many applications. In this blog post, we discussed the process of time series forecasting with machine learning, including data preprocessing, feature extraction, model selection, model evaluation, and future forecasting. We also explored the various machine learning models that we can use for time series forecasting, including linear regression, ARIMA, and Prophet. By following these steps, we can make accurate and reliable predictions for time series data. 
+
+Additional Resources
+
+- Time Series Analysis in Python: A Comprehensive Guide with Examples
+- Practical Time Series Forecasting with Python
+- Machine Learning Mastery - Time Series Forecasting

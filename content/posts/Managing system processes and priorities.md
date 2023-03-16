@@ -1,131 +1,94 @@
 ---
 title: "Managing system processes and priorities"
-date: 2022-10-15
+date: 2022-09-20
 ---
 
 
-# Managing System Processes and Priorities
-## Introduction
-System processes and priorities are an essential aspect of operating systems. In computer science, a process is an instance of a computer program that is being executed. When several processes are running at the same time, the operating system must manage their priorities to allocate system resources efficiently. As a developer or administrator, it is essential to be familiar with process management because it affects the overall performance of the system. This post will explain the concepts of system processes and priorities, reasons that cause the issue, and provide detailed steps in resolving the issue with code snippets.
-## Background
-System processes management became essential because of two reasons. Firstly, multiple processes running parallel with less RAM will result in a system crash or halt. Secondly, disk I/O and scheduling of processes is an overhead for CPU processing. This overhead on CPU and RAM resources need to be maintained and optimized as many other background services are also present in the system to take up resources. Due to these reasons, Linux provides the way to manage processes and their priorities.
-## Detailed Steps in Resolving the Issue
-In Linux, we can use commands like `top`, `htop`, and `ps` to view system processes and their details like CPU and memory usage, process ID (PID), and priority. We can also use the `renice` command to change the priority of running processes. `renice` changes the priority of NICE values, having a range of -20 to 19, which translate to priority values ranging from 19 to -20.
-### Changing Process Priority
-Here's an example code snippet to change the priority of a running process:
+
+
+Managing system processes and priorities is an essential aspect of operating systems. An operating system manages resources such as CPU, memory, and I/O devices, and allocates them to processes. In this blog post, we will look at how to manage system processes and priorities.
+
+## What are System Processes?
+
+A process is an instance of a program that is executing in the operating system. Each process runs independently, maintains its own state, and has its own virtual address space. Processes can communicate with each other through inter-process communication mechanisms such as pipes, signals, and sockets.
+
+System processes are processes that are essential to the operating system's functioning; these processes are typically started when the system boots up and run in the background. Examples of system processes include kernel threads, daemons, and other administrative processes.
+
+## How Processes are Prioritized
+
+The operating system allocates resources to processes based on predefined priorities. Priorities help to ensure that processes that need resources the most get them first. Priorities can be static or dynamic.
+
+### Static Priorities
+
+Static priorities are assigned to processes when they are created and remain the same throughout the process's lifetime. The priority value is usually specified at the time the process is created and typically ranges from 0 to 127, with lower numbers indicating higher priorities.
+
+### Dynamic Priorities
+
+Dynamic priorities can change during the process's lifetime. The operating system can adjust the priority of a process based on its behavior. For example, if a process uses a lot of CPU resources, its priority can be decreased, and if a process is waiting for an event to complete, its priority can be increased.
+
+## Process Scheduling
+
+The process scheduler is responsible for selecting which process should be run next on the CPU. The scheduler selects a process from the ready queue and dispatches it to the CPU for execution.
+
+The scheduling algorithm depends on many factors, including the priorities of the processes, the length of the process's burst time, and whether the process is I/O-bound or CPU-bound.
+
+## Managing Process Priorities
+
+As an operating system user, you can manage process priorities in several ways. You can use commands like `nice` to adjust the priority of a process, and the `renice` command to adjust the priority of a process that is already running.
+
+### The Nice Command
+
+The `nice` command is used to adjust the priority of a process when it is launched. The syntax of the nice command is as follows:
+
 ```
-renice +5 1234
+nice priority command
 ```
-This command increases the priority of process ID 1234 by 5 units.
-### Viewing Current Process Priorities
-Here's an example code snippet to view the current priorities of all running processes:
+
+The `priority` parameter specifies the priority value for the process, and `command` specifies the command to be run.
+
+For example:
+
 ```
-ps -eo pid,nice,cmd
+nice -10 ls -l
 ```
-This command lists all PIDs, the nice value for each process, and the command line associated with that process.
-## Commands Required to Work on the Issue
-Some commonly used commands for managing system processes and priorities are:
-- `top`: display system processes and their usage.
-- `htop`: an interactive version of `top`.
-- `pstree`: display running processes in tree format.
-- `kill`: terminate a running process.
-- `ps`: list current system processes.
-- `renice`: change process priority.
-## Links to Resources for Further References
-- [Linux Process Management](https://opensource.com/article/18/9/linux-process-management)
-- [Process Management in Linux](https://unix.stackexchange.com/questions/15302/process-management-in-linux)
-- [Nice and Renice Commands](https://www.lifewire.com/renice-examples-220.htm)
-In conclusion, managing system processes and priorities is crucial for optimizing system resources. As a developer or administrator, it is crucial to be proficient with the tools and commands necessary for managing processes. The Linux commands top, htop, ps, renice are essential for identifying and managing processes. With these tools and commands, you can optimize system performance and prevent system crashes or halts.# Managing System Processes and Priorities
-## Introduction
-System processes and priorities are an essential aspect of operating systems. In computer science, a process is an instance of a computer program that is being executed. When several processes are running at the same time, the operating system must manage their priorities to allocate system resources efficiently. As a developer or administrator, it is essential to be familiar with process management because it affects the overall performance of the system. This post will explain the concepts of system processes and priorities, reasons that cause the issue, and provide detailed steps in resolving the issue with code snippets.
-## Background
-System processes management became essential because of two reasons. Firstly, multiple processes running parallel with less RAM will result in a system crash or halt. Secondly, disk I/O and scheduling of processes is an overhead for CPU processing. This overhead on CPU and RAM resources need to be maintained and optimized as many other background services are also present in the system to take up resources. Due to these reasons, Linux provides the way to manage processes and their priorities.
-## Detailed Steps in Resolving the Issue
-In Linux, we can use commands like `top`, `htop`, and `ps` to view system processes and their details like CPU and memory usage, process ID (PID), and priority. We can also use the `renice` command to change the priority of running processes. `renice` changes the priority of NICE values, having a range of -20 to 19, which translate to priority values ranging from 19 to -20.
-### Changing Process Priority
-Here's an example code snippet to change the priority of a running process:
+
+This command will launch the `ls -l` command with a priority of 10 lower than the default priority.
+
+### The Renice Command
+
+The `renice` command is used to adjust the priority of a process that is already running. The syntax of the command is as follows:
+
 ```
-renice +5 1234
+renice priority PID
 ```
-This command increases the priority of process ID 1234 by 5 units.
-### Viewing Current Process Priorities
-Here's an example code snippet to view the current priorities of all running processes:
+
+The `priority` parameter specifies the new priority value for the process, and `PID` specifies the process ID of the process to be adjusted.
+
+For example:
+
 ```
-ps -eo pid,nice,cmd
+renice -5 1234
 ```
-This command lists all PIDs, the nice value for each process, and the command line associated with that process.
-## Commands Required to Work on the Issue
-Some commonly used commands for managing system processes and priorities are:
-- `top`: display system processes and their usage.
-- `htop`: an interactive version of `top`.
-- `pstree`: display running processes in tree format.
-- `kill`: terminate a running process.
-- `ps`: list current system processes.
-- `renice`: change process priority.
-## Links to Resources for Further References
-- [Linux Process Management](https://opensource.com/article/18/9/linux-process-management)
-- [Process Management in Linux](https://unix.stackexchange.com/questions/15302/process-management-in-linux)
-- [Nice and Renice Commands](https://www.lifewire.com/renice-examples-220.htm)
-In conclusion, managing system processes and priorities is crucial for optimizing system resources. As a developer or administrator, it is crucial to be proficient with the tools and commands necessary for managing processes. The Linux commands top, htop, ps, renice are essential for identifying and managing processes. With these tools and commands, you can optimize system performance and prevent system crashes or halts.# Managing System Processes and Priorities
-## Introduction
-System processes and priorities are an essential aspect of operating systems. In computer science, a process is an instance of a computer program that is being executed. When several processes are running at the same time, the operating system must manage their priorities to allocate system resources efficiently. As a developer or administrator, it is essential to be familiar with process management because it affects the overall performance of the system. This post will explain the concepts of system processes and priorities, reasons that cause the issue, and provide detailed steps in resolving the issue with code snippets.
-## Background
-System processes management became essential because of two reasons. Firstly, multiple processes running parallel with less RAM will result in a system crash or halt. Secondly, disk I/O and scheduling of processes is an overhead for CPU processing. This overhead on CPU and RAM resources need to be maintained and optimized as many other background services are also present in the system to take up resources. Due to these reasons, Linux provides the way to manage processes and their priorities.
-## Detailed Steps in Resolving the Issue
-In Linux, we can use commands like `top`, `htop`, and `ps` to view system processes and their details like CPU and memory usage, process ID (PID), and priority. We can also use the `renice` command to change the priority of running processes. `renice` changes the priority of NICE values, having a range of -20 to 19, which translate to priority values ranging from 19 to -20.
-### Changing Process Priority
-Here's an example code snippet to change the priority of a running process:
-```
-renice +5 1234
-```
-This command increases the priority of process ID 1234 by 5 units.
-### Viewing Current Process Priorities
-Here's an example code snippet to view the current priorities of all running processes:
-```
-ps -eo pid,nice,cmd
-```
-This command lists all PIDs, the nice value for each process, and the command line associated with that process.
-## Commands Required to Work on the Issue
-Some commonly used commands for managing system processes and priorities are:
-- `top`: display system processes and their usage.
-- `htop`: an interactive version of `top`.
-- `pstree`: display running processes in tree format.
-- `kill`: terminate a running process.
-- `ps`: list current system processes.
-- `renice`: change process priority.
-## Links to Resources for Further References
-- [Linux Process Management](https://opensource.com/article/18/9/linux-process-management)
-- [Process Management in Linux](https://unix.stackexchange.com/questions/15302/process-management-in-linux)
-- [Nice and Renice Commands](https://www.lifewire.com/renice-examples-220.htm)
-In conclusion, managing system processes and priorities is crucial for optimizing system resources. As a developer or administrator, it is crucial to be proficient with the tools and commands necessary for managing processes. The Linux commands top, htop, ps, renice are essential for identifying and managing processes. With these tools and commands, you can optimize system performance and prevent system crashes or halts.# Managing System Processes and Priorities
-## Introduction
-System processes and priorities are an essential aspect of operating systems. In computer science, a process is an instance of a computer program that is being executed. When several processes are running at the same time, the operating system must manage their priorities to allocate system resources efficiently. As a developer or administrator, it is essential to be familiar with process management because it affects the overall performance of the system. This post will explain the concepts of system processes and priorities, reasons that cause the issue, and provide detailed steps in resolving the issue with code snippets.
-## Background
-System processes management became essential because of two reasons. Firstly, multiple processes running parallel with less RAM will result in a system crash or halt. Secondly, disk I/O and scheduling of processes is an overhead for CPU processing. This overhead on CPU and RAM resources need to be maintained and optimized as many other background services are also present in the system to take up resources. Due to these reasons, Linux provides the way to manage processes and their priorities.
-## Detailed Steps in Resolving the Issue
-In Linux, we can use commands like `top`, `htop`, and `ps` to view system processes and their details like CPU and memory usage, process ID (PID), and priority. We can also use the `renice` command to change the priority of running processes. `renice` changes the priority of NICE values, having a range of -20 to 19, which translate to priority values ranging from 19 to -20.
-### Changing Process Priority
-Here's an example code snippet to change the priority of a running process:
-```
-renice +5 1234
-```
-This command increases the priority of process ID 1234 by 5 units.
-### Viewing Current Process Priorities
-Here's an example code snippet to view the current priorities of all running processes:
-```
-ps -eo pid,nice,cmd
-```
-This command lists all PIDs, the nice value for each process, and the command line associated with that process.
-## Commands Required to Work on the Issue
-Some commonly used commands for managing system processes and priorities are:
-- `top`: display system processes and their usage.
-- `htop`: an interactive version of `top`.
-- `pstree`: display running processes in tree format.
-- `kill`: terminate a running process.
-- `ps`: list current system processes.
-- `renice`: change process priority.
-## Links to Resources for Further References
-- [Linux Process Management](https://opensource.com/article/18/9/linux-process-management)
-- [Process Management in Linux](https://unix.stackexchange.com/questions/15302/process-management-in-linux)
-- [Nice and Renice Commands](https://www.lifewire.com/renice-examples-220.htm)
-In conclusion, managing system processes and priorities is crucial for optimizing system resources. As a developer or administrator, it is crucial to be proficient with the tools and commands necessary for managing processes. The Linux commands top, htop, ps, renice are essential for identifying and managing processes. With these tools and commands, you can optimize system performance and prevent system crashes or halts.
+
+This command will adjust the priority of the process with the ID 1234 to a priority of 5 lower than the default priority.
+
+## Conclusion
+
+Managing system processes and priorities is critical for the smooth operation of systems. Priorities help to ensure that processes that need resources the most get them first, and process scheduling is responsible for selecting which process should be run next.
+
+As a system administrator or user, it is essential to understand how to manage process priorities correctly. The `nice` and `renice` commands are excellent tools for managing process priorities. 
+
+Additional resources:
+
+- [The Linux Programmer's Guide - Process Scheduling](https://tldp.org/LDP/lpg/node18.html)
+- [IBM Developer - Process Priorities and Scheduling in Linux](https://developer.ibm.com/technologies/linux/articles/l-process-priority/) 
+
+Markdown tags: 
+- # Programming
+- # Operating Systems
+- # Linux
+- # System Processes
+- # Priorities
+- # Process Scheduling
+- # Nice
+- # Renice

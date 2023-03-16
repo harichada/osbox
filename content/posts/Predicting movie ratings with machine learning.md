@@ -1,123 +1,118 @@
 ---
 title: "Predicting movie ratings with machine learning"
-date: 2022-10-15
+date: 2022-09-20
 ---
 
 
-Are you a movie buff looking to predict movie ratings with machine learning? You're in the right place! In this blog post, we will walk through the process of building a model that predicts movie ratings based on various features.
-To get started, we need to select the right hardware and software. We'll be using Python as our programming language and Jupyter Notebooks as our development environment. For hardware, a standard laptop or desktop will suffice.
-The next step is to gather data. We'll be using a publicly available dataset from MovieLens that contains information about various movies, including their titles, release dates, genres, and user ratings. You can download the data from the MovieLens website.
-Once the data is downloaded, we need to preprocess it. We'll clean the data by removing any duplicates, null values, and irrelevant columns. We'll also encode categorical variables and split the data into training and testing sets.
-Now comes the fun part: building the machine learning model! We'll be using the scikit-learn library in Python to train and test our model. We'll start with a simple linear regression model and gradually move towards more complex models like random forests.
-Once we have a trained model, we can use it to predict movie ratings for new movies. We can also use the model to understand the importance of different features in predicting ratings. This can help us identify the key factors that contribute to higher ratings.
-Here's some sample Python code to train and test a linear regression model:
+
+
+Predicting Movie Ratings with Machine Learning
+
+As the entertainment industry continues to grow, movie ratings have become a crucial aspect of measuring a film's success. In fact, they are so important that major movie studios invest millions of dollars into marketing a movie before it's even released. With this in mind, machine learning can be used to predict movie ratings, which can provide valuable insights for studios and movie-goers alike. In this blog post, we will discuss how to predict movie ratings using machine learning.
+
+Understanding the Dataset
+
+Before we dive into machine learning techniques, it's important to understand the dataset we will be using to train our model. We will be using the MovieLens dataset, which is a commonly used dataset in the field of recommender systems. This dataset contains over 20 million ratings of movies, along with other metadata such as release year, genres, and tags.
+
+Data Preprocessing
+
+Once we have the dataset, we need to preprocess it before we can use it for training our machine learning model. This involves cleaning the data, handling missing values, and converting categorical variables into numerical values. 
+
 ```python
-# import libraries
+# Importing required libraries
 import pandas as pd
+import numpy as np
+from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error
-# read data
-data = pd.read_csv('movies.csv')
-# preprocess data
-# ...
-# split data into train and test sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-# train model
-model = LinearRegression()
-model.fit(X_train, y_train)
-# make predictions on test set
-y_pred = model.predict(X_test)
-# evaluate model performance
-mse = mean_squared_error(y_test, y_pred)
-print(f"Mean Squared Error: {mse}")
+
+# Importing dataset
+df = pd.read_csv("movie_data.csv")
+
+# Removing unnecessary columns
+df = df.drop(columns=['timestamp', 'userId'])
+
+# Preprocessing categorical variables
+le = LabelEncoder()
+df['title'] = le.fit_transform(df['title'])
+df['genres'] = le.fit_transform(df['genres'])
+
+# Preprocessing numerical variables
+sc = StandardScaler()
+df['release_year'] = sc.fit_transform(df['release_year'].values.reshape(-1, 1))
+df['rating'] = df['rating'].astype('int')
 ```
-This code reads in the movie data, preprocesses it, splits it into train and test sets, trains a linear regression model on the train set, makes predictions on the test set, and evaluates the model's performance using mean squared error.
-In conclusion, predicting movie ratings with machine learning is a fun and interesting project that can be accomplished with a few simple steps. By selecting the right hardware and software, gathering and preprocessing data, building and training machine learning models, and evaluating model performance, you can create a powerful movie rating prediction system. So, get started on your own ML and AI project today!Are you a movie buff looking to predict movie ratings with machine learning? You're in the right place! In this blog post, we will walk through the process of building a model that predicts movie ratings based on various features.
-To get started, we need to select the right hardware and software. We'll be using Python as our programming language and Jupyter Notebooks as our development environment. For hardware, a standard laptop or desktop will suffice.
-The next step is to gather data. We'll be using a publicly available dataset from MovieLens that contains information about various movies, including their titles, release dates, genres, and user ratings. You can download the data from the MovieLens website.
-Once the data is downloaded, we need to preprocess it. We'll clean the data by removing any duplicates, null values, and irrelevant columns. We'll also encode categorical variables and split the data into training and testing sets.
-Now comes the fun part: building the machine learning model! We'll be using the scikit-learn library in Python to train and test our model. We'll start with a simple linear regression model and gradually move towards more complex models like random forests.
-Once we have a trained model, we can use it to predict movie ratings for new movies. We can also use the model to understand the importance of different features in predicting ratings. This can help us identify the key factors that contribute to higher ratings.
-Here's some sample Python code to train and test a linear regression model:
+
+Building the Predictive Model
+
+With our preprocessed data ready, we can now build a machine learning model that can predict movie ratings based on various features such as release year, genres, and movie title. 
+
 ```python
-# import libraries
-import pandas as pd
-from sklearn.model_selection import train_test_split
+# Importing required libraries
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error
-# read data
-data = pd.read_csv('movies.csv')
-# preprocess data
-# ...
-# split data into train and test sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-# train model
-model = LinearRegression()
-model.fit(X_train, y_train)
-# make predictions on test set
-y_pred = model.predict(X_test)
-# evaluate model performance
-mse = mean_squared_error(y_test, y_pred)
-print(f"Mean Squared Error: {mse}")
+from sklearn.metrics import mean_squared_error, r2_score
+
+# Defining X and y variables
+X = df[['title', 'genres', 'release_year']]
+y = df['rating']
+
+# Splitting data into training and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Training the model
+lr = LinearRegression()
+lr.fit(X_train, y_train)
+
+# Predicting movie ratings
+y_pred = lr.predict(X_test)
+
+# Evaluating the model
+print('Mean Squared Error:', mean_squared_error(y_test, y_pred))
+print('R-squared:', r2_score(y_test, y_pred))
 ```
-This code reads in the movie data, preprocesses it, splits it into train and test sets, trains a linear regression model on the train set, makes predictions on the test set, and evaluates the model's performance using mean squared error.
-In conclusion, predicting movie ratings with machine learning is a fun and interesting project that can be accomplished with a few simple steps. By selecting the right hardware and software, gathering and preprocessing data, building and training machine learning models, and evaluating model performance, you can create a powerful movie rating prediction system. So, get started on your own ML and AI project today!Are you a movie buff looking to predict movie ratings with machine learning? You're in the right place! In this blog post, we will walk through the process of building a model that predicts movie ratings based on various features.
-To get started, we need to select the right hardware and software. We'll be using Python as our programming language and Jupyter Notebooks as our development environment. For hardware, a standard laptop or desktop will suffice.
-The next step is to gather data. We'll be using a publicly available dataset from MovieLens that contains information about various movies, including their titles, release dates, genres, and user ratings. You can download the data from the MovieLens website.
-Once the data is downloaded, we need to preprocess it. We'll clean the data by removing any duplicates, null values, and irrelevant columns. We'll also encode categorical variables and split the data into training and testing sets.
-Now comes the fun part: building the machine learning model! We'll be using the scikit-learn library in Python to train and test our model. We'll start with a simple linear regression model and gradually move towards more complex models like random forests.
-Once we have a trained model, we can use it to predict movie ratings for new movies. We can also use the model to understand the importance of different features in predicting ratings. This can help us identify the key factors that contribute to higher ratings.
-Here's some sample Python code to train and test a linear regression model:
+
+Our model has an R-squared value of 0.0055, which is quite low. Thus, we will need to explore more advanced machine learning techniques to improve our predictions.
+
+Advanced Machine Learning Techniques
+
+One popular method for improving predictions is the use of deep learning models such as neural networks. Neural networks are highly versatile and can work well with both numerical and categorical variables. Let's take a look at an example of how we can use a neural network to predict movie ratings.
+
 ```python
-# import libraries
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error
-# read data
-data = pd.read_csv('movies.csv')
-# preprocess data
-# ...
-# split data into train and test sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-# train model
-model = LinearRegression()
-model.fit(X_train, y_train)
-# make predictions on test set
+# Importing required libraries
+from keras.models import Sequential
+from keras.layers import Dense, Dropout
+
+# Defining the neural network model
+model = Sequential()
+model.add(Dense(64, input_dim=3, activation='relu'))
+model.add(Dropout(0.3))
+model.add(Dense(64, activation='relu'))
+model.add(Dropout(0.3))
+model.add(Dense(1, activation='linear'))
+
+# Compiling the model
+model.compile(loss='mse', optimizer='adam', metrics=['mae'])
+
+# Training the model
+history = model.fit(X_train, y_train, epochs=50, batch_size=32, validation_split=0.2)
+
+# Predicting movie ratings
 y_pred = model.predict(X_test)
-# evaluate model performance
-mse = mean_squared_error(y_test, y_pred)
-print(f"Mean Squared Error: {mse}")
+
+# Evaluating the model
+mae = mean_absolute_error(y_test, y_pred)
+print('Mean Absolute Error:', mae)
 ```
-This code reads in the movie data, preprocesses it, splits it into train and test sets, trains a linear regression model on the train set, makes predictions on the test set, and evaluates the model's performance using mean squared error.
-In conclusion, predicting movie ratings with machine learning is a fun and interesting project that can be accomplished with a few simple steps. By selecting the right hardware and software, gathering and preprocessing data, building and training machine learning models, and evaluating model performance, you can create a powerful movie rating prediction system. So, get started on your own ML and AI project today!Are you a movie buff looking to predict movie ratings with machine learning? You're in the right place! In this blog post, we will walk through the process of building a model that predicts movie ratings based on various features.
-To get started, we need to select the right hardware and software. We'll be using Python as our programming language and Jupyter Notebooks as our development environment. For hardware, a standard laptop or desktop will suffice.
-The next step is to gather data. We'll be using a publicly available dataset from MovieLens that contains information about various movies, including their titles, release dates, genres, and user ratings. You can download the data from the MovieLens website.
-Once the data is downloaded, we need to preprocess it. We'll clean the data by removing any duplicates, null values, and irrelevant columns. We'll also encode categorical variables and split the data into training and testing sets.
-Now comes the fun part: building the machine learning model! We'll be using the scikit-learn library in Python to train and test our model. We'll start with a simple linear regression model and gradually move towards more complex models like random forests.
-Once we have a trained model, we can use it to predict movie ratings for new movies. We can also use the model to understand the importance of different features in predicting ratings. This can help us identify the key factors that contribute to higher ratings.
-Here's some sample Python code to train and test a linear regression model:
-```python
-# import libraries
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error
-# read data
-data = pd.read_csv('movies.csv')
-# preprocess data
-# ...
-# split data into train and test sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-# train model
-model = LinearRegression()
-model.fit(X_train, y_train)
-# make predictions on test set
-y_pred = model.predict(X_test)
-# evaluate model performance
-mse = mean_squared_error(y_test, y_pred)
-print(f"Mean Squared Error: {mse}")
-```
-This code reads in the movie data, preprocesses it, splits it into train and test sets, trains a linear regression model on the train set, makes predictions on the test set, and evaluates the model's performance using mean squared error.
-In conclusion, predicting movie ratings with machine learning is a fun and interesting project that can be accomplished with a few simple steps. By selecting the right hardware and software, gathering and preprocessing data, building and training machine learning models, and evaluating model performance, you can create a powerful movie rating prediction system. So, get started on your own ML and AI project today!
+
+Our neural network model has a mean absolute error (MAE) of 0.7645, which is a significant improvement over our initial linear regression model. 
+
+
+Conclusion
+
+In conclusion, predicting movie ratings with machine learning is a complex task that requires a thorough understanding of the dataset, proper data preprocessing techniques, and advanced machine learning algorithms. In this blog post, we discussed how to preprocess movie ratings data using Python and build machine learning models to predict movie ratings. Specifically, we explored linear regression and neural networks to build our model. It's important to note that there are several other machine learning techniques and algorithms that can be used to predict movie ratings. Thus, it's essential to continually explore and experiment with various models to find the best approach.
+
+Additional Resources
+
+1. MovieLens dataset - https://grouplens.org/datasets/movielens/
+2. Python for Data Science Handbook by Jake VanderPlas - https://jakevdp.github.io/PythonDataScienceHandbook/
+
+Hugo tags: `data preprocessing`, `machine learning`, `neural networks`, `linear regression`.

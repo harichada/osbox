@@ -1,155 +1,50 @@
 ---
 title: "Recovering deleted files and data"
-date: 2022-10-15
+date: 2022-09-20
 ---
 
 
-# Recovering Deleted Files and Data
-Our digital lives are full of data, from precious family photos to important work documents. Unfortunately, accidents happen and important files may be accidentally deleted. This blog post will discuss the various reasons for data loss, useful scenarios for recovering data, detailed steps to resolve the issue, requirement commands for data recovery, and resources for further references.
-## Background: Reasons for Data Loss
-Data loss may be caused by various reasons, such as human error, system malfunctions, software corruptions, virus attacks, physical damages, or natural disasters. Any of these situations can lead to the accidental deletion or loss of important files. However, there is no need to panic as there are various solutions that can help us recover our lost data.
-## Useful Scenarios for Recovering Data
-It is often possible to recover data even when it has been deleted, formatted, or corrupted. Some of the useful scenarios for data recovery are:
-- Accidentally deleted files and folders from the Recycle Bin or Trash folder.
-- Lost partitions and volumes due to partition table damage, boot sector corruption, or hard drive failure.
-- Formatted or reformatted drives, memory cards, or USB flash drives.
-- Damaged files due to virus infections or power failures.
-- Encrypted files that are unlocked or inaccessible due to password loss.
-- Bad sectors and file system errors that prevent full access to data.
-## Detailed Steps in Resolving the Issue
-The steps for data recovery may vary depending on the cause of data loss, the type of storage media, and the recovery software used. However, in general, the following steps may be applicable:
-1. Stop using the affected storage device immediately to prevent further data loss or overwriting.
-2. Download and install a reputable data recovery software that supports your storage device and recovery scenario.
-3. Launch the recovery software and select the target storage device from the list of available disks and partitions.
-4. Specify the recovery scenario or file types that you want to recover and initiate the scan process.
-5. Preview the recoverable files and select the ones that you want to restore.
-6. Specify the output folder where the restored files will be saved and start the recovery process.
-7. Verify the integrity and completeness of the recovered files and make backups to avoid future data loss.
-## Command Required to Know to Work on the Issue
-Many data recovery software programs support a range of command-line options or parameters that can be useful for advanced users or automation tasks. Some of the useful commands for data recovery are:
-- `ddrescue` command (Linux): Copies data from one file or block device to another with error recovery.
-- `photorec` command (Linux, macOS, Windows): Recovers files based on their unique headers and footers.
-- `testdisk` command (Linux, macOS, Windows): Recovers lost partitions and boot sectors.
-- `recuva` command (Windows): Recovers files from various storage devices such as hard drives, memory cards, or USB flash drives.
-## Links to Resources for Further References
-There are many open-source and commercial data recovery software programs available that can help you recover your lost data. Some of the popular data recovery software programs are:
-- Recuva: https://www.ccleaner.com/recuva
-- TestDisk: https://www.cgsecurity.org/wiki/TestDisk
-- PhotoRec: https://www.cgsecurity.org/wiki/PhotoRec
-- MiniTool Power Data Recovery: https://www.minitool.com/data-recovery-software/
-In addition to these software programs, there are many online guides and tutorials that provide detailed steps and tips for data recovery. Some of the useful links for further references are:
-- How to recover deleted files on Windows 10: https://www.windowscentral.com/how-recover-deleted-files-windows-10
-- 7 best open-source data recovery software programs: https://www.dopitech.com/free-open-source-data-recovery-software-programs/
-- How to recover deleted photos on Android: https://www.androidcentral.com/how-recover-deleted-photos-android
-In conclusion, data loss can be a frustrating and stressful experience, but it is often possible to recover most or all of your lost data if you act quickly and use appropriate recovery tools and methods. By following the steps and tips discussed in this blog post and using the recommended software programs and online resources, you can increase your chances of successful data recovery and minimize the impact of data loss on your digital life.# Recovering Deleted Files and Data
-Our digital lives are full of data, from precious family photos to important work documents. Unfortunately, accidents happen and important files may be accidentally deleted. This blog post will discuss the various reasons for data loss, useful scenarios for recovering data, detailed steps to resolve the issue, requirement commands for data recovery, and resources for further references.
-## Background: Reasons for Data Loss
-Data loss may be caused by various reasons, such as human error, system malfunctions, software corruptions, virus attacks, physical damages, or natural disasters. Any of these situations can lead to the accidental deletion or loss of important files. However, there is no need to panic as there are various solutions that can help us recover our lost data.
-## Useful Scenarios for Recovering Data
-It is often possible to recover data even when it has been deleted, formatted, or corrupted. Some of the useful scenarios for data recovery are:
-- Accidentally deleted files and folders from the Recycle Bin or Trash folder.
-- Lost partitions and volumes due to partition table damage, boot sector corruption, or hard drive failure.
-- Formatted or reformatted drives, memory cards, or USB flash drives.
-- Damaged files due to virus infections or power failures.
-- Encrypted files that are unlocked or inaccessible due to password loss.
-- Bad sectors and file system errors that prevent full access to data.
-## Detailed Steps in Resolving the Issue
-The steps for data recovery may vary depending on the cause of data loss, the type of storage media, and the recovery software used. However, in general, the following steps may be applicable:
-1. Stop using the affected storage device immediately to prevent further data loss or overwriting.
-2. Download and install a reputable data recovery software that supports your storage device and recovery scenario.
-3. Launch the recovery software and select the target storage device from the list of available disks and partitions.
-4. Specify the recovery scenario or file types that you want to recover and initiate the scan process.
-5. Preview the recoverable files and select the ones that you want to restore.
-6. Specify the output folder where the restored files will be saved and start the recovery process.
-7. Verify the integrity and completeness of the recovered files and make backups to avoid future data loss.
-## Command Required to Know to Work on the Issue
-Many data recovery software programs support a range of command-line options or parameters that can be useful for advanced users or automation tasks. Some of the useful commands for data recovery are:
-- `ddrescue` command (Linux): Copies data from one file or block device to another with error recovery.
-- `photorec` command (Linux, macOS, Windows): Recovers files based on their unique headers and footers.
-- `testdisk` command (Linux, macOS, Windows): Recovers lost partitions and boot sectors.
-- `recuva` command (Windows): Recovers files from various storage devices such as hard drives, memory cards, or USB flash drives.
-## Links to Resources for Further References
-There are many open-source and commercial data recovery software programs available that can help you recover your lost data. Some of the popular data recovery software programs are:
-- Recuva: https://www.ccleaner.com/recuva
-- TestDisk: https://www.cgsecurity.org/wiki/TestDisk
-- PhotoRec: https://www.cgsecurity.org/wiki/PhotoRec
-- MiniTool Power Data Recovery: https://www.minitool.com/data-recovery-software/
-In addition to these software programs, there are many online guides and tutorials that provide detailed steps and tips for data recovery. Some of the useful links for further references are:
-- How to recover deleted files on Windows 10: https://www.windowscentral.com/how-recover-deleted-files-windows-10
-- 7 best open-source data recovery software programs: https://www.dopitech.com/free-open-source-data-recovery-software-programs/
-- How to recover deleted photos on Android: https://www.androidcentral.com/how-recover-deleted-photos-android
-In conclusion, data loss can be a frustrating and stressful experience, but it is often possible to recover most or all of your lost data if you act quickly and use appropriate recovery tools and methods. By following the steps and tips discussed in this blog post and using the recommended software programs and online resources, you can increase your chances of successful data recovery and minimize the impact of data loss on your digital life.# Recovering Deleted Files and Data
-Our digital lives are full of data, from precious family photos to important work documents. Unfortunately, accidents happen and important files may be accidentally deleted. This blog post will discuss the various reasons for data loss, useful scenarios for recovering data, detailed steps to resolve the issue, requirement commands for data recovery, and resources for further references.
-## Background: Reasons for Data Loss
-Data loss may be caused by various reasons, such as human error, system malfunctions, software corruptions, virus attacks, physical damages, or natural disasters. Any of these situations can lead to the accidental deletion or loss of important files. However, there is no need to panic as there are various solutions that can help us recover our lost data.
-## Useful Scenarios for Recovering Data
-It is often possible to recover data even when it has been deleted, formatted, or corrupted. Some of the useful scenarios for data recovery are:
-- Accidentally deleted files and folders from the Recycle Bin or Trash folder.
-- Lost partitions and volumes due to partition table damage, boot sector corruption, or hard drive failure.
-- Formatted or reformatted drives, memory cards, or USB flash drives.
-- Damaged files due to virus infections or power failures.
-- Encrypted files that are unlocked or inaccessible due to password loss.
-- Bad sectors and file system errors that prevent full access to data.
-## Detailed Steps in Resolving the Issue
-The steps for data recovery may vary depending on the cause of data loss, the type of storage media, and the recovery software used. However, in general, the following steps may be applicable:
-1. Stop using the affected storage device immediately to prevent further data loss or overwriting.
-2. Download and install a reputable data recovery software that supports your storage device and recovery scenario.
-3. Launch the recovery software and select the target storage device from the list of available disks and partitions.
-4. Specify the recovery scenario or file types that you want to recover and initiate the scan process.
-5. Preview the recoverable files and select the ones that you want to restore.
-6. Specify the output folder where the restored files will be saved and start the recovery process.
-7. Verify the integrity and completeness of the recovered files and make backups to avoid future data loss.
-## Command Required to Know to Work on the Issue
-Many data recovery software programs support a range of command-line options or parameters that can be useful for advanced users or automation tasks. Some of the useful commands for data recovery are:
-- `ddrescue` command (Linux): Copies data from one file or block device to another with error recovery.
-- `photorec` command (Linux, macOS, Windows): Recovers files based on their unique headers and footers.
-- `testdisk` command (Linux, macOS, Windows): Recovers lost partitions and boot sectors.
-- `recuva` command (Windows): Recovers files from various storage devices such as hard drives, memory cards, or USB flash drives.
-## Links to Resources for Further References
-There are many open-source and commercial data recovery software programs available that can help you recover your lost data. Some of the popular data recovery software programs are:
-- Recuva: https://www.ccleaner.com/recuva
-- TestDisk: https://www.cgsecurity.org/wiki/TestDisk
-- PhotoRec: https://www.cgsecurity.org/wiki/PhotoRec
-- MiniTool Power Data Recovery: https://www.minitool.com/data-recovery-software/
-In addition to these software programs, there are many online guides and tutorials that provide detailed steps and tips for data recovery. Some of the useful links for further references are:
-- How to recover deleted files on Windows 10: https://www.windowscentral.com/how-recover-deleted-files-windows-10
-- 7 best open-source data recovery software programs: https://www.dopitech.com/free-open-source-data-recovery-software-programs/
-- How to recover deleted photos on Android: https://www.androidcentral.com/how-recover-deleted-photos-android
-In conclusion, data loss can be a frustrating and stressful experience, but it is often possible to recover most or all of your lost data if you act quickly and use appropriate recovery tools and methods. By following the steps and tips discussed in this blog post and using the recommended software programs and online resources, you can increase your chances of successful data recovery and minimize the impact of data loss on your digital life.# Recovering Deleted Files and Data
-Our digital lives are full of data, from precious family photos to important work documents. Unfortunately, accidents happen and important files may be accidentally deleted. This blog post will discuss the various reasons for data loss, useful scenarios for recovering data, detailed steps to resolve the issue, requirement commands for data recovery, and resources for further references.
-## Background: Reasons for Data Loss
-Data loss may be caused by various reasons, such as human error, system malfunctions, software corruptions, virus attacks, physical damages, or natural disasters. Any of these situations can lead to the accidental deletion or loss of important files. However, there is no need to panic as there are various solutions that can help us recover our lost data.
-## Useful Scenarios for Recovering Data
-It is often possible to recover data even when it has been deleted, formatted, or corrupted. Some of the useful scenarios for data recovery are:
-- Accidentally deleted files and folders from the Recycle Bin or Trash folder.
-- Lost partitions and volumes due to partition table damage, boot sector corruption, or hard drive failure.
-- Formatted or reformatted drives, memory cards, or USB flash drives.
-- Damaged files due to virus infections or power failures.
-- Encrypted files that are unlocked or inaccessible due to password loss.
-- Bad sectors and file system errors that prevent full access to data.
-## Detailed Steps in Resolving the Issue
-The steps for data recovery may vary depending on the cause of data loss, the type of storage media, and the recovery software used. However, in general, the following steps may be applicable:
-1. Stop using the affected storage device immediately to prevent further data loss or overwriting.
-2. Download and install a reputable data recovery software that supports your storage device and recovery scenario.
-3. Launch the recovery software and select the target storage device from the list of available disks and partitions.
-4. Specify the recovery scenario or file types that you want to recover and initiate the scan process.
-5. Preview the recoverable files and select the ones that you want to restore.
-6. Specify the output folder where the restored files will be saved and start the recovery process.
-7. Verify the integrity and completeness of the recovered files and make backups to avoid future data loss.
-## Command Required to Know to Work on the Issue
-Many data recovery software programs support a range of command-line options or parameters that can be useful for advanced users or automation tasks. Some of the useful commands for data recovery are:
-- `ddrescue` command (Linux): Copies data from one file or block device to another with error recovery.
-- `photorec` command (Linux, macOS, Windows): Recovers files based on their unique headers and footers.
-- `testdisk` command (Linux, macOS, Windows): Recovers lost partitions and boot sectors.
-- `recuva` command (Windows): Recovers files from various storage devices such as hard drives, memory cards, or USB flash drives.
-## Links to Resources for Further References
-There are many open-source and commercial data recovery software programs available that can help you recover your lost data. Some of the popular data recovery software programs are:
-- Recuva: https://www.ccleaner.com/recuva
-- TestDisk: https://www.cgsecurity.org/wiki/TestDisk
-- PhotoRec: https://www.cgsecurity.org/wiki/PhotoRec
-- MiniTool Power Data Recovery: https://www.minitool.com/data-recovery-software/
-In addition to these software programs, there are many online guides and tutorials that provide detailed steps and tips for data recovery. Some of the useful links for further references are:
-- How to recover deleted files on Windows 10: https://www.windowscentral.com/how-recover-deleted-files-windows-10
-- 7 best open-source data recovery software programs: https://www.dopitech.com/free-open-source-data-recovery-software-programs/
-- How to recover deleted photos on Android: https://www.androidcentral.com/how-recover-deleted-photos-android
-In conclusion, data loss can be a frustrating and stressful experience, but it is often possible to recover most or all of your lost data if you act quickly and use appropriate recovery tools and methods. By following the steps and tips discussed in this blog post and using the recommended software programs and online resources, you can increase your chances of successful data recovery and minimize the impact of data loss on your digital life.
+
+
+Accidentally deleting a file or data can be a frustrating experience, especially when you don't have a backup plan. However, all hope is not lost because there are ways to recover deleted files and data. In this post, we will cover several methods of recovering deleted files and data, ranging from using built-in tools to third-party software.
+
+1. Check the Recycle Bin or Trash Bin
+The Recycle Bin or Trash Bin is where deleted files go on Windows or macOS, respectively. If you accidentally deleted a file or data, try checking the Recycle Bin or Trash Bin. If the deleted file is in the Recycle Bin or Trash Bin, click the "Restore" button to recover it. 
+
+2. Restore from a Backup 
+If you have a backup plan in place, you can recover deleted files and data from your backup. This method is only useful if you have backed up your files before losing them. You can either use the built-in backup feature in macOS or Windows or use a third-party backup solution. 
+
+3. Use Recovery Software 
+If none of the above methods work, recovery software can be an excellent solution. Recovery software is designed to scan your disk or drive for deleted files, allowing you to recover them easily. Some popular recovery software tools include Recuva, Disk Drill, and EaseUS Data Recovery Wizard. 
+
+4. Contact a Professional Data Recovery Service 
+In some cases, the data loss may be too severe for recovery software, and a professional data recovery service may be necessary. Data recovery services have specialized equipment and expertise necessary to retrieve lost data in severe cases. It's worth noting that these services can be costly and may not guarantee successful data recovery.
+
+Now that we've covered some methods for recovering deleted files and data, let's look at some code snippets that can help with the recovery process. 
+
+If you are using PowerShell on Windows, you can use the Get-ChildItem command to list all deleted files on your disk. 
+
+```
+Get-ChildItem -Path C:\ -Recurse -Force | Where-Object { $_.PSIsContainer -eq $false -and $_.Attributes -match 'Hidden|System|Archive' -and $_.CreationTime -lt (Get-Date).AddDays(-1)}
+```
+
+This command will list all deleted files on the C drive that were deleted in the last day. You can then use the Restore-Item command to restore any deleted files you want to recover. 
+
+On macOS, you can use the Terminal to recover deleted files with the following command:
+
+```
+sudo /usr/bin/sudo rsync --verbose --human-readable --progress --stats --recursive --times --perms --links --delete "/Volumes/[NAME OF YOUR DISK]/.Trashes/[USER ID]/[PATH TIL FILE]" "/Users/[YOUR USER NAME]/Desktop"
+```
+
+This command will restore a deleted file to your Desktop.
+
+In conclusion, deleting files and data can be frustrating, but there are ways to recover them. You can check the Recycle Bin or Trash Bin, restore from a backup, use recovery software, or contact a professional data recovery service. While recovery software and professional data recovery services are not foolproof, they offer the best chance to retrieve lost data. With the code snippets listed above, you can make the recovery process easier and more efficient. 
+
+To learn more about recovering deleted files and data, check out the links below:
+
+- How to Recover Deleted Files on Windows by Recuva 
+- How to Recover lost data with Disk Drill
+- EaseUS Data Recovery Wizard Guide to Deleted Files Recovery
+
+
+[Markdown tags: #recovery #deleted #data #software]

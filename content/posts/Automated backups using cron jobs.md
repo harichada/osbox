@@ -1,203 +1,91 @@
 ---
 title: "Automated backups using cron jobs"
-date: 2022-10-15
+date: 2022-09-20
 ---
 
 
-# Automated Backups Using Cron Jobs
-## Introduction
-Automated backups are an essential part of ensuring data safety and business continuity. A backup strategy ensures that even if there is a power outage, a hard disk failure, or any other unexpected catastrophe, your data is secure and can be recovered without significant data loss.
-In this tutorial, we'll discuss how you can set up automated backups using cron jobs. Cron is a built-in Unix utility, that enables programs and scripts to run automatically at set times and intervals.
-We'll cover how to configure cron jobs to schedule backups, write scripts for backing up data, and provide links to additional resources.
-## Background
-Your data is precious and needs to be protected from a range of threats. As a result, it's critical to backup files regularly. However, manual backups are time-consuming, prone to mistakes, and not very reliable.
-One possible solution is to use a cloud backup service, but it's still essential to have local backups as a redundancy measure. This is where automated backups come in handy. 
-This tutorial provides a method to automate backups on a Unix system, which is a popular operating system used by developers, data scientists, and machine learning engineers.
-## Detailed Steps in Resolving the Issue in Code Snippets
-First, we need to create a backup script. You can create a new file in your preferred text editor and enter the following code:
+
+
+Automated Backups Using Cron Jobs
+
+Backing up your data is crucial in ensuring that your crucial files are protected in case of system failures or data breaches. However, manually backing up your files can be time-consuming, repetitive, and prone to errors. Automation can help solve these issues.
+
+Cron is a time-based job scheduler that allows you to schedule repetitive tasks on Linux systems. It is an essential tool for automating critical system maintenance tasks, including backups. In this post, we will explore how to automate backups using cron jobs.
+
+Setting Up the Backup Script
+
+The first step in automating backups is to create a backup script. The backup script is a simple bash script that copies your files to an external storage device, either a physical external hard drive or a cloud-based storage service like AWS S3, Dropbox, or Google Drive. The script can be customized to match your specific backup needs.
+
+Here is an example of a backup script that backs up a specific folder and its contents:
+
 ```
-#!/bin/sh
-#set the backup directory and file name
-backup_dir="/backup"
-backup_file="backup-$(date +%Y-%m-%d-%H-%M).tar.gz"
-#create the backup directory if it doesn't exist
-if [ ! -d "$backup_dir" ]; then
-  mkdir $backup_dir
-fi
-#archive and compress the backup files
-tar -zcvf $backup_dir/$backup_file /var/www/html
+#!/bin/bash
+BACKUP_DIR=/mnt/backup
+SOURCE_DIR=/home/user/myfolder
+rsync -av $SOURCE_DIR $BACKUP_DIR
 ```
-This script sets the backup directory and filename using the current date and time. If the backup directory doesn't exist, it's created. The script then archives and compresses the backup files.
-Once you've saved the script, give it execute permission:
+
+In this script, the `$BACKUP_DIR` variable defines the path to the backup destination, while the `$SOURCE_DIR` variable defines the path to the folder being backed up. The `rsync` command copies the contents of the source folder to the backup folder.
+
+Once you have created the backup script, make it executable using the following command:
+
 ```
-chmod +x /path/to/backup-script.sh
+chmod +x backup.sh
 ```
-Now, use the crontab utility to schedule the script to run automatically:
-```
-crontab -e
-```
-This command opens the crontab editor. You can then add your script to the crontab file by adding the following line:
-```
-0 0 * * * /path/to/backup-script.sh
-```
-This command schedules the script to run every day at midnight. The five time fields represent minutes, hours, the day of the month, the month, and the day of the week.
-Finally, save the crontab file to activate the backup:
-```
-crontab: installing new crontab
-```
-## Command Required to Know to Work on the Issue
-Cron jobs can be complicated to use effectively. Here are some commands that are useful for working with cron jobs:
-- `crontab -e`: This command opens the crontab editor for configuring cron jobs.
-- `crontab -l`: This command lists the current cron jobs.
-- `crontab -r`: This command removes all the cron jobs for the current user.
-## Links to Resources for Further References
-- https://www.digitalocean.com/community/tutorials/how-to-use-cron-to-automate-tasks-ubuntu-1804
-- https://www.tutorialspoint.com/unix_commands/crontab.htm
-- https://ostechnix.com/a-beginners-guide-to-cron-jobs/# Automated Backups Using Cron Jobs
-## Introduction
-Automated backups are an essential part of ensuring data safety and business continuity. A backup strategy ensures that even if there is a power outage, a hard disk failure, or any other unexpected catastrophe, your data is secure and can be recovered without significant data loss.
-In this tutorial, we'll discuss how you can set up automated backups using cron jobs. Cron is a built-in Unix utility, that enables programs and scripts to run automatically at set times and intervals.
-We'll cover how to configure cron jobs to schedule backups, write scripts for backing up data, and provide links to additional resources.
-## Background
-Your data is precious and needs to be protected from a range of threats. As a result, it's critical to backup files regularly. However, manual backups are time-consuming, prone to mistakes, and not very reliable.
-One possible solution is to use a cloud backup service, but it's still essential to have local backups as a redundancy measure. This is where automated backups come in handy. 
-This tutorial provides a method to automate backups on a Unix system, which is a popular operating system used by developers, data scientists, and machine learning engineers.
-## Detailed Steps in Resolving the Issue in Code Snippets
-First, we need to create a backup script. You can create a new file in your preferred text editor and enter the following code:
-```
-#!/bin/sh
-#set the backup directory and file name
-backup_dir="/backup"
-backup_file="backup-$(date +%Y-%m-%d-%H-%M).tar.gz"
-#create the backup directory if it doesn't exist
-if [ ! -d "$backup_dir" ]; then
-  mkdir $backup_dir
-fi
-#archive and compress the backup files
-tar -zcvf $backup_dir/$backup_file /var/www/html
-```
-This script sets the backup directory and filename using the current date and time. If the backup directory doesn't exist, it's created. The script then archives and compresses the backup files.
-Once you've saved the script, give it execute permission:
-```
-chmod +x /path/to/backup-script.sh
-```
-Now, use the crontab utility to schedule the script to run automatically:
+
+Scheduling the Backup Job
+
+After creating the backup script, the next step is to schedule the backup job using cron. Cron uses a configuration file, `crontab`, to define scheduled tasks.
+
+To open the `crontab` file, use the following command:
+
 ```
 crontab -e
 ```
-This command opens the crontab editor. You can then add your script to the crontab file by adding the following line:
+
+This command opens the `crontab` file in the default editor. If this is the first time editing the `crontab` file, the editor prompts you to choose your preferred editor.
+
+The `crontab` file has the following format:
+
 ```
-0 0 * * * /path/to/backup-script.sh
+*   *   *   *   *   command to be executed
+-   -   -   -   -
+|   |   |   |   |
+|   |   |   |   ----- Day of the week (0 - 7) (Sunday is both 0 and 7)
+|   |   |   ------- Month (1 - 12)
+|   |   --------- Day of the month (1 - 31)
+|   ----------- Hour (0 - 23)
+------------- Minute (0 - 59)
 ```
-This command schedules the script to run every day at midnight. The five time fields represent minutes, hours, the day of the month, the month, and the day of the week.
-Finally, save the crontab file to activate the backup:
+
+The asterisks and dashes represent time values. For example, to run the backup script every day at 01:00 AM, you can add the following line to the `crontab` file:
+
 ```
-crontab: installing new crontab
+0 1 * * * /home/user/backup.sh
 ```
-## Command Required to Know to Work on the Issue
-Cron jobs can be complicated to use effectively. Here are some commands that are useful for working with cron jobs:
-- `crontab -e`: This command opens the crontab editor for configuring cron jobs.
-- `crontab -l`: This command lists the current cron jobs.
-- `crontab -r`: This command removes all the cron jobs for the current user.
-## Links to Resources for Further References
-- https://www.digitalocean.com/community/tutorials/how-to-use-cron-to-automate-tasks-ubuntu-1804
-- https://www.tutorialspoint.com/unix_commands/crontab.htm
-- https://ostechnix.com/a-beginners-guide-to-cron-jobs/# Automated Backups Using Cron Jobs
-## Introduction
-Automated backups are an essential part of ensuring data safety and business continuity. A backup strategy ensures that even if there is a power outage, a hard disk failure, or any other unexpected catastrophe, your data is secure and can be recovered without significant data loss.
-In this tutorial, we'll discuss how you can set up automated backups using cron jobs. Cron is a built-in Unix utility, that enables programs and scripts to run automatically at set times and intervals.
-We'll cover how to configure cron jobs to schedule backups, write scripts for backing up data, and provide links to additional resources.
-## Background
-Your data is precious and needs to be protected from a range of threats. As a result, it's critical to backup files regularly. However, manual backups are time-consuming, prone to mistakes, and not very reliable.
-One possible solution is to use a cloud backup service, but it's still essential to have local backups as a redundancy measure. This is where automated backups come in handy. 
-This tutorial provides a method to automate backups on a Unix system, which is a popular operating system used by developers, data scientists, and machine learning engineers.
-## Detailed Steps in Resolving the Issue in Code Snippets
-First, we need to create a backup script. You can create a new file in your preferred text editor and enter the following code:
+
+In this example, `0` and `1` represent the minute and hour, respectively, while `* * *` represent the day of the month, month, and day of the week, respectively. The backup script is located in the `/home/user` directory.
+
+Using Cron to Compress and Rotate Old Backups
+
+Over time, backups can take up a lot of storage space. One way to manage this issue is to compress and rotate backups using cron. This process involves compressing old backups into a single file and deleting older backups to free up disk space. Here is an example of a cron job that compresses and rotates backups:
+
 ```
-#!/bin/sh
-#set the backup directory and file name
-backup_dir="/backup"
-backup_file="backup-$(date +%Y-%m-%d-%H-%M).tar.gz"
-#create the backup directory if it doesn't exist
-if [ ! -d "$backup_dir" ]; then
-  mkdir $backup_dir
-fi
-#archive and compress the backup files
-tar -zcvf $backup_dir/$backup_file /var/www/html
+15 1 * * * tar -zcvf /mnt/backups/$(date +"%Y-%m-%d").tar.gz /mnt/backups/backups-$(date +"%Y-%m-*").tar.gz --remove-files
 ```
-This script sets the backup directory and filename using the current date and time. If the backup directory doesn't exist, it's created. The script then archives and compresses the backup files.
-Once you've saved the script, give it execute permission:
-```
-chmod +x /path/to/backup-script.sh
-```
-Now, use the crontab utility to schedule the script to run automatically:
-```
-crontab -e
-```
-This command opens the crontab editor. You can then add your script to the crontab file by adding the following line:
-```
-0 0 * * * /path/to/backup-script.sh
-```
-This command schedules the script to run every day at midnight. The five time fields represent minutes, hours, the day of the month, the month, and the day of the week.
-Finally, save the crontab file to activate the backup:
-```
-crontab: installing new crontab
-```
-## Command Required to Know to Work on the Issue
-Cron jobs can be complicated to use effectively. Here are some commands that are useful for working with cron jobs:
-- `crontab -e`: This command opens the crontab editor for configuring cron jobs.
-- `crontab -l`: This command lists the current cron jobs.
-- `crontab -r`: This command removes all the cron jobs for the current user.
-## Links to Resources for Further References
-- https://www.digitalocean.com/community/tutorials/how-to-use-cron-to-automate-tasks-ubuntu-1804
-- https://www.tutorialspoint.com/unix_commands/crontab.htm
-- https://ostechnix.com/a-beginners-guide-to-cron-jobs/# Automated Backups Using Cron Jobs
-## Introduction
-Automated backups are an essential part of ensuring data safety and business continuity. A backup strategy ensures that even if there is a power outage, a hard disk failure, or any other unexpected catastrophe, your data is secure and can be recovered without significant data loss.
-In this tutorial, we'll discuss how you can set up automated backups using cron jobs. Cron is a built-in Unix utility, that enables programs and scripts to run automatically at set times and intervals.
-We'll cover how to configure cron jobs to schedule backups, write scripts for backing up data, and provide links to additional resources.
-## Background
-Your data is precious and needs to be protected from a range of threats. As a result, it's critical to backup files regularly. However, manual backups are time-consuming, prone to mistakes, and not very reliable.
-One possible solution is to use a cloud backup service, but it's still essential to have local backups as a redundancy measure. This is where automated backups come in handy. 
-This tutorial provides a method to automate backups on a Unix system, which is a popular operating system used by developers, data scientists, and machine learning engineers.
-## Detailed Steps in Resolving the Issue in Code Snippets
-First, we need to create a backup script. You can create a new file in your preferred text editor and enter the following code:
-```
-#!/bin/sh
-#set the backup directory and file name
-backup_dir="/backup"
-backup_file="backup-$(date +%Y-%m-%d-%H-%M).tar.gz"
-#create the backup directory if it doesn't exist
-if [ ! -d "$backup_dir" ]; then
-  mkdir $backup_dir
-fi
-#archive and compress the backup files
-tar -zcvf $backup_dir/$backup_file /var/www/html
-```
-This script sets the backup directory and filename using the current date and time. If the backup directory doesn't exist, it's created. The script then archives and compresses the backup files.
-Once you've saved the script, give it execute permission:
-```
-chmod +x /path/to/backup-script.sh
-```
-Now, use the crontab utility to schedule the script to run automatically:
-```
-crontab -e
-```
-This command opens the crontab editor. You can then add your script to the crontab file by adding the following line:
-```
-0 0 * * * /path/to/backup-script.sh
-```
-This command schedules the script to run every day at midnight. The five time fields represent minutes, hours, the day of the month, the month, and the day of the week.
-Finally, save the crontab file to activate the backup:
-```
-crontab: installing new crontab
-```
-## Command Required to Know to Work on the Issue
-Cron jobs can be complicated to use effectively. Here are some commands that are useful for working with cron jobs:
-- `crontab -e`: This command opens the crontab editor for configuring cron jobs.
-- `crontab -l`: This command lists the current cron jobs.
-- `crontab -r`: This command removes all the cron jobs for the current user.
-## Links to Resources for Further References
-- https://www.digitalocean.com/community/tutorials/how-to-use-cron-to-automate-tasks-ubuntu-1804
-- https://www.tutorialspoint.com/unix_commands/crontab.htm
-- https://ostechnix.com/a-beginners-guide-to-cron-jobs/
+
+This cron job compresses backups that were created in the current month and creates a new compressed file with the current date. The `--remove-files` option removes the older backups.
+
+Additional Resources
+
+Cron is a powerful tool that can automate a wide range of system maintenance tasks. To learn more about cron and how to use it effectively, here are some additional resources:
+
+- [Cron Wikipedia page](https://en.wikipedia.org/wiki/Cron)
+- [crontab(5) - Linux man page](https://linux.die.net/man/5/crontab)
+- [Linux Basics: Schedule Jobs Using Cron](https://www.linux.com/training-tutorials/linux-basics-schedule-jobs-using-cron/)
+- [Cron HowTo by Paul Vixie](https://www.paul.sladen.org/cron/)
+- [Backing Up Your Linux Server to AWS S3 with `s3cmd` and Cron](https://www.sitepoint.com/backing-up-your-linux-server-to-aws-s3-with-s3cmd-and-cron/)
+
+Conclusion
+
+Automating backups using cron can help ensure that your files are safe and secure. With the help of a backup script and the `crontab` command, you can schedule backups to run automatically, compress and rotate backups, and free up storage space. With these tools, you can take control of your backups and protect your critical data.
