@@ -22,7 +22,7 @@ AI, which is a subset of computer science that focuses on the development of int
 
 2. Real-time Visibility: AI can help track inventory in real-time, alerting supply chain managers when inventory needs replenishment. Real-time visibility goes beyond monitoring inventory levels; it can also monitor traffic, track shipment, and track external risks that might affect the supply chain.
 
-3. Automated Decision Making: AI can make informed decisions based on real-time data analysis. For example, AI can use weather data to reroute shipment that might be affected by weather conditions.
+3. Automated Decision-Making: AI can make informed decisions based on real-time data analysis. For example, AI can use weather data to reroute shipment that might be affected by weather conditions.
 
 4. Predictive Maintenance: Predictive maintenance is the practice of using AI to detect faults and potential equipment failures before they occur. AI can monitor machinery and predict when maintenance is needed, prolonging the life of equipment, reducing downtime, and lowering maintenance costs.
 
@@ -34,7 +34,7 @@ Benefits of Autonomous Supply Chain Management
 
 3. Real-time visibility: Autonomous supply chain management provides real-time visibility into the supply chain, enabling supply chain managers to make informed decisions based on real-time data.
 
-4. Faster Response Time: With real-time visibility and automated decision making, autonomous supply chain management can respond faster to customer demands and changes in the supply chain.
+4. Faster Response Time: With real-time visibility and automated decision-making, autonomous supply chain management can respond faster to customer demands and changes in the supply chain.
 
 Challenges of Autonomous Supply Chain Management
 
@@ -54,34 +54,3 @@ Resources:
 2. "How Autonomous Supply Chain Can Transform Business Models," Forbes
 3. "Autonomous Supply Chain Management: Strategies for Low-Carbon Emissions," MDPI
 
-Markdown Tags:
-
-We can add the following markdown tags to the blog post:
-
-- Use of Headings: The headings will allow readers to easily navigate the blog post.
-- Use of list tags: These will help present information in a clear and concise manner.
-- Use of coding tags: This will help readers see the code snippets used to illustrate key points throughout the post.
-
-## Heading 1
-
-List Item 1
-List Item 2
-
-### Subheading 1
-
-List Item 1
-List Item 2
-
-```
-Code Snippet
-```
-### Subheading 2
-
-List Item 1
-List Item 2
-
-```
-Code Snippet
-```
-
-Use these tags to make the blog post more easily publishable in Hugo.

@@ -64,8 +64,6 @@ Additional Resources:
 
 Markdown Tags:
 
-To make this post easily publishable in Hugo, the following Markdown tags could be used:
-
 1. # Introduction
 
 2. ## The Benefits of Predictive Maintenance

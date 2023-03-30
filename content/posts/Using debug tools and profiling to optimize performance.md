@@ -62,10 +62,3 @@ Additional Resources
 
 3. Using Google Chrome DevTools for Performance Analysis - https://developers.google.com/web/tools/chrome-devtools/evaluate-performance
 
-Markdown tags:
-
-1. To create a heading - # Heading
-
-2. To create a subheading - ## Subheading
-
-3. To display code snippets - ` code snippet `

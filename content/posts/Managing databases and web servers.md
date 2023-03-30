@@ -65,8 +65,3 @@ Additional Resources:
 - Apache HTTP Server Documentation: https://httpd.apache.org/docs/
 - Nginx Documentation: https://docs.nginx.com/ 
 
-Markdown Tags:
-- Headings: Add a ‘#’ symbol before the heading
-- Bold: Wrap the text in double asterisks ‘**’
-- Italics: Wrap the text in single asterisks ‘*’
-- Code Snippets: Surround the code in backticks ‘  ` ’

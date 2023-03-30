@@ -1,6 +1,11 @@
 ---
-title: "Migrating data and applications between servers"
-date: 2022-09-20
+title: "Migrating Data and Applications Between Servers"
+date: 2021-10-21T20:22:46+05:30
+draft: false
+author: "Your Name"
+categories: ["Server Administration"]
+tags: ["Data Migration", "Application Migration", "Server Migration"]
+description: "A comprehensive guide for migrating data and applications between servers."
 ---
 
 
@@ -64,18 +69,3 @@ If you want to learn more about migrating data and applications between servers,
 - AWS Server Migration Service
 - Linux Data Center Migration Checklist
 
-Easily Publishable in Hugo:
- 
-Here are the Hugo Markdown tags to include in this post:
-
-```markdown
----
-title: "Migrating Data and Applications Between Servers"
-date: 2021-10-21T20:22:46+05:30
-draft: false
-author: "Your Name"
-categories: ["Server Administration"]
-tags: ["Data Migration", "Application Migration", "Server Migration"]
-description: "A comprehensive guide for migrating data and applications between servers."
----
-```

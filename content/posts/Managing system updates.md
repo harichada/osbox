@@ -36,13 +36,7 @@ Additional Resources:
 
 [The Importance Of Automated Security Updates](https://www.digitalshift.ca/blog/the-importance-of-automated-security-updates.html)
 
-[Testing in production: yes, you should do it. No, here’s how to do it.](https://medium.com/@copyconstruct/testing-in-production-the-safe-way-18ca102d0ef1)
+[Testing in production: yes, you should do it. No, hereï¿½s how to do it.](https://medium.com/@copyconstruct/testing-in-production-the-safe-way-18ca102d0ef1)
 
 [Backup automation for sysadmins: higherconsciences](http://www.reddit.com/r/sysadmin/comments/1xvawz/backup_automation_for_sysadmins_higherconsciences/)
 
-Hugo Markdown tags:
-
-`#` for headings
-`**` for bold text
-`_` for italicized text
-` ``` ``` ` for code blocks

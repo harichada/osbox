@@ -73,13 +73,3 @@ Additional Resources
 - Natural Language Processing Tutorial: https://www.tutorialspoint.com/artificial_intelligence_with_python/artificial_intelligence_with_python_nlp_tutorial.htm
 - Building a Chatbot Using IBM Watson: https://developer.ibm.com/articles/cc-build-a-chatbot-watson-ai-python-chat-widget/ 
 
-Markdown Tags
-
-The following Markdown tags can be used to format the text in Hugo:
-
-- Headers: # Header 1 ## Header 2 ### Header 3
-- Bold: **Bold text**
-- Italic: *Italic text*
-- Code: `Inline code` and ```````Code block```````
-- Links: [Link text](Link URL)
-- Images: ![Alt text](Image URL)

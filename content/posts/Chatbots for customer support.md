@@ -50,4 +50,4 @@ Additional Resources
 - Microsoft Bot Framework Documentation
 - Amazon Lex Developer Guide
 
-(Use the following Markdown tags: #chatbots #customer_support #AI #machine_learning #tutorial)
+Markdown tags: #chatbots #customer_support #AI #machine_learning #tutorial

@@ -79,25 +79,3 @@ Additional Resources:
 2. DNS & BIND ebook
 
 3. Understanding DNS by IBM
-
-Markdown Tags:
-
-When publishing your blog post using Hugo, ensure to use the following markdown tags in appropriate areas:
-
-  - h1 to denote the main headline
-  - h2 to separate subheadlines
-  - you can use h3 in subsections
-  - code markdown for snippets
-
-
-Example:
-
-
-```js
-const message = "Hello World!";
-console.log(message);
-```
-
-```html
-<span> Hello, World! </span>
-```

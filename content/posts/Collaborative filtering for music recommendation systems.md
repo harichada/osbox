@@ -53,5 +53,3 @@ To learn more about collaborative filtering and its applications, here are some 
 1. An Introduction to Collaborative Filtering for Music Recommendation Systems
 2. User-Based Collaborative Filtering for Music Recommendation Systems
 3. Item-Based Collaborative Filtering for Music Recommendation Systems
-
-To make the blog post publishable on Hugo, use the appropriate markdown syntax for headings, images, lists, and other elements.

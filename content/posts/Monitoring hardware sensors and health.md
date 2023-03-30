@@ -8,7 +8,7 @@ date: 2022-09-20
 
 When it comes to managing and maintaining a computer, monitoring hardware sensors and health should be at the top of your list. This task is especially important for those who work with critical systems, as it allows you to prevent costly hardware failures and reduce downtime.
 
-In this blog post, we’ll explore all aspects of monitoring hardware sensors and health, covering topics such as:
+In this blog post, weï¿½ll explore all aspects of monitoring hardware sensors and health, covering topics such as:
 
 - What are hardware sensors and health
 - Why you should monitor hardware sensors and health
@@ -70,15 +70,3 @@ Do you want to level up your knowledge on monitoring hardware sensors and health
 - How to Monitor PC Hardware Status with the Open Hardware Monitor
 - Using WMI to Monitor Sensor Data in Windows
 - AWS Trusted Advisor automatically checks system performance and health
-
-Markdown tags
-
-Below are some recommended Markdown tags that your blog post should include to enable easy publishing in Hugo:
-
-- Headers for sections and sub-sections (e.g., ###, ####)
-- Bold and italic text (e.g., **text**, *text*)
-- Bullet points (e.g., -)
-- Code snippets (e.g., ```
-  code
-  ```)
-- Links (e.g., [text](https://link.com))

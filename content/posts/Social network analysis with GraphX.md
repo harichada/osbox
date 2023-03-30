@@ -82,10 +82,3 @@ If you are interested in learning more about GraphX and social network analysis,
 - The Stanford Network Analysis Project: https://snap.stanford.edu/
 - Social Network Analysis in Scala: https://github.com/slideclimb/socialnetworkanalysis
 
-Markdown tags:
-
-If you are using Hugo to publish your blog post, here are some Markdown tags that you might find useful:
-
-- \# for headings
-- \`\`\`scala ... \`\`\` for code snippets in Scala
-- \[link text\]\(url\) for hyperlinks

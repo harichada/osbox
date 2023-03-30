@@ -40,7 +40,3 @@ Additional Resources:
 2. Troubleshooting Routing Issues - https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/5116-15.html
 3. Practical Troubleshooting of Routing Issues - https://www.juniper.net/documentation/en_US/junos/topics/example/practical-troubleshooting-routing-issues.html
 
-Markdown tags:
-
-- headings: use "#" before text to denote heading levels
-- code snippets: use "```" before and after code to denote a code block

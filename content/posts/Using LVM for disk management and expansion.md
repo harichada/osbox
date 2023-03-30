@@ -103,4 +103,3 @@ For more information about LVM, here are some useful resources:
 - Linux LVM: An Introduction: https://www.linux.com/training-tutorials/linux-lvm-introduction/
 - LVM Man Pages: https://manpages.debian.org/stretch/lvm2/index.html
 
-*All Markdown tags have been used.*

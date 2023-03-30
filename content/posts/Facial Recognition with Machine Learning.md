@@ -79,5 +79,3 @@ Facial recognition using machine learning is a complex field that involves sever
 * [Deep Learning for Face Recognition](https://www.analyticsvidhya.com/blog/2018/12/introduction-face-detection-video-deep-learning-python/)
 
 * [Facial Recognition with OpenCV](https://hackernoon.com/facial-recognition-with-opencv-python-tutorial-with-github-repo-296d1e60424c) 
-
-This article is easily publishable in Hugo using the `markdown` tag.

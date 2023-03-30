@@ -1,6 +1,9 @@
 ---
 title: "Human-like interaction with gaming bots"
-date: 2022-09-20
+date: 2022-11-14T12:00:00+00:00
+draft: false
+disable_toc: false
+tags: ["AI", "gaming", "bots", "reinforcement-learning"]
 ---
 
 
@@ -60,10 +63,3 @@ For more information on human-like interaction with gaming bots, here are some r
 - "Designing Game AI: Bringing Human-Like Intelligence to Games" by David M. Bourg and Glenn Seemann. 
 
 Markdown tags: 
----
-title: "Human-like interaction with gaming bots"
-date: 2022-11-14T12:00:00+00:00
-draft: false
-disable_toc: false
-tags: ["AI", "gaming", "bots", "reinforcement-learning"]
----

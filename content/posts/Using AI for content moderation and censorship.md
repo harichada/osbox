@@ -52,19 +52,11 @@ Platforms and developers must take these challenges into account to ensure that 
 
 Resources:
 
-1. Content Moderation and AI – An Overview
+1. Content Moderation and AI ï¿½ An Overview
 
-2. How AI is Used in Content Moderation – An In-Depth Look
+2. How AI is Used in Content Moderation ï¿½ An In-Depth Look
 
-3. AI Ethics and Content Moderation – A Thought-Provoking Guide
+3. AI Ethics and Content Moderation ï¿½ A Thought-Provoking Guide
 
-4. OpenAI – A Resource for AI Research and Development in Content Moderation
+4. OpenAI ï¿½ A Resource for AI Research and Development in Content Moderation
 
-Markdown Tags:
-
-This article can use the following markdown tags:
-Headers: # for the first header, ## for the second, ### for the third and so on.
-Bold: **Bold**
-Italic: *Italic*
-Hyperlink: [Text for hyperlink](URL)
-Lists: * Item 1, * Item 2, * Item 3 for unordered lists and 1. Item 1, 2. Item 2, 3. Item 3 for ordered lists.

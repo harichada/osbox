@@ -58,12 +58,3 @@ Interested in exploring more about predicting customer behavior with machine lea
 
 3. Introduction to Recommender Systems with Python
 
-Markdown Tags
-
-Here are some Markdown tags that you can use to make your blog easily publishable in Hugo;
-
-``` this is a code block```
-
-**Bold Text**
-
-_Italic Text_

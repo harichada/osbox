@@ -1,6 +1,11 @@
 ---
 title: "Diagnosing Diseases Using AI"
-date: 2022-09-20
+description: "Explore how AI can be used for diagnosing diseases, the different types of AI algorithms, and their advantages and limitations."
+date: "2021-11-11"
+categories:
+    - AI
+    - Healthcare
+draft: false
 ---
 
 
@@ -75,23 +80,3 @@ Resources
 2. Use of Artificial Intelligence Techniques to Predict the Risk of Type 2 Diabetes Mellitus in Kuwaiti Adults
 
 3. Learning from Medical Datasets
-
-Post Author: [INSERT NAME HERE]
-
-Required Markdown:
-
----
-title: "Diagnosing Diseases Using AI"
-description: "Explore how AI can be used for diagnosing diseases, the different types of AI algorithms, and their advantages and limitations."
-date: "2021-11-11"
-categories:
-    - AI
-    - Healthcare
-draft: false
----
-
-Please create a comprehensive blog post about Diagnosing Diseases Using AI. Your post should be well-structured and sophisticated, with multiple 
-sections that cover all relevant aspects of the topic. Use clear and precise language, along with technical jargon where appropriate, 
-to explain the concepts and ideas you discuss. Be sure to provide relevant code snippets to illustrate key points throughout the post.
-At the end of the blog post, include links to additional resources that readers can use to further their understanding of the topic. 
-Finally, ensure that your post is easily publishable in Hugo by providing any necessary Markdown tags where appropriate.

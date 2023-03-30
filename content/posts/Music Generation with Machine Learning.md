@@ -55,4 +55,3 @@ Music is an integral part of human life. It has been used for communication, the
    - Google's 'Magenta' AI platform for music and art
 
 
-This blog post was written using Markdown syntax and can be easily converted into Hugo-compatible markdown format.

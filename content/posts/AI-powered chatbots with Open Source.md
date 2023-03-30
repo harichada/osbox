@@ -1,6 +1,10 @@
 ---
-title: "AI-powered chatbots with Open Source"
-date: 2022-09-20
+title: "AI-powered Chatbots with Open Source"
+author: "Your Name Here"
+date: 2022-04-20
+description: "An exploration of AI-powered chatbots and how open source technology can be leveraged to build robust and powerful chatbots."
+tags: ["AI", "Chatbots", "Open Source", "NLP", "ML", "Sentiment Analysis", "APIs"]
+categories: ["AI", "Chatbots", "Open Source"]
 ---
 
 
@@ -84,17 +88,4 @@ Additional Resources:
 2. [https://botpress.com/](https://botpress.com/)
 3. [https://dialogflow.cloud.google.com/](https://dialogflow.cloud.google.com/) 
 
----
-
-**Markdown tags**: Please add the following tags at the end of your blog post before submitting.
-
-```
----
-title: "AI-powered Chatbots with Open Source"
-author: "Your Name Here"
-date: 2022-04-20
-description: "An exploration of AI-powered chatbots and how open source technology can be leveraged to build robust and powerful chatbots."
-tags: ["AI", "Chatbots", "Open Source", "NLP", "ML", "Sentiment Analysis", "APIs"]
-categories: ["AI", "Chatbots", "Open Source"]
----
 ```

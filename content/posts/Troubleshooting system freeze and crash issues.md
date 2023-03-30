@@ -58,8 +58,3 @@ System freezes and crashes are frustrating issues that can disrupt your work. By
 - [How to Fix a Computer that Keeps Crashing](https://www.lifewire.com/how-to-fix-a-computer-that-keeps-crashing-2624440)
 - [5 Common PC Hardware Problems And Solutions](https://www.funlearninglifemama.com/2018/10/5-common-pc-hardware-problems-and-solutions.html) 
 
-### Markdown Tags
-
-- `###` : for headers
-- `**bold**`: to bold text
-- `*italic*`: to italicize text

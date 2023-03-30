@@ -1,6 +1,7 @@
 ---
-title: "Using deep learning for autonomous drones"
-date: 2022-09-20
+title: "Using Deep Learning for Autonomous Drones"
+date: 2021-10-31T12:00:00-04:00
+draft: false
 ---
 
 
@@ -54,9 +55,3 @@ Additional resources:
 
 3. https://www.sciencedirect.com/science/article/pii/S2214914721000749
 
-# Markdown tags
----
-title: "Using Deep Learning for Autonomous Drones"
-date: 2021-10-31T12:00:00-04:00
-draft: false
----

@@ -81,18 +81,3 @@ Additional resources:
 
 4. PostgreSQL Partitioning: https://www.postgresql.org/docs/current/ddl-partitioning.html
 
-Markdown tags:
-
-To create a heading in Markdown, use: 
-
-```
-# Heading 1
-```
-
-To create a code block in Markdown, use:
-
-```
-```
-code block
-```
-```
