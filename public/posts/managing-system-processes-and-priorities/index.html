@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+
+<title>OpenSourceBox | Managing system processes and priorities</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="OpenSourceBox | Managing system processes and priorities" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="Managing system processes and priorities is an essential aspect of operating systems. An operating system manages resources such as CPU, memory, and I/O devices, and allocates them to processes. In this blog post, we will look at how to manage system processes and priorities.
+What are System Processes? A process is an instance of a program that is executing in the operating system. Each process runs independently, maintains its own state, and has its own virtual address space.">
+<meta property="og:site_name" content="OpenSourceBox">
+<meta property="og:description" content="Managing system processes and priorities is an essential aspect of operating systems. An operating system manages resources such as CPU, memory, and I/O devices, and allocates them to processes. In this blog post, we will look at how to manage system processes and priorities.
+What are System Processes? A process is an instance of a program that is executing in the operating system. Each process runs independently, maintains its own state, and has its own virtual address space.">
+<meta property="og:url" content="http://opensourcebox.com/posts/managing-system-processes-and-priorities/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="http://opensourcebox.com/posts/managing-system-processes-and-priorities/">
+
+<meta name="twitter:description" content="Managing system processes and priorities is an essential aspect of operating systems. An operating system manages resources such as CPU, memory, and I/O devices, and allocates them to processes. In this blog post, we will look at how to manage system processes and priorities.
+What are System Processes? A process is an instance of a program that is executing in the operating system. Each process runs independently, maintains its own state, and has its own virtual address space.">
+<meta property="article:published_time" content="2022-09-20T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2022-09-20T00:00:00&#43;00:00">
+
+
+
+
+
+<meta property="og:image" content="http://opensourcebox.com/">
+<meta property="og:image:url" content="http://opensourcebox.com/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap  p-6">
+            <div class="flex items-center flex-no-shrink  text-white mr-6">
+                <a href="http://opensourcebox.com/"><span class="font-semibold text-2xl tracking-tight">OpenSourceBox</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+    
+        <div class="bg-white col-span-3 p-5 dark:bg-warmgray-900 dark:text-white">
+            
+            <h1 class="title text-4xl font-bold mb-2">Managing system processes and priorities</h1>
+            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><p>Managing system processes and priorities is an essential aspect of operating systems. An operating system manages resources such as CPU, memory, and I/O devices, and allocates them to processes. In this blog post, we will look at how to manage system processes and priorities.</p>
+<h2 id="what-are-system-processes">What are System Processes?</h2>
+<p>A process is an instance of a program that is executing in the operating system. Each process runs independently, maintains its own state, and has its own virtual address space. Processes can communicate with each other through inter-process communication mechanisms such as pipes, signals, and sockets.</p>
+<p>System processes are processes that are essential to the operating system&rsquo;s functioning; these processes are typically started when the system boots up and run in the background. Examples of system processes include kernel threads, daemons, and other administrative processes.</p>
+<h2 id="how-processes-are-prioritized">How Processes are Prioritized</h2>
+<p>The operating system allocates resources to processes based on predefined priorities. Priorities help to ensure that processes that need resources the most get them first. Priorities can be static or dynamic.</p>
+<h3 id="static-priorities">Static Priorities</h3>
+<p>Static priorities are assigned to processes when they are created and remain the same throughout the process&rsquo;s lifetime. The priority value is usually specified at the time the process is created and typically ranges from 0 to 127, with lower numbers indicating higher priorities.</p>
+<h3 id="dynamic-priorities">Dynamic Priorities</h3>
+<p>Dynamic priorities can change during the process&rsquo;s lifetime. The operating system can adjust the priority of a process based on its behavior. For example, if a process uses a lot of CPU resources, its priority can be decreased, and if a process is waiting for an event to complete, its priority can be increased.</p>
+<h2 id="process-scheduling">Process Scheduling</h2>
+<p>The process scheduler is responsible for selecting which process should be run next on the CPU. The scheduler selects a process from the ready queue and dispatches it to the CPU for execution.</p>
+<p>The scheduling algorithm depends on many factors, including the priorities of the processes, the length of the process&rsquo;s burst time, and whether the process is I/O-bound or CPU-bound.</p>
+<h2 id="managing-process-priorities">Managing Process Priorities</h2>
+<p>As an operating system user, you can manage process priorities in several ways. You can use commands like <code>nice</code> to adjust the priority of a process, and the <code>renice</code> command to adjust the priority of a process that is already running.</p>
+<h3 id="the-nice-command">The Nice Command</h3>
+<p>The <code>nice</code> command is used to adjust the priority of a process when it is launched. The syntax of the nice command is as follows:</p>
+<pre tabindex="0"><code>nice priority command
+</code></pre><p>The <code>priority</code> parameter specifies the priority value for the process, and <code>command</code> specifies the command to be run.</p>
+<p>For example:</p>
+<pre tabindex="0"><code>nice -10 ls -l
+</code></pre><p>This command will launch the <code>ls -l</code> command with a priority of 10 lower than the default priority.</p>
+<h3 id="the-renice-command">The Renice Command</h3>
+<p>The <code>renice</code> command is used to adjust the priority of a process that is already running. The syntax of the command is as follows:</p>
+<pre tabindex="0"><code>renice priority PID
+</code></pre><p>The <code>priority</code> parameter specifies the new priority value for the process, and <code>PID</code> specifies the process ID of the process to be adjusted.</p>
+<p>For example:</p>
+<pre tabindex="0"><code>renice -5 1234
+</code></pre><p>This command will adjust the priority of the process with the ID 1234 to a priority of 5 lower than the default priority.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Managing system processes and priorities is critical for the smooth operation of systems. Priorities help to ensure that processes that need resources the most get them first, and process scheduling is responsible for selecting which process should be run next.</p>
+<p>As a system administrator or user, it is essential to understand how to manage process priorities correctly. The <code>nice</code> and <code>renice</code> commands are excellent tools for managing process priorities.</p>
+<p>Additional resources:</p>
+<ul>
+<li><a href="https://tldp.org/LDP/lpg/node18.html">The Linux Programmer&rsquo;s Guide - Process Scheduling</a></li>
+<li><a href="https://developer.ibm.com/technologies/linux/articles/l-process-priority/">IBM Developer - Process Priorities and Scheduling in Linux</a></li>
+</ul>
+<p>Markdown tags:</p>
+<ul>
+<li>
+<h1 id="programming">Programming</h1>
+</li>
+<li>
+<h1 id="operating-systems">Operating Systems</h1>
+</li>
+<li>
+<h1 id="linux">Linux</h1>
+</li>
+<li>
+<h1 id="system-processes">System Processes</h1>
+</li>
+<li>
+<h1 id="priorities">Priorities</h1>
+</li>
+<li>
+<h1 id="process-scheduling-1">Process Scheduling</h1>
+</li>
+<li>
+<h1 id="nice">Nice</h1>
+</li>
+<li>
+<h1 id="renice">Renice</h1>
+</li>
+</ul>
+</div>
+        </div>
+        
+    </div>
+    
+            </div>
+        </div><footer class=" text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2023 <a href="http://opensourcebox.com/" class="duration-200 hover:opacity-50">OpenSourceBox</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>

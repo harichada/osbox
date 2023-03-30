@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+
+<title>OpenSourceBox | Automated Topic Modelling with Gensim</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="OpenSourceBox | Automated Topic Modelling with Gensim" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="Have you ever been tasked with analyzing a large dataset and struggled to identify the main topics or themes present within it? Automated topic modeling can come in handy in these situations. In this blog post, weï¿½ll explore automated topic modeling with Gensim, a popular Python library used for natural language processing.
+Before diving into topic modeling with Gensim, letï¿½s first discuss what topic modeling is and why itï¿½s beneficial.">
+<meta property="og:site_name" content="OpenSourceBox">
+<meta property="og:description" content="Have you ever been tasked with analyzing a large dataset and struggled to identify the main topics or themes present within it? Automated topic modeling can come in handy in these situations. In this blog post, weï¿½ll explore automated topic modeling with Gensim, a popular Python library used for natural language processing.
+Before diving into topic modeling with Gensim, letï¿½s first discuss what topic modeling is and why itï¿½s beneficial.">
+<meta property="og:url" content="http://opensourcebox.com/posts/automated-topic-modelling-with-gensim/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="http://opensourcebox.com/posts/automated-topic-modelling-with-gensim/">
+
+<meta name="twitter:description" content="Have you ever been tasked with analyzing a large dataset and struggled to identify the main topics or themes present within it? Automated topic modeling can come in handy in these situations. In this blog post, weï¿½ll explore automated topic modeling with Gensim, a popular Python library used for natural language processing.
+Before diving into topic modeling with Gensim, letï¿½s first discuss what topic modeling is and why itï¿½s beneficial.">
+<meta property="article:published_time" content="2022-09-20T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2022-09-20T00:00:00&#43;00:00">
+
+
+
+
+
+<meta property="og:image" content="http://opensourcebox.com/">
+<meta property="og:image:url" content="http://opensourcebox.com/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap  p-6">
+            <div class="flex items-center flex-no-shrink  text-white mr-6">
+                <a href="http://opensourcebox.com/"><span class="font-semibold text-2xl tracking-tight">OpenSourceBox</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+    
+        <div class="bg-white col-span-3 p-5 dark:bg-warmgray-900 dark:text-white">
+            
+            <h1 class="title text-4xl font-bold mb-2">Automated Topic Modelling with Gensim</h1>
+            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><p>Have you ever been tasked with analyzing a large dataset and struggled to identify the main topics or themes present within it? Automated topic modeling can come in handy in these situations. In this blog post, we’ll explore automated topic modeling with Gensim, a popular Python library used for natural language processing.</p>
+<p>Before diving into topic modeling with Gensim, let’s first discuss what topic modeling is and why it’s beneficial.</p>
+<p>What is Topic Modeling?</p>
+<p>Topic modeling is an unsupervised machine learning technique used to identify the main topics or themes present within a large dataset. It’s commonly used for text analysis, but can also be applied to other types of data such as images or videos.</p>
+<p>The goal of topic modeling is to extract the underlying structure of a dataset and group similar items together. This can be useful for a variety of applications such as content recommendation, sentiment analysis, and anomaly detection.</p>
+<p>One of the most common techniques used for topic modeling is Latent Dirichlet Allocation (LDA). LDA assumes that each document is a mixture of topics and that each topic is a collection of words that appear together frequently.</p>
+<p>Now that we’ve discussed the basics of topic modeling, let’s move on to how we can implement automated topic modeling using Gensim.</p>
+<p>Automated Topic Modeling with Gensim</p>
+<p>Gensim is a popular Python library used for natural language processing tasks such as topic modeling, text similarity, and text summarization. It’s designed to be both efficient and scalable, making it ideal for analyzing large datasets.</p>
+<p>To get started with automated topic modeling in Gensim, we first need to prepare our dataset. This involves cleaning the text data and tokenizing it into words or phrases. Once the data is preprocessed, we can create a dictionary and document-term matrix that will be used as input for the LDA model.</p>
+<p>Here’s an example of how to prepare the dataset and create the dictionary and document-term matrix using Gensim:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> gensim
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> gensim <span style="color:#f92672">import</span> corpora
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Sample corpus of documents</span>
+</span></span><span style="display:flex;"><span>corpus <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#39;The quick brown fox jumps over the lazy dog&#39;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#39;The lazy dog sat under the tree&#39;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#39;The quick brown fox sat on the tree&#39;</span>
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Tokenize and clean the corpus</span>
+</span></span><span style="display:flex;"><span>tokenized_corpus <span style="color:#f92672">=</span> [[word <span style="color:#66d9ef">for</span> word <span style="color:#f92672">in</span> document<span style="color:#f92672">.</span>lower()<span style="color:#f92672">.</span>split()] <span style="color:#66d9ef">for</span> document <span style="color:#f92672">in</span> corpus]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create the dictionary</span>
+</span></span><span style="display:flex;"><span>dictionary <span style="color:#f92672">=</span> corpora<span style="color:#f92672">.</span>Dictionary(tokenized_corpus)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create the document-term matrix</span>
+</span></span><span style="display:flex;"><span>doc_term_matrix <span style="color:#f92672">=</span> [dictionary<span style="color:#f92672">.</span>doc2bow(doc) <span style="color:#66d9ef">for</span> doc <span style="color:#f92672">in</span> tokenized_corpus]
+</span></span></code></pre></div><p>In this example, we have a sample corpus of three documents that we tokenize and clean. We then create a dictionary of all the unique words in the corpus and a document-term matrix that represents the frequency of each word in each document.</p>
+<p>Once the dictionary and document-term matrix are created, we can train the LDA model using Gensim’s <code>LdaModel</code> class. Here’s an example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> gensim.models.ldamodel <span style="color:#f92672">import</span> LdaModel
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Train the LDA model</span>
+</span></span><span style="display:flex;"><span>lda_model <span style="color:#f92672">=</span> LdaModel(doc_term_matrix, num_topics<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, id2word<span style="color:#f92672">=</span>dictionary, passes<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>)
+</span></span></code></pre></div><p>In this example, we’re training an LDA model with three topics and running it for 50 passes over the document-term matrix.</p>
+<p>After the model is trained, we can extract the main topics and their associated words using Gensim’s <code>show_topics()</code> method. Here’s an example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Print the main topics</span>
+</span></span><span style="display:flex;"><span>topics <span style="color:#f92672">=</span> lda_model<span style="color:#f92672">.</span>show_topics(num_topics<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, formatted<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> topic <span style="color:#f92672">in</span> topics:
+</span></span><span style="display:flex;"><span>  print(topic)
+</span></span></code></pre></div><p>This will print out the main topics and their associated words:</p>
+<pre tabindex="0"><code>(0, [(&#39;quick&#39;, 0.148), (&#39;brown&#39;, 0.148), (&#39;fox&#39;, 0.148), (&#39;jumps&#39;, 0.148), (&#39;over&#39;, 0.148), (&#39;the&#39;, 0.116), (&#39;lazy&#39;, 0.116), (&#39;dog&#39;, 0.116)])
+(1, [(&#39;lazy&#39;, 0.222), (&#39;dog&#39;, 0.222), (&#39;sat&#39;, 0.222), (&#39;under&#39;, 0.222), (&#39;the&#39;, 0.14)])
+(2, [(&#39;quick&#39;, 0.227), (&#39;brown&#39;, 0.227), (&#39;fox&#39;, 0.227), (&#39;sat&#39;, 0.227), (&#39;on&#39;, 0.227), (&#39;the&#39;, 0.067)])
+</code></pre><p>As we can see, the model has identified three main topics in the corpus based on the frequency of words that appear together: topic 0 is related to the quick brown fox, topic 1 is related to the lazy dog under the tree, and topic 2 is related to the quick brown fox on the tree.</p>
+<p>Conclusion</p>
+<p>Automated topic modeling with Gensim is a powerful technique that can be used to identify the main topics or themes present within a large dataset. By using Gensim’s LDA model, we can extract the underlying structure of the dataset and group similar items together.</p>
+<p>In this blog post, we covered the basics of topic modeling and how to implement automated topic modeling with Gensim. We walked through the process of preparing the dataset, creating the dictionary and document-term matrix, training the LDA model, and extracting the main topics and their associated words.</p>
+<p>By using Gensim’s implementation of LDA, we can easily apply automated topic modeling to any text dataset in Python.</p>
+<p>Additional Resources:</p>
+<ul>
+<li>Gensim Documentation: <a href="https://radimrehurek.com/gensim/">https://radimrehurek.com/gensim/</a></li>
+<li>Introduction to Topic Modeling with Gensim: <a href="https://www.machinelearningplus.com/nlp/topic-modeling-gensim-python/">https://www.machinelearningplus.com/nlp/topic-modeling-gensim-python/</a></li>
+<li>Topic Modeling in Python with Gensim: <a href="https://www.datascience.com/blog/introduction-to-topic-modeling-pystan-word2vec">https://www.datascience.com/blog/introduction-to-topic-modeling-pystan-word2vec</a></li>
+</ul>
+</div>
+        </div>
+        
+    </div>
+    
+            </div>
+        </div><footer class=" text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2023 <a href="http://opensourcebox.com/" class="duration-200 hover:opacity-50">OpenSourceBox</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>

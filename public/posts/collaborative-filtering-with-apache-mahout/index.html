@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+
+<title>OpenSourceBox | Collaborative filtering with Apache Mahout</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="OpenSourceBox | Collaborative filtering with Apache Mahout" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="Collaborative filtering is a method used in machine learning that attempts to recommend items to users based on the preferences of other users with similar interests. It is widely used in recommendation systems like Netflix, Amazon, and various e-commerce platforms to recommend products or content to users.
+One of the most popular tools used to implement collaborative filtering is Apache Mahout. In this blog, we will explore how Apache Mahout uses collaborative filtering to make recommendations, how it works and how you can implement it in your recommendation system.">
+<meta property="og:site_name" content="OpenSourceBox">
+<meta property="og:description" content="Collaborative filtering is a method used in machine learning that attempts to recommend items to users based on the preferences of other users with similar interests. It is widely used in recommendation systems like Netflix, Amazon, and various e-commerce platforms to recommend products or content to users.
+One of the most popular tools used to implement collaborative filtering is Apache Mahout. In this blog, we will explore how Apache Mahout uses collaborative filtering to make recommendations, how it works and how you can implement it in your recommendation system.">
+<meta property="og:url" content="http://opensourcebox.com/posts/collaborative-filtering-with-apache-mahout/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="http://opensourcebox.com/posts/collaborative-filtering-with-apache-mahout/">
+
+<meta name="twitter:description" content="Collaborative filtering is a method used in machine learning that attempts to recommend items to users based on the preferences of other users with similar interests. It is widely used in recommendation systems like Netflix, Amazon, and various e-commerce platforms to recommend products or content to users.
+One of the most popular tools used to implement collaborative filtering is Apache Mahout. In this blog, we will explore how Apache Mahout uses collaborative filtering to make recommendations, how it works and how you can implement it in your recommendation system.">
+<meta property="article:published_time" content="2022-09-20T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2022-09-20T00:00:00&#43;00:00">
+
+
+
+
+
+<meta property="og:image" content="http://opensourcebox.com/">
+<meta property="og:image:url" content="http://opensourcebox.com/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap  p-6">
+            <div class="flex items-center flex-no-shrink  text-white mr-6">
+                <a href="http://opensourcebox.com/"><span class="font-semibold text-2xl tracking-tight">OpenSourceBox</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+    
+        <div class="bg-white col-span-3 p-5 dark:bg-warmgray-900 dark:text-white">
+            
+            <h1 class="title text-4xl font-bold mb-2">Collaborative filtering with Apache Mahout</h1>
+            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><p>Collaborative filtering is a method used in machine learning that attempts to recommend items to users based on the preferences of other users with similar interests. It is widely used in recommendation systems like Netflix, Amazon, and various e-commerce platforms to recommend products or content to users.</p>
+<p>One of the most popular tools used to implement collaborative filtering is Apache Mahout. In this blog, we will explore how Apache Mahout uses collaborative filtering to make recommendations, how it works and how you can implement it in your recommendation system.</p>
+<p>What is Collaborative Filtering?</p>
+<p>Collaborative filtering is a technique that analyses the behavior of many users to recommend items or content to an individual user. It is based on the presumption that users who agreed in the past are likely to agree in the future.</p>
+<p>Collaborative filtering techniques are classified into two types:</p>
+<ol>
+<li>
+<p>User-based Collaborative Filtering:
+This technique focuses on the behavior of similar users. If similar users have similar past responses to items, it&rsquo;s more probable that their future responses will also be similar.</p>
+</li>
+<li>
+<p>Item-based Collaborative Filtering:
+This technique focuses on the behavior of the items. If two items have similar ratings, a user who likes one item is more likely to like the other item.</p>
+</li>
+</ol>
+<p>The algorithms that implement collaborative filtering use a matrix of ratings provided by users. Each row of this matrix represents a user, and each column represents an item.</p>
+<p>In this matrix, most entries are blank, so the purpose of the collaborative filtering algorithm is to fill in these blanks with predictions for what each user would rate a particular item.</p>
+<p>How Collaborative Filtering Works in Apache Mahout</p>
+<p>Now, let&rsquo;s take a look at how Apache Mahout implements collaborative filtering.</p>
+<p>Apache Mahout provides two collaborative filtering algorithms:</p>
+<ol>
+<li>
+<p>User-Based Collaborative Filtering:
+This algorithm uses the behavior of other users to predict a user&rsquo;s rating for an item. The rating of the item is generated by obtaining the weighted sum of the ratings done by similar users for the product.</p>
+</li>
+<li>
+<p>Item-Based Collaborative Filtering:
+This algorithm is based on the assumption that users who like a particular item are likely to like other similar items. It uses the behavior of the item to recommend other items with similar attributes to a user.</p>
+</li>
+</ol>
+<p>To implement these algorithms in Mahout, we need to prepare the data first. The data should be in a rating-based format where each entry represents the ratings given by a user to an item.</p>
+<p>Here&rsquo;s an example of data that can be used with Mahout&rsquo;s collaborative filtering algorithm:</p>
+<table>
+<thead>
+<tr>
+<th>User_ID</th>
+<th>Item_ID</th>
+<th>Rating</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>X</td>
+<td>3</td>
+</tr>
+<tr>
+<td>A</td>
+<td>Y</td>
+<td>2</td>
+</tr>
+<tr>
+<td>B</td>
+<td>X</td>
+<td>4</td>
+</tr>
+<tr>
+<td>B</td>
+<td>Y</td>
+<td>5</td>
+</tr>
+<tr>
+<td>C</td>
+<td>X</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>The User ID in this example is the unique identifier for each user. The Item ID is the unique identifier for each item, and the rating is the score given by that user to that item.</p>
+<p>We can use this data with Mahout to create a user-item matrix. The user-item matrix is a matrix where rows represent users, and columns represent items. The values in the matrix are the ratings provided by the user for that product.</p>
+<p>Mahout uses matrix factorization techniques to fill missing values in the user-item matrix. The missing values are predicted by factorizing the matrix into two matrices: one for users and one for items.</p>
+<p>Let&rsquo;s consider a rating matrix R with dimensions n x m. Using matrix factorization, we can obtain the matrices P and Q of dimensions n x k and m x k, where k &laquo; n, k &laquo; m.</p>
+<p>Each row of matrix P represents a user, and it maps the user to the feature space. Every row of matrix Q represents an item, and it maps the item to the feature space.</p>
+<p>The product of these matrices (P.QT) is used to generate predictions in the user-item matrix.</p>
+<p>Implementation of Collaborative Filtering in Apache Mahout</p>
+<p>Now, let’s see how we can use Mahout to implement collaborative filtering.</p>
+<p>We will begin by importing the necessary libraries:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.mahout.cf.taste.impl.model.file.FileDataModel;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.mahout.cf.taste.impl.neighborhood.ThresholdUserNeighborhood;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.mahout.cf.taste.impl.recommender.GenericUserBasedRecommender;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.mahout.cf.taste.impl.similarity.PearsonCorrelationSimilarity;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.mahout.cf.taste.model.DataModel;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.mahout.cf.taste.neighborhood.UserNeighborhood;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.mahout.cf.taste.recommender.RecommendedItem;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.mahout.cf.taste.recommender.UserBasedRecommender;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.mahout.cf.taste.similarity.UserSimilarity;
+</span></span></code></pre></div><p>Next, we will load our rating data into a <code>FileDataModel</code> object:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>DataModel model <span style="color:#f92672">=</span> new FileDataModel(new File(<span style="color:#e6db74">&#34;ratings.dat&#34;</span>));
+</span></span></code></pre></div><p>The <code>FileDataModel</code> class treats the rating file as a CSV file and is responsible for providing the necessary input data to the recommender.</p>
+<p>Next, we will use the Pearson Correlation Similarity measure to find similarity between users:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>UserSimilarity similarity <span style="color:#f92672">=</span> new PearsonCorrelationSimilarity(model);
+</span></span></code></pre></div><p>We will use <code>ThresholdUserNeighborhood</code> to select the nearest neighbors for a user:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>UserNeighborhood neighborhood <span style="color:#f92672">=</span> new ThresholdUserNeighborhood(<span style="color:#ae81ff">.1</span>, similarity, model);
+</span></span></code></pre></div><p>In this step, we have set the threshold, which specifies the maximum distance to be considered to select the neighbors of a user. We have chosen a threshold of 0.1 for demonstration purposes.</p>
+<p>Now, we can instantiate the <code>GenericUserBasedRecommender</code> and <code>UserBasedRecommender</code> classes:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>UserBasedRecommender recommender <span style="color:#f92672">=</span> new GenericUserBasedRecommender(model, neighborhood, similarity);
+</span></span></code></pre></div><p>Finally, we will use the recommender object to obtain recommendations for a particular user:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>RecommendedItem<span style="color:#f92672">&gt;</span> recommendations <span style="color:#f92672">=</span> recommender<span style="color:#f92672">.</span>recommend(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>);
+</span></span></code></pre></div><p>In this example, we are asking Mahout to provide 3 recommendations for user 2. Once we have obtained the recommendations, we can print them out using the following code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (RecommendedItem recommendation : recommendations) {
+</span></span><span style="display:flex;"><span>    System<span style="color:#f92672">.</span>out<span style="color:#f92672">.</span>println(recommendation);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>By executing the above code, we would get the recommendations.</p>
+<p>Conclusion</p>
+<p>Collaborative filtering is a crucial technique used in recommendation systems to recommend items to users based on their preferences. Apache Mahout provides a powerful toolset that allows developers to implement collaborative filtering in their recommendation systems easily.</p>
+<p>In this article, we have explored how Mahout uses collaborative filtering, how it works, and how to implement it in your own system. You can use this knowledge to build more sophisticated and effective recommendation systems that help people find the content they need.</p>
+<p>Additional Resources</p>
+<p>Apache Mahout provides a comprehensive guide to collaborative filtering:</p>
+<p><a href="https://mahout.apache.org/users/recommender/intro-user-based-recommender.html">https://mahout.apache.org/users/recommender/intro-user-based-recommender.html</a></p>
+<p>Mahout&rsquo;s official Github repository:</p>
+<p><a href="https://github.com/apache/mahout">https://github.com/apache/mahout</a></p>
+<p>Mahout&rsquo;s official documentation:</p>
+<p><a href="https://cwiki.apache.org/confluence/display/MAHOUT/Home">https://cwiki.apache.org/confluence/display/MAHOUT/Home</a></p>
+</div>
+        </div>
+        
+    </div>
+    
+            </div>
+        </div><footer class=" text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2023 <a href="http://opensourcebox.com/" class="duration-200 hover:opacity-50">OpenSourceBox</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>

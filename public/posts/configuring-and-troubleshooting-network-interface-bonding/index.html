@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+
+<title>OpenSourceBox | Configuring and troubleshooting network interface bonding</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="OpenSourceBox | Configuring and troubleshooting network interface bonding" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="Configuring and Troubleshooting Network Interface Bonding: A Comprehensive Guide
+Network interface bonding, also known as NIC bonding, is a process of combining multiple physical network interfaces into one logical interface. NIC bonding provides redundancy and improves network performance by increasing bandwidth and network throughput. In this blog post, we will explore the process of configuring and troubleshooting network interface bonding on Linux.
+Configuring Network Interface Bonding
+NIC bonding configuration involves two primary steps: creating a bond interface and configuring slave interfaces.">
+<meta property="og:site_name" content="OpenSourceBox">
+<meta property="og:description" content="Configuring and Troubleshooting Network Interface Bonding: A Comprehensive Guide
+Network interface bonding, also known as NIC bonding, is a process of combining multiple physical network interfaces into one logical interface. NIC bonding provides redundancy and improves network performance by increasing bandwidth and network throughput. In this blog post, we will explore the process of configuring and troubleshooting network interface bonding on Linux.
+Configuring Network Interface Bonding
+NIC bonding configuration involves two primary steps: creating a bond interface and configuring slave interfaces.">
+<meta property="og:url" content="http://opensourcebox.com/posts/configuring-and-troubleshooting-network-interface-bonding/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="http://opensourcebox.com/posts/configuring-and-troubleshooting-network-interface-bonding/">
+
+<meta name="twitter:description" content="Configuring and Troubleshooting Network Interface Bonding: A Comprehensive Guide
+Network interface bonding, also known as NIC bonding, is a process of combining multiple physical network interfaces into one logical interface. NIC bonding provides redundancy and improves network performance by increasing bandwidth and network throughput. In this blog post, we will explore the process of configuring and troubleshooting network interface bonding on Linux.
+Configuring Network Interface Bonding
+NIC bonding configuration involves two primary steps: creating a bond interface and configuring slave interfaces.">
+<meta property="article:published_time" content="2022-09-20T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2022-09-20T00:00:00&#43;00:00">
+
+
+
+
+
+<meta property="og:image" content="http://opensourcebox.com/">
+<meta property="og:image:url" content="http://opensourcebox.com/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap  p-6">
+            <div class="flex items-center flex-no-shrink  text-white mr-6">
+                <a href="http://opensourcebox.com/"><span class="font-semibold text-2xl tracking-tight">OpenSourceBox</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+    
+        <div class="bg-white col-span-3 p-5 dark:bg-warmgray-900 dark:text-white">
+            
+            <h1 class="title text-4xl font-bold mb-2">Configuring and troubleshooting network interface bonding</h1>
+            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><p>Configuring and Troubleshooting Network Interface Bonding: A Comprehensive Guide</p>
+<p>Network interface bonding, also known as NIC bonding, is a process of combining multiple physical network interfaces into one logical interface. NIC bonding provides redundancy and improves network performance by increasing bandwidth and network throughput. In this blog post, we will explore the process of configuring and troubleshooting network interface bonding on Linux.</p>
+<p>Configuring Network Interface Bonding</p>
+<p>NIC bonding configuration involves two primary steps: creating a bond interface and configuring slave interfaces.</p>
+<ol>
+<li>Creating a Bond Interface</li>
+</ol>
+<p>The first step in configuring network interface bonding is to create a bond interface. You can create a bond interface using the ifconfig command. Here&rsquo;s an example:</p>
+<pre tabindex="0"><code># ifconfig bond0 up
+</code></pre><p>This command creates a bond interface named bond0 and brings it up.</p>
+<p>Once you have created the bond interface, you need to assign an IP address to it. You can use the ip address command to do that. Here&rsquo;s an example:</p>
+<pre tabindex="0"><code># ip address add 192.168.10.10/24 dev bond0
+</code></pre><p>This command assigns the IP address 192.168.10.10 with a subnet mask 24 to the bond0 interface.</p>
+<ol start="2">
+<li>Configuring Slave Interfaces</li>
+</ol>
+<p>The next step is to configure slave interfaces that will be added to the bond interface. You can use any physical network interface to configure as a slave interface. Here&rsquo;s an example of how you can assign a slave interface to the bond interface:</p>
+<pre tabindex="0"><code># ifconfig eth0 up
+# ifconfig eth1 up
+# ifconfig bond0 up
+# echo +eth0 &gt; /sys/class/net/bond0/bonding/slaves
+# echo +eth1 &gt; /sys/class/net/bond0/bonding/slaves
+</code></pre><p>This example assigns eth0 and eth1 interfaces as slave interfaces to bond0.</p>
+<p>After configuring slave interfaces, you need to set the mode of the bond interface. There are several modes available, including:</p>
+<ul>
+<li>Round-robin (mode 0)</li>
+<li>Active-backup (mode 1)</li>
+<li>XOR (mode 2)</li>
+<li>Broadcast (mode 3)</li>
+<li>802.3ad (mode 4)</li>
+<li>Balance-tlb (mode 5)</li>
+<li>Balance-alb (mode 6).</li>
+</ul>
+<p>You can set the mode using the following command:</p>
+<pre tabindex="0"><code># echo 4 &gt; /sys/class/net/bond0/bonding/mode
+</code></pre><p>This command sets the 802.3ad mode for the bond interface.</p>
+<p>Troubleshooting Network Interface Bonding</p>
+<p>Troubleshooting network interface bonding involves identifying and resolving issues that may arise during configuration. In this section, we will explore some common issues that occur during NIC bonding.</p>
+<ol>
+<li>Interface Not Up</li>
+</ol>
+<p>One of the most common issues when configuring NIC bonding is when the bond interface is not up. To check whether the bond interface is up, you can use the ifconfig command. If you don&rsquo;t see the bond interface in the output, it means that the bond interface is not up.</p>
+<p>To bring the bond interface up, you can use the following command:</p>
+<pre tabindex="0"><code># ifconfig bond0 up
+</code></pre><p>This command brings the bond interface up.</p>
+<ol start="2">
+<li>IP Address Not Assigned</li>
+</ol>
+<p>Another common issue that occurs during NIC bonding is when the IP address is not assigned to the bond interface. To check whether the IP address is assigned to the bond interface, you can use the ip address command. If you don&rsquo;t see the IP address assigned to the bond interface, it means that the IP address is not assigned.</p>
+<p>To assign an IP address to the bond interface, you can use the following command:</p>
+<pre tabindex="0"><code># ip address add 192.168.10.10/24 dev bond0
+</code></pre><p>This command assigns the IP address 192.168.10.10 with a subnet mask 24 to the bond0 interface.</p>
+<ol start="3">
+<li>Slave Interface Not Up</li>
+</ol>
+<p>Another common issue that may arise during NIC bonding is when the slave interface is not up. To check whether a slave interface is up, you can use the ifconfig command. If you don&rsquo;t see the slave interface in the output, it means that the slave interface is not up.</p>
+<p>To bring the slave interface up, you can use the following command:</p>
+<pre tabindex="0"><code># ifconfig eth0 up
+</code></pre><p>This command brings the eth0 interface up.</p>
+<p>Conclusion</p>
+<p>In this blog post, we explored the process of configuring and troubleshooting network interface bonding on Linux. We discussed creating a bond interface, configuring slave interfaces, and setting the mode of the bond interface. We also explored common issues that may arise during NIC bonding and how to troubleshoot them. By following this guide, you should now be able to configure NIC bonding and troubleshoot any issues that may arise.</p>
+<p>Additional Resources:</p>
+<ul>
+<li>Linux kernel documentation on bonding: <a href="https://www.kernel.org/doc/Documentation/networking/bonding.txt">https://www.kernel.org/doc/Documentation/networking/bonding.txt</a></li>
+<li>Red Hat documentation on configuring network interface bonding on Linux: <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide/sec-configuring_network_interface_bonding">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide/sec-configuring_network_interface_bonding</a></li>
+<li>A detailed guide to NIC bonding with examples: <a href="https://www.tecmint.com/network-bonding-setup-in-debian/">https://www.tecmint.com/network-bonding-setup-in-debian/</a></li>
+<li>An article on NIC bonding and network performance: <a href="https://www.techrepublic.com/article/how-bonding-multiple-nics-can-improve-network-performance-on-linux-servers/">https://www.techrepublic.com/article/how-bonding-multiple-nics-can-improve-network-performance-on-linux-servers/</a></li>
+</ul>
+</div>
+        </div>
+        
+    </div>
+    
+            </div>
+        </div><footer class=" text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2023 <a href="http://opensourcebox.com/" class="duration-200 hover:opacity-50">OpenSourceBox</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>

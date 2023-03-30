@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+
+<title>OpenSourceBox | Facial emotion recognition with machine learning</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="OpenSourceBox | Facial emotion recognition with machine learning" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="Facial Emotion Recognition with Machine Learning
+Facial emotion recognition is the capability of identifying and understanding human emotion by analyzing facial expressions. It is a powerful tool used in various industries, including healthcare, marketing, and entertainment. It involves detecting facial features and mapping them to a particular emotion using machine learning algorithms.
+In this blog post, we will explore the basics of facial emotion recognition, and how machine learning plays a crucial role in its development.">
+<meta property="og:site_name" content="OpenSourceBox">
+<meta property="og:description" content="Facial Emotion Recognition with Machine Learning
+Facial emotion recognition is the capability of identifying and understanding human emotion by analyzing facial expressions. It is a powerful tool used in various industries, including healthcare, marketing, and entertainment. It involves detecting facial features and mapping them to a particular emotion using machine learning algorithms.
+In this blog post, we will explore the basics of facial emotion recognition, and how machine learning plays a crucial role in its development.">
+<meta property="og:url" content="http://opensourcebox.com/posts/facial-emotion-recognition-with-machine-learning/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="http://opensourcebox.com/posts/facial-emotion-recognition-with-machine-learning/">
+
+<meta name="twitter:description" content="Facial Emotion Recognition with Machine Learning
+Facial emotion recognition is the capability of identifying and understanding human emotion by analyzing facial expressions. It is a powerful tool used in various industries, including healthcare, marketing, and entertainment. It involves detecting facial features and mapping them to a particular emotion using machine learning algorithms.
+In this blog post, we will explore the basics of facial emotion recognition, and how machine learning plays a crucial role in its development.">
+<meta property="article:published_time" content="2022-09-20T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2022-09-20T00:00:00&#43;00:00">
+
+
+
+
+
+<meta property="og:image" content="http://opensourcebox.com/">
+<meta property="og:image:url" content="http://opensourcebox.com/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap  p-6">
+            <div class="flex items-center flex-no-shrink  text-white mr-6">
+                <a href="http://opensourcebox.com/"><span class="font-semibold text-2xl tracking-tight">OpenSourceBox</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+    
+        <div class="bg-white col-span-3 p-5 dark:bg-warmgray-900 dark:text-white">
+            
+            <h1 class="title text-4xl font-bold mb-2">Facial emotion recognition with machine learning</h1>
+            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><p>Facial Emotion Recognition with Machine Learning</p>
+<p>Facial emotion recognition is the capability of identifying and understanding human emotion by analyzing facial expressions. It is a powerful tool used in various industries, including healthcare, marketing, and entertainment. It involves detecting facial features and mapping them to a particular emotion using machine learning algorithms.</p>
+<p>In this blog post, we will explore the basics of facial emotion recognition, and how machine learning plays a crucial role in its development.</p>
+<p>Introduction to Facial Emotion Recognition</p>
+<p>Facial emotion recognition has been a topic of interest for many years in psychology and neuroscience. However, with the advent of machine learning techniques, it has become possible to automate and enhance the accuracy of facial emotion recognition systems. The overall process of facial emotion recognition involves the following steps:</p>
+<ul>
+<li>
+<p>Face Detection: The first step is to detect the face in an image or video stream. It involves locating the face using techniques such as Haar Cascade classifiers or deep learning models.</p>
+</li>
+<li>
+<p>Feature Extraction: The next step involves extracting key features of the face, such as eye brows, eyes, nose or mouth, and mapping them to particular emotions. Feature extraction techniques include Local Binary Patterns, Histogram of Oriented Gradients, and Convolutional Neural Networks.</p>
+</li>
+<li>
+<p>Emotion Detection: The final step is to classify the detected facial features into an emotion, such as happy, sad, angry, or surprised. Machine learning algorithms such as Support Vector Machines, Decision Trees, Random Forests, and Deep Neural Networks are used for emotion classification.</p>
+</li>
+</ul>
+<p>Facial emotion recognition systems can be trained using large datasets that contain annotated images or videos of people displaying different emotions. These datasets enable a machine to learn to recognize and classify emotions from facial expressions with high accuracy.</p>
+<p>Implementing Facial Emotion Recognition with Machine Learning</p>
+<p>To implement a facial emotion recognition system with machine learning, we can follow the following steps:</p>
+<ul>
+<li>
+<p>Collect Datasets: The first step involves gathering datasets of facial expressions. These datasets can be collected from various online resources such as FER-2013, CK+, AffectNet, and EmoReact.</p>
+</li>
+<li>
+<p>Preprocessing of Images: The next step is to preprocess the images in the dataset. This can include applying filters to reduce noise or distortions, resizing the images to a standard size, and cropping the images to focus only on the face.</p>
+</li>
+<li>
+<p>Feature Extraction: The third step involves extracting key features from the images using various techniques such as Local Binary Patterns, Histogram of Oriented Gradients, or Convolutional Neural Networks.</p>
+</li>
+<li>
+<p>Model Selection: The fourth step is to select a machine learning algorithm that is suitable for classifying emotions based on the extracted features. This can include Support Vector Machines, Decision Trees, Random Forests, and Deep Neural Networks.</p>
+</li>
+<li>
+<p>Model Training: The fifth step involves training the selected machine learning algorithm using the collected datasets.</p>
+</li>
+<li>
+<p>Model Evaluation: The final step involves evaluating the trained model&rsquo;s performance using test datasets. Evaluation metrics such as accuracy, precision, recall, and F1 score can be calculated to assess the model&rsquo;s performance.</p>
+</li>
+</ul>
+<p>A sample implementation of facial emotion recognition in Python using the Keras library and the FER-2013 dataset is shown below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> keras
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> keras.models <span style="color:#f92672">import</span> Sequential
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> keras.layers <span style="color:#f92672">import</span> Dense, Conv2D, MaxPooling2D, Dropout, Flatten
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> keras.preprocessing.image <span style="color:#f92672">import</span> ImageDataGenerator
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load the FER-2013 dataset</span>
+</span></span><span style="display:flex;"><span>train_data <span style="color:#f92672">=</span> ImageDataGenerator(rescale<span style="color:#f92672">=</span><span style="color:#ae81ff">1.</span><span style="color:#f92672">/</span><span style="color:#ae81ff">255</span>)
+</span></span><span style="display:flex;"><span>train_generator <span style="color:#f92672">=</span> train_data<span style="color:#f92672">.</span>flow_from_directory(
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;fer2013/train&#39;</span>,
+</span></span><span style="display:flex;"><span>        target_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">48</span>, <span style="color:#ae81ff">48</span>),
+</span></span><span style="display:flex;"><span>        color_mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;grayscale&#39;</span>,
+</span></span><span style="display:flex;"><span>        class_mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;categorical&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Define the model</span>
+</span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> Sequential()
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">32</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>, input_shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">48</span>,<span style="color:#ae81ff">48</span>,<span style="color:#ae81ff">1</span>)))
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">64</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>add(MaxPooling2D(pool_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)))
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>add(Dropout(<span style="color:#ae81ff">0.25</span>))
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">128</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>add(MaxPooling2D(pool_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)))
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">128</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>add(MaxPooling2D(pool_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)))
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>add(Dropout(<span style="color:#ae81ff">0.25</span>))
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>add(Flatten())
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>add(Dense(<span style="color:#ae81ff">1024</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>add(Dropout(<span style="color:#ae81ff">0.5</span>))
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>add(Dense(<span style="color:#ae81ff">7</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;softmax&#39;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Compile the model</span>
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>compile(loss<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;categorical_crossentropy&#39;</span>, optimizer<span style="color:#f92672">=</span>keras<span style="color:#f92672">.</span>optimizers<span style="color:#f92672">.</span>Adam(lr<span style="color:#f92672">=</span><span style="color:#ae81ff">0.0001</span>, decay<span style="color:#f92672">=</span><span style="color:#ae81ff">1e-6</span>), metrics<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;accuracy&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Train the model</span>
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>fit_generator(
+</span></span><span style="display:flex;"><span>        train_generator,
+</span></span><span style="display:flex;"><span>        steps_per_epoch<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>,
+</span></span><span style="display:flex;"><span>        epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">15</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Evaluate the model</span>
+</span></span><span style="display:flex;"><span>test_data <span style="color:#f92672">=</span> ImageDataGenerator(rescale<span style="color:#f92672">=</span><span style="color:#ae81ff">1.</span><span style="color:#f92672">/</span><span style="color:#ae81ff">255</span>)
+</span></span><span style="display:flex;"><span>test_generator <span style="color:#f92672">=</span> test_data<span style="color:#f92672">.</span>flow_from_directory(
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;fer2013/test&#39;</span>,
+</span></span><span style="display:flex;"><span>        target_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">48</span>, <span style="color:#ae81ff">48</span>),
+</span></span><span style="display:flex;"><span>        color_mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;grayscale&#39;</span>,
+</span></span><span style="display:flex;"><span>        class_mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;categorical&#39;</span>)
+</span></span><span style="display:flex;"><span>score <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>evaluate_generator(test_generator)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;Test loss:&#39;</span>, score[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;Test accuracy:&#39;</span>, score[<span style="color:#ae81ff">1</span>])
+</span></span></code></pre></div><p>Summary</p>
+<p>Facial emotion recognition is a powerful tool that has gained interest in various industries. Machine learning techniques have played a crucial role in automating and enhancing the accuracy of facial emotion recognition systems. The process involves facial detection, feature extraction, and emotion detection. Machine learning algorithms such as Support Vector Machines, Decision Trees, Random Forests, and Deep Neural Networks are used for emotion classification. Implementing a facial emotion recognition system involves collecting datasets, preprocessing images, feature extraction, model selection, model training, and model evaluation.</p>
+<p>Additional Resources:</p>
+<ol>
+<li>Facial Expression Recognition using Deep Learning: A Comprehensive Review: <a href="https://www.sciencedirect.com/science/article/pii/S2090447919302864">https://www.sciencedirect.com/science/article/pii/S2090447919302864</a></li>
+<li>Emotion Recognition Using Facial Landmarks, Python, DLib and OpenCV: <a href="https://towardsdatascience.com/emotion-recognition-using-facial-landmarks-python-dlib-and-opencv-2d37315b0055">https://towardsdatascience.com/emotion-recognition-using-facial-landmarks-python-dlib-and-opencv-2d37315b0055</a></li>
+<li>FER-2013: Facial Expression Recognition Dataset:https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/data</li>
+</ol>
+</div>
+        </div>
+        
+    </div>
+    
+            </div>
+        </div><footer class=" text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2023 <a href="http://opensourcebox.com/" class="duration-200 hover:opacity-50">OpenSourceBox</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>

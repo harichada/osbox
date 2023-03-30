@@ -5,6 +5,142 @@
     <link>http://opensourcebox.com/tags/</link>
     <description>Recent content in Tags on OpenSourceBox</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="http://opensourcebox.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Mon, 14 Nov 2022 12:00:00 +0000</lastBuildDate><atom:link href="http://opensourcebox.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI</title>
+      <link>http://opensourcebox.com/tags/ai/</link>
+      <pubDate>Mon, 14 Nov 2022 12:00:00 +0000</pubDate>
+      
+      <guid>http://opensourcebox.com/tags/ai/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bots</title>
+      <link>http://opensourcebox.com/tags/bots/</link>
+      <pubDate>Mon, 14 Nov 2022 12:00:00 +0000</pubDate>
+      
+      <guid>http://opensourcebox.com/tags/bots/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gaming</title>
+      <link>http://opensourcebox.com/tags/gaming/</link>
+      <pubDate>Mon, 14 Nov 2022 12:00:00 +0000</pubDate>
+      
+      <guid>http://opensourcebox.com/tags/gaming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>reinforcement-learning</title>
+      <link>http://opensourcebox.com/tags/reinforcement-learning/</link>
+      <pubDate>Mon, 14 Nov 2022 12:00:00 +0000</pubDate>
+      
+      <guid>http://opensourcebox.com/tags/reinforcement-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>APIs</title>
+      <link>http://opensourcebox.com/tags/apis/</link>
+      <pubDate>Wed, 20 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://opensourcebox.com/tags/apis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Chatbots</title>
+      <link>http://opensourcebox.com/tags/chatbots/</link>
+      <pubDate>Wed, 20 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://opensourcebox.com/tags/chatbots/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ML</title>
+      <link>http://opensourcebox.com/tags/ml/</link>
+      <pubDate>Wed, 20 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://opensourcebox.com/tags/ml/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NLP</title>
+      <link>http://opensourcebox.com/tags/nlp/</link>
+      <pubDate>Wed, 20 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://opensourcebox.com/tags/nlp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Open Source</title>
+      <link>http://opensourcebox.com/tags/open-source/</link>
+      <pubDate>Wed, 20 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://opensourcebox.com/tags/open-source/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sentiment Analysis</title>
+      <link>http://opensourcebox.com/tags/sentiment-analysis/</link>
+      <pubDate>Wed, 20 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://opensourcebox.com/tags/sentiment-analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Application Migration</title>
+      <link>http://opensourcebox.com/tags/application-migration/</link>
+      <pubDate>Thu, 21 Oct 2021 20:22:46 +0530</pubDate>
+      
+      <guid>http://opensourcebox.com/tags/application-migration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Migration</title>
+      <link>http://opensourcebox.com/tags/data-migration/</link>
+      <pubDate>Thu, 21 Oct 2021 20:22:46 +0530</pubDate>
+      
+      <guid>http://opensourcebox.com/tags/data-migration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Server Migration</title>
+      <link>http://opensourcebox.com/tags/server-migration/</link>
+      <pubDate>Thu, 21 Oct 2021 20:22:46 +0530</pubDate>
+      
+      <guid>http://opensourcebox.com/tags/server-migration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>finance</title>
+      <link>http://opensourcebox.com/tags/finance/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://opensourcebox.com/tags/finance/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>time series</title>
+      <link>http://opensourcebox.com/tags/time-series/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://opensourcebox.com/tags/time-series/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

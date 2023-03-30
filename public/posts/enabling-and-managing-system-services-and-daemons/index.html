@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+
+<title>OpenSourceBox | Enabling and managing system services and daemons</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="OpenSourceBox | Enabling and managing system services and daemons" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="Enabling and Managing System Services and Daemons
+Introduction System services and daemons, also known as processes, are processes that run in the background on a computer system, usually without any user interaction. These processes may be essential to the functioning of the system and its applications, as they manage critical functions such as network connectivity, printing, and file sharing. In this blog post, we will discuss the basics of managing system services and daemons on a Linux system, with a focus on enabling and disabling them.">
+<meta property="og:site_name" content="OpenSourceBox">
+<meta property="og:description" content="Enabling and Managing System Services and Daemons
+Introduction System services and daemons, also known as processes, are processes that run in the background on a computer system, usually without any user interaction. These processes may be essential to the functioning of the system and its applications, as they manage critical functions such as network connectivity, printing, and file sharing. In this blog post, we will discuss the basics of managing system services and daemons on a Linux system, with a focus on enabling and disabling them.">
+<meta property="og:url" content="http://opensourcebox.com/posts/enabling-and-managing-system-services-and-daemons/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="http://opensourcebox.com/posts/enabling-and-managing-system-services-and-daemons/">
+
+<meta name="twitter:description" content="Enabling and Managing System Services and Daemons
+Introduction System services and daemons, also known as processes, are processes that run in the background on a computer system, usually without any user interaction. These processes may be essential to the functioning of the system and its applications, as they manage critical functions such as network connectivity, printing, and file sharing. In this blog post, we will discuss the basics of managing system services and daemons on a Linux system, with a focus on enabling and disabling them.">
+<meta property="article:published_time" content="2022-09-20T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2022-09-20T00:00:00&#43;00:00">
+
+
+
+
+
+<meta property="og:image" content="http://opensourcebox.com/">
+<meta property="og:image:url" content="http://opensourcebox.com/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap  p-6">
+            <div class="flex items-center flex-no-shrink  text-white mr-6">
+                <a href="http://opensourcebox.com/"><span class="font-semibold text-2xl tracking-tight">OpenSourceBox</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+    
+        <div class="bg-white col-span-3 p-5 dark:bg-warmgray-900 dark:text-white">
+            
+            <h1 class="title text-4xl font-bold mb-2">Enabling and managing system services and daemons</h1>
+            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><p>Enabling and Managing System Services and Daemons</p>
+<p>Introduction
+System services and daemons, also known as processes, are processes that run in the background on a computer system, usually without any user interaction. These processes may be essential to the functioning of the system and its applications, as they manage critical functions such as network connectivity, printing, and file sharing. In this blog post, we will discuss the basics of managing system services and daemons on a Linux system, with a focus on enabling and disabling them.</p>
+<p>Enabling and Disabling Services
+The general process of enabling and disabling services involves two main steps: identifying the service or daemon to be controlled and using tools to start, stop, or enable the service. There are a few tools that are commonly used to interact with services and daemons on Linux systems: systemctl, service, and chkconfig. The exact tools available and the commands required may vary based on your distribution.</p>
+<p>To start, you should identify the service or daemon you want to work with. This can usually be done by examining the list of available services in your system&rsquo;s configuration files or documentation. Once you have identified the process you want to start, stop, or enable, you can use one of the three tools mentioned above to interact with it.</p>
+<p>Systemctl
+Systemctl is a newer and more powerful service management tool that is widely used on modern Linux systems. Some of the main commands it supports include:</p>
+<ul>
+<li>systemctl start [service]: This command starts a service.</li>
+<li>systemctl stop [service]: This command stops a service.</li>
+<li>systemctl enable [service]: This command enables a service, starting it automatically at boot time.</li>
+<li>systemctl disable [service]: This command disables a service, preventing it from starting automatically at boot time.</li>
+</ul>
+<p>Service
+The service command is a legacy tool that is still used on many older Linux systems. Some examples of the commands it supports include:</p>
+<ul>
+<li>service [service] start: This command starts a service.</li>
+<li>service [service] stop: This command stops a service.</li>
+<li>service [service] status: This command shows the status of a service.</li>
+<li>service [service] restart: This command restarts a service.</li>
+</ul>
+<p>Chkconfig
+Chkconfig is a tool that is used to manage system services and daemons on Red Hat and related Linux distributions. Some useful commands it supports are:</p>
+<ul>
+<li>chkconfig &ndash;list: This command shows the status of all system services and daemons on a server.</li>
+<li>chkconfig &ndash;level [level] [service] on: This command enables a service for a specified run level.</li>
+<li>chkconfig &ndash;level [level] [service] off: This command disables a service for a specified run level.</li>
+</ul>
+<p>Conclusion
+Managing system services and daemons is an essential task for any Linux systems administrator. Through the use of powerful tools such as systemctl, service, and chkconfig, you are able to start, stop, enable, and disable the processes that keep your system running smoothly. Remember to always check your system&rsquo;s documentation and configuration files to determine which tools and commands are most appropriate for your needs.</p>
+<p>Additional Resources</p>
+<ul>
+<li>Red Hat documentation on managing system services and daemons</li>
+<li>CentOS documentation on systemctl</li>
+<li>Ubuntu documentation on systemd</li>
+<li>DigitalOcean tutorial on managing systemd services and units</li>
+<li>Mark Otto&rsquo;s blog post on getting started with Hugo</li>
+</ul>
+</div>
+        </div>
+        
+    </div>
+    
+            </div>
+        </div><footer class=" text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2023 <a href="http://opensourcebox.com/" class="duration-200 hover:opacity-50">OpenSourceBox</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>

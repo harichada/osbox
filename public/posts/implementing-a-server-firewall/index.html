@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+
+<title>OpenSourceBox | Implementing a server firewall</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="OpenSourceBox | Implementing a server firewall" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="In today&rsquo;s world, firewalls are an essential aspect of network security. They serve as the first line of defense against unauthorized access, unwanted traffic, and malicious attacks. A server firewall has become a necessity for a secure, robust, and stable server environment. In this blog post, we will discuss how to implement a server firewall to mitigate security risks and improve network performance.
+What is a Server Firewall?
+A server firewall is a security solution that protects server systems by blocking unauthorized network access and filtering traffic based on a set of pre-defined rules.">
+<meta property="og:site_name" content="OpenSourceBox">
+<meta property="og:description" content="In today&rsquo;s world, firewalls are an essential aspect of network security. They serve as the first line of defense against unauthorized access, unwanted traffic, and malicious attacks. A server firewall has become a necessity for a secure, robust, and stable server environment. In this blog post, we will discuss how to implement a server firewall to mitigate security risks and improve network performance.
+What is a Server Firewall?
+A server firewall is a security solution that protects server systems by blocking unauthorized network access and filtering traffic based on a set of pre-defined rules.">
+<meta property="og:url" content="http://opensourcebox.com/posts/implementing-a-server-firewall/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="http://opensourcebox.com/posts/implementing-a-server-firewall/">
+
+<meta name="twitter:description" content="In today&rsquo;s world, firewalls are an essential aspect of network security. They serve as the first line of defense against unauthorized access, unwanted traffic, and malicious attacks. A server firewall has become a necessity for a secure, robust, and stable server environment. In this blog post, we will discuss how to implement a server firewall to mitigate security risks and improve network performance.
+What is a Server Firewall?
+A server firewall is a security solution that protects server systems by blocking unauthorized network access and filtering traffic based on a set of pre-defined rules.">
+<meta property="article:published_time" content="2022-09-20T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2022-09-20T00:00:00&#43;00:00">
+
+
+
+
+
+<meta property="og:image" content="http://opensourcebox.com/">
+<meta property="og:image:url" content="http://opensourcebox.com/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap  p-6">
+            <div class="flex items-center flex-no-shrink  text-white mr-6">
+                <a href="http://opensourcebox.com/"><span class="font-semibold text-2xl tracking-tight">OpenSourceBox</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+    
+        <div class="bg-white col-span-3 p-5 dark:bg-warmgray-900 dark:text-white">
+            
+            <h1 class="title text-4xl font-bold mb-2">Implementing a server firewall</h1>
+            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><p>In today&rsquo;s world, firewalls are an essential aspect of network security. They serve as the first line of defense against unauthorized access, unwanted traffic, and malicious attacks. A server firewall has become a necessity for a secure, robust, and stable server environment. In this blog post, we will discuss how to implement a server firewall to mitigate security risks and improve network performance.</p>
+<p>What is a Server Firewall?</p>
+<p>A server firewall is a security solution that protects server systems by blocking unauthorized network access and filtering traffic based on a set of pre-defined rules. A server firewall allows you to define and set up rules that determine what type of traffic is allowed, blocked, or redirected to other servers. This is usually done by configuring IP tables to define the firewall rules.</p>
+<p>How to Implement a Server Firewall</p>
+<p>Step 1: Determine Firewall Rules</p>
+<p>To begin, you need to identify the ports and protocols required to allow traffic to flow freely into and out of your server. This will depend on the services and applications running on the server. For instance, if it is a web server, you may need to allow traffic on port 80/443(HTTP/HTTPS). If you&rsquo;re running an email server, you may need to allow SMTP traffic on port 25.</p>
+<p>Next, you need to configure the server to deny all traffic that is not explicitly allowed. By doing this, you protect yourself from unforeseen vulnerabilities and potential attacks. You should also block common ports that are not necessary for your server&rsquo;s operations.</p>
+<p>Step 2: Configure the Firewall</p>
+<p>Once you have identified the required ports, you need to start configuring the firewall. This can be done in a number of ways but the most commonly used tool for Linux-based servers is iptables. To configure the firewall using iptables, you need to use the following commands:</p>
+<pre tabindex="0"><code>sudo iptables -A INPUT -i eth0 -p tcp --dport 80 -j ACCEPT
+</code></pre><p>The above command allows HTTP traffic to port 80 to pass through the firewall.</p>
+<p>Similarly, to block port 22(SSH), you can use the following command:</p>
+<pre tabindex="0"><code>sudo iptables -A INPUT -p tcp -m tcp --dport 22 -j DROP
+</code></pre><p>Step 3: Test the Firewall</p>
+<p>Once configured, test the firewall to ensure it is working correctly. You can use the Telnet command to check open ports on the server.</p>
+<pre tabindex="0"><code>telnet your.server.ip 80
+</code></pre><p>If the telnet command returns a connection error, it means the firewall is working correctly and has blocked traffic on port 80.</p>
+<p>Step 4: Automate the Firewall</p>
+<p>Finally, you need to make sure that the access rules are set up automatically after a server reboot. You also need to ensure that the firewall is set up to start automatically on boot. To do this, create a script that sets up the firewall rules and automates the startup of the firewall.</p>
+<p>Conclusion</p>
+<p>Implementing a server firewall is a critical security measure that should be taken for all servers. Using firewalls helps to protect your server from unauthorized access and malicious attacks, ensuring that your network is secure and stable. By following the steps listed above, you can set up a server firewall to best suit your needs.</p>
+<p>Additional Resources:</p>
+<ul>
+<li>Guide to IPTables - <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-iptables-on-ubuntu-18-04">https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-iptables-on-ubuntu-18-04</a></li>
+<li>Understanding Network Firewalls - <a href="https://www.investopedia.com/terms/f/firewall.asp">https://www.investopedia.com/terms/f/firewall.asp</a></li>
+<li>Comparing Firewall Technolgies - <a href="https://f5.com/glossary/firewall-technologies-comparison">https://f5.com/glossary/firewall-technologies-comparison</a></li>
+</ul>
+</div>
+        </div>
+        
+    </div>
+    
+            </div>
+        </div><footer class=" text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2023 <a href="http://opensourcebox.com/" class="duration-200 hover:opacity-50">OpenSourceBox</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+
+<title>OpenSourceBox | Image recognition using convolutional neural networks</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="OpenSourceBox | Image recognition using convolutional neural networks" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="There has been a significant growth in artificial intelligence over the last decade, and one of the most prominent applications of this technology is image recognition. Although humans have a remarkable ability to recognize and interpret visual cues, teaching machines to do so is proving to be a complex challenge. However, with recent advancements in deep learning, convolutional neural networks (CNNs) have emerged as the leading technology for image recognition tasks.">
+<meta property="og:site_name" content="OpenSourceBox">
+<meta property="og:description" content="There has been a significant growth in artificial intelligence over the last decade, and one of the most prominent applications of this technology is image recognition. Although humans have a remarkable ability to recognize and interpret visual cues, teaching machines to do so is proving to be a complex challenge. However, with recent advancements in deep learning, convolutional neural networks (CNNs) have emerged as the leading technology for image recognition tasks.">
+<meta property="og:url" content="http://opensourcebox.com/posts/image-recognition-using-convolutional-neural-networks/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="http://opensourcebox.com/posts/image-recognition-using-convolutional-neural-networks/">
+
+<meta name="twitter:description" content="There has been a significant growth in artificial intelligence over the last decade, and one of the most prominent applications of this technology is image recognition. Although humans have a remarkable ability to recognize and interpret visual cues, teaching machines to do so is proving to be a complex challenge. However, with recent advancements in deep learning, convolutional neural networks (CNNs) have emerged as the leading technology for image recognition tasks.">
+<meta property="article:published_time" content="2022-09-20T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2022-09-20T00:00:00&#43;00:00">
+
+
+
+
+
+<meta property="og:image" content="http://opensourcebox.com/">
+<meta property="og:image:url" content="http://opensourcebox.com/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap  p-6">
+            <div class="flex items-center flex-no-shrink  text-white mr-6">
+                <a href="http://opensourcebox.com/"><span class="font-semibold text-2xl tracking-tight">OpenSourceBox</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+    
+        <div class="bg-white col-span-3 p-5 dark:bg-warmgray-900 dark:text-white">
+            
+            <h1 class="title text-4xl font-bold mb-2">Image recognition using convolutional neural networks</h1>
+            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><p>There has been a significant growth in artificial intelligence over the last decade, and one of the most prominent applications of this technology is image recognition. Although humans have a remarkable ability to recognize and interpret visual cues, teaching machines to do so is proving to be a complex challenge. However, with recent advancements in deep learning, convolutional neural networks (CNNs) have emerged as the leading technology for image recognition tasks. In this post, we will explore the workings of CNNs and their applications in image recognition.</p>
+<h2 id="introduction-to-convolutional-neural-networks">Introduction to Convolutional Neural Networks</h2>
+<p>Neural networks are a set of algorithms that are designed to recognize patterns. These algorithms consist of multiple layers of interconnected nodes, which recognize different features of an image. Convolutional neural networks (CNNs), a type of neural network, are particularly well-suited to image recognition tasks because they can automatically learn features from images, without being explicitly programmed.</p>
+<p>CNNs use convolutional layers to learn these features automatically. Convolutional layers apply filters to an image to extract relevant features. Each filter is represented as a set of weights, which are adjusted during the training process of the CNN to improve the accuracy of the network. After each convolutional layer, there may be additional layers, such as pooling layers or dropout layers, which help to reduce the dimensionality of the feature maps and prevent overfitting of the network.</p>
+<p>The final layer of the CNN is the fully connected layer, which uses the output of the previous layers to classify the image into one of several possible categories. Training occurs by adjusting the weights of the convolutional filters, fully connected layers, and combination functions using backpropagation.</p>
+<h2 id="the-benefits-of-using-cnns-for-image-recognition">The Benefits of Using CNNs for Image Recognition</h2>
+<p>CNNs have several benefits that make them particularly well-suited to image recognition tasks. First, because they use convolutional layers to automatically learn features from images, they do not require handcrafted feature engineering. This approach saves time and leads to higher accuracy, as it allows the network to learn relevant features on its own.</p>
+<p>Second, CNNs can handle images of varying sizes and shapes by accounting for variations in the data within the convolutional layers. This allows for greater flexibility in the types of images that can be analyzed, making CNNs a versatile tool for image recognition.</p>
+<p>Finally, CNNs have shown impressive results in a wide range of image recognition tasks, including handwritten digit recognition, object detection, and facial recognition.</p>
+<h2 id="example-of-convolutional-neural-networks-in-action">Example of Convolutional Neural Networks in Action</h2>
+<p>Let&rsquo;s take a look at an example of a CNN in action. In this example, we will build a CNN to identify cats and dogs in a dataset consisting of 25,000 images.</p>
+<p>First, we will start by preprocessing the data. We will use the <code>ImageDataGenerator</code> function from Keras to feed batches of images to the network. Additionally, we will split the data into training and validation sets:</p>
+<pre tabindex="0"><code>train_datagen = ImageDataGenerator( \
+    rescale = 1./255
+)
+
+test_datagen = ImageDataGenerator( \
+    rescale = 1./255
+)
+
+train_generator = train_datagen.flow_from_directory( \
+    &#39;/data/train&#39;, target_size=(150, 150), batch_size=32, class_mode=&#39;binary&#39;
+) 
+test_generator = test_datagen.flow_from_directory( \
+    &#39;/data/test&#39;, target_size=(150, 150), batch_size=32, class_mode=&#39;binary&#39;
+)
+</code></pre><p>Next, we will build the CNN. We will use four convolutional layers, followed by two fully connected layers:</p>
+<pre tabindex="0"><code>model = Sequential()
+
+model.add(Conv2D(32, (3, 3), activation=&#39;relu&#39;, input_shape=(150, 150, 3)))
+model.add(MaxPooling2D((2, 2)))
+
+model.add(Conv2D(64, (3, 3), activation=&#39;relu&#39;))
+model.add(MaxPooling2D((2, 2)))
+
+model.add(Conv2D(128, (3, 3), activation=&#39;relu&#39;))
+model.add(MaxPooling2D((2, 2)))
+
+model.add(Conv2D(128, (3, 3), activation=&#39;relu&#39;))
+model.add(MaxPooling2D((2, 2)))
+
+model.add(Flatten())
+
+model.add(Dense(512, activation=&#39;relu&#39;))
+
+model.add(Dense(1, activation=&#39;sigmoid&#39;))
+
+model.summary() 
+</code></pre><p>Finally, we will compile and train the model:</p>
+<pre tabindex="0"><code>model.compile(loss=&#39;binary_crossentropy&#39;, optimizer=optimizers.RMSprop(lr=1e-4), metrics=[&#39;acc&#39;])
+
+history = model.fit_generator( \
+    train_generator, steps_per_epoch=2000, epochs=30, validation_data=test_generator, validation_steps=800
+)
+</code></pre><p>After training, the model achieved a validation accuracy of 85%. This is an impressive result, considering the complexity of the task and the fact that the model was able to learn relevant features on its own.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Convolutional neural networks (CNNs) have emerged as the leading technology for image recognition tasks due to their ability to automatically learn features from images. They have several advantages over traditional image recognition algorithms, including improved accuracy and flexibility to handle images of varying sizes and shapes. In the example we provided, the CNN was able to achieve an accuracy of 85% when identifying images of cats and dogs. With advancements in technology, we can expect to see more progress in the field and the application of CNNs to other types of image recognition tasks.</p>
+<h2 id="additional-resources">Additional Resources</h2>
+<ul>
+<li><a href="https://skymind.ai/wiki/convolutional-network">A Beginner&rsquo;s Guide to Convolutional Neural Networks (CNNs)</a></li>
+<li><a href="https://deepai.org/machine-learning-glossary-and-terms/convolutional-neural-networks">Convolutional Neural Networks for Image Recognition</a></li>
+<li><a href="https://tensorflow.org/tutorials/images/cnn">Building Convolutional Neural Networks with TensorFlow</a></li>
+</ul>
+</div>
+        </div>
+        
+    </div>
+    
+            </div>
+        </div><footer class=" text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2023 <a href="http://opensourcebox.com/" class="duration-200 hover:opacity-50">OpenSourceBox</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+
+<title>OpenSourceBox | Troubleshooting SSL issues</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="OpenSourceBox | Troubleshooting SSL issues" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="Troubleshooting SSL Issues: Understanding SSL and How to Fix Problems with SSL Certificates
+When you are browsing the internet, you may have noticed the little green padlock in your address bar. This padlock indicates that the website you are visiting is secured with SSL, or &ldquo;Secure Sockets Layer&rdquo; technology. SSL is a protocol that provides secure connections (encrypted) between web servers and web browsers. It is used to secure online transactions, such as credit card payments, online banking, and other private communications.">
+<meta property="og:site_name" content="OpenSourceBox">
+<meta property="og:description" content="Troubleshooting SSL Issues: Understanding SSL and How to Fix Problems with SSL Certificates
+When you are browsing the internet, you may have noticed the little green padlock in your address bar. This padlock indicates that the website you are visiting is secured with SSL, or &ldquo;Secure Sockets Layer&rdquo; technology. SSL is a protocol that provides secure connections (encrypted) between web servers and web browsers. It is used to secure online transactions, such as credit card payments, online banking, and other private communications.">
+<meta property="og:url" content="http://opensourcebox.com/posts/troubleshooting-ssl-issues/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="http://opensourcebox.com/posts/troubleshooting-ssl-issues/">
+
+<meta name="twitter:description" content="Troubleshooting SSL Issues: Understanding SSL and How to Fix Problems with SSL Certificates
+When you are browsing the internet, you may have noticed the little green padlock in your address bar. This padlock indicates that the website you are visiting is secured with SSL, or &ldquo;Secure Sockets Layer&rdquo; technology. SSL is a protocol that provides secure connections (encrypted) between web servers and web browsers. It is used to secure online transactions, such as credit card payments, online banking, and other private communications.">
+<meta property="article:published_time" content="2022-09-20T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2022-09-20T00:00:00&#43;00:00">
+
+
+
+
+
+<meta property="og:image" content="http://opensourcebox.com/">
+<meta property="og:image:url" content="http://opensourcebox.com/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap  p-6">
+            <div class="flex items-center flex-no-shrink  text-white mr-6">
+                <a href="http://opensourcebox.com/"><span class="font-semibold text-2xl tracking-tight">OpenSourceBox</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+    
+        <div class="bg-white col-span-3 p-5 dark:bg-warmgray-900 dark:text-white">
+            
+            <h1 class="title text-4xl font-bold mb-2">Troubleshooting SSL issues</h1>
+            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><p>Troubleshooting SSL Issues: Understanding SSL and How to Fix Problems with SSL Certificates</p>
+<p>When you are browsing the internet, you may have noticed the little green padlock in your address bar. This padlock indicates that the website you are visiting is secured with SSL, or &ldquo;Secure Sockets Layer&rdquo; technology. SSL is a protocol that provides secure connections (encrypted) between web servers and web browsers. It is used to secure online transactions, such as credit card payments, online banking, and other private communications. SSL also protects sensitive information from being intercepted by third party hackers.</p>
+<p>While SSL is a reliable technology, it is not always perfect. SSL can have its issues, including errors like expired certificates, incorrect SSL installations, and protocol errors. In this blog post, we will cover the most common SSL issues that developers and site owners may encounter, and how to troubleshoot them.</p>
+<p>Table of Contents:</p>
+<ol>
+<li>SSL Certificate Errors
+<ul>
+<li>Expired SSL Certificates</li>
+<li>Mismatched SSL Names</li>
+<li>Self-Signed SSL Certificates</li>
+<li>Non-Trusted SSL Certificates</li>
+</ul>
+</li>
+<li>Issues with SSL Protocols
+<ul>
+<li>SSL Protocol Mismatch</li>
+<li>SSL Handshake Failure</li>
+</ul>
+</li>
+<li>Other SSL Issues
+<ul>
+<li>Mixed Content Warnings</li>
+<li>Server Misconfiguration</li>
+</ul>
+</li>
+</ol>
+<p>SSL Certificate Errors</p>
+<p>Expired SSL Certificates</p>
+<p>An SSL certificate is valid for a certain period (typically one or two years), after which it must be renewed. Expired SSL certificates can cause problems, and browsers will often display a warning message to users when an expired certificate is discovered. To solve the problem, the certificate must be renewed, and installing the renewed certificate to a web server.</p>
+<p>Mismatched SSL Names</p>
+<p>Mismatched SSL Names occur when the name on the certificate installed on a Web server does not match the domain name of the website. For example, the certificate might be issued to <a href="https://www.example.com">www.example.com</a>, but the site&rsquo;s URL is example.com. This discrepancy can cause SSL errors. This problem can be fixed by requesting a new certificate that matches the site&rsquo;s domain name or by configuring the site&rsquo;s URL to match the certificate name.</p>
+<p>Self-Signed SSL Certificates</p>
+<p>A self-signed SSL certificate is an SSL certificate that has not been issued by a trusted third-party Certificate Authority (CA). Thus, most browsers will not trust a self-signed certificate, and users will be presented with a warning message before accessing the site secured with the certificate. To solve the problem, website owners can replace the self-signed certificate with a trusted certificate from a recognized CA.</p>
+<p>Non-Trusted SSL Certificates</p>
+<p>Another possible SSL problem occurs when the SSL certificate being used is not issued by a recognized Certificate Authority. This non-trusted certificate error appears when the browser does not trust the website&rsquo;s SSL certifying authority. Most browsers only trust a few Certificate Authorities, and an SSL certificate issued by an unknown or unrecognized authority could prompt an error message. Re-issue the SSL certificate through a trusted Certificate Authority to resolve the problem.</p>
+<p>Issues with SSL Protocols</p>
+<p>SSL Protocol Mismatch</p>
+<p>SSL protocol mismatch is a rare error, but sometimes it occurs when your browser is attempting to connect to a server with an SSL protocol that&rsquo;s different from the one that&rsquo;s installed on your browser. The browser expects a specific type of SSL protocol and that conflicts with what&rsquo;s installed on the server. The issue can be fixed by upgrading to a newer browser that supports the installed SSL protocol version.</p>
+<p>SSL Handshake Failure</p>
+<p>When the SSL handshake fails, it causes the encrypted connection between a web server and a web browser to fail. An SSL handshake error can occur for various reasons. For example, an SSL/TLS mutual authentication failure, an expired SSL certificate, or incorrect SSL configurations can cause handshake failures.
+To resolve this issue, check the SSL installation configuration to ensure SSL protocols are installed correctly, including the correct cryptographic algorithms, SSL ciphers, and weak protocols. You can also check and ensure that the server time and timezone are set correctly.</p>
+<p>Other SSL Issues</p>
+<p>Mixed Content Warnings</p>
+<p>Mixed content warnings occur when a page is not entirely served over HTTPS. For example, an HTTPS page has images embedded in the page from an HTTP website. In such cases, most browsers will warn users of a mixed content warning. This problem can be resolved by reviewing the page’s code and ensuring that all embedded resources (images, scripts, stylesheets) are served over HTTPS.</p>
+<p>Server Misconfiguration</p>
+<p>SSL errors can also appear due to various server-side misconfigurations. Server misconfiguration issues can cause SSL issues like incomplete SSL configuration, incorrect SSL installation, or untrusted certificates. Review and ensure SSL installation is correctly configured. Check the ssl.conf file, virtualhost.conf file, and web server logs to get better client errors.</p>
+<p>Conclusion</p>
+<p>SSL problems can be frustrating since they can cause users to lose trust in a site, and it is essential that these issues are resolved quickly. In this blog post, we’ve outlined the most common SSL issues, and the steps that developers and site owners can take to rectify them. Always ensure to use trusted SSL certificates and regularly check for SSL problems to avoid security loopholes on websites.</p>
+<p>Additional Resources</p>
+<ul>
+<li><a href="https://www.globalsign.com/en/ssl-information-center/common-ssl-issues-and-resolutions/">https://www.globalsign.com/en/ssl-information-center/common-ssl-issues-and-resolutions/</a></li>
+<li><a href="https://www.cloudflare.com/learning/ssl/common-ssl-errors/">https://www.cloudflare.com/learning/ssl/common-ssl-errors/</a></li>
+<li><a href="https://www.sslshopper.com/article-most-common-openssl-commands.html">https://www.sslshopper.com/article-most-common-openssl-commands.html</a></li>
+<li><a href="https://kb.isc.org/docs/aa-00879">https://kb.isc.org/docs/aa-00879</a></li>
+</ul>
+</div>
+        </div>
+        
+    </div>
+    
+            </div>
+        </div><footer class=" text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2023 <a href="http://opensourcebox.com/" class="duration-200 hover:opacity-50">OpenSourceBox</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>

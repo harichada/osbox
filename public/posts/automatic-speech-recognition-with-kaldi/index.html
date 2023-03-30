@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+
+<title>OpenSourceBox | Automatic Speech Recognition with Kaldi</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="OpenSourceBox | Automatic Speech Recognition with Kaldi" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="Automatic Speech Recognition (ASR) is an essential component of modern technology that enables machines to recognize and comprehend human speech. The proliferation of smart devices like smartphones, smart speakers, and virtual assistants has increased the demand for speech recognition technology, making it an essential part of our daily lives. Kaldi is a suite of tools designed for developing ASR systems that is free, open source, and widely used in the speech recognition research community.">
+<meta property="og:site_name" content="OpenSourceBox">
+<meta property="og:description" content="Automatic Speech Recognition (ASR) is an essential component of modern technology that enables machines to recognize and comprehend human speech. The proliferation of smart devices like smartphones, smart speakers, and virtual assistants has increased the demand for speech recognition technology, making it an essential part of our daily lives. Kaldi is a suite of tools designed for developing ASR systems that is free, open source, and widely used in the speech recognition research community.">
+<meta property="og:url" content="http://opensourcebox.com/posts/automatic-speech-recognition-with-kaldi/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="http://opensourcebox.com/posts/automatic-speech-recognition-with-kaldi/">
+
+<meta name="twitter:description" content="Automatic Speech Recognition (ASR) is an essential component of modern technology that enables machines to recognize and comprehend human speech. The proliferation of smart devices like smartphones, smart speakers, and virtual assistants has increased the demand for speech recognition technology, making it an essential part of our daily lives. Kaldi is a suite of tools designed for developing ASR systems that is free, open source, and widely used in the speech recognition research community.">
+<meta property="article:published_time" content="2022-09-20T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2022-09-20T00:00:00&#43;00:00">
+
+
+
+
+
+<meta property="og:image" content="http://opensourcebox.com/">
+<meta property="og:image:url" content="http://opensourcebox.com/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap  p-6">
+            <div class="flex items-center flex-no-shrink  text-white mr-6">
+                <a href="http://opensourcebox.com/"><span class="font-semibold text-2xl tracking-tight">OpenSourceBox</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+    
+        <div class="bg-white col-span-3 p-5 dark:bg-warmgray-900 dark:text-white">
+            
+            <h1 class="title text-4xl font-bold mb-2">Automatic Speech Recognition with Kaldi</h1>
+            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><p>Automatic Speech Recognition (ASR) is an essential component of modern technology that enables machines to recognize and comprehend human speech. The proliferation of smart devices like smartphones, smart speakers, and virtual assistants has increased the demand for speech recognition technology, making it an essential part of our daily lives. Kaldi is a suite of tools designed for developing ASR systems that is free, open source, and widely used in the speech recognition research community. In this post, we will explore Kaldi and its various components and features.</p>
+<p>What is Kaldi?</p>
+<p>Kaldi is an open-source toolkit that was initially created to develop ASR systems using state-of-the-art methods for speech recognition research. It is written in C++ and is designed to be highly modular and flexible, allowing researchers to experiment with a wide range of ASR architectures and algorithms. Kaldi is an acronym for &ldquo;Kaldi Speech Recognition Toolkit,&rdquo; named after the Ethiopian coffee that is known for its rich flavor.</p>
+<p>Kaldi Features</p>
+<p>Kaldi is a versatile toolkit that offers a range of features that help researchers and developers construct effective ASR systems. Some of its most prominent features are:</p>
+<ol>
+<li>
+<p>Flexible architecture: Kaldi is designed to be highly modular, making it easy to experiment with different ASR system architectures.</p>
+</li>
+<li>
+<p>Extensive documentation: Kaldi comes with extensive documentation that includes tutorials, examples, and code snippets, making it easy for users to get started.</p>
+</li>
+<li>
+<p>Support for various training data: Kaldi can train ASR models using a wide range of training data, including audio files, text transcripts, and waveform representations.</p>
+</li>
+<li>
+<p>Support for various ASR models: Kaldi includes implementations of various ASR models, such as Hidden Markov Models (HMMs), deep neural networks (DNNs), recurrent neural networks (RNNs), and convolutional neural networks (CNNs).</p>
+</li>
+<li>
+<p>Support for various feature extraction techniques: Kaldi provides various feature extraction techniques, such as Mel-frequency cepstral coefficients (MFCCs), shifted delta cepstral coefficients (SDCs), Mel-filterbank energies (MFEs), and linear prediction coefficients (LPCs).</p>
+</li>
+<li>
+<p>Support for various decoding techniques: Kaldi provides various decoding techniques, such as Viterbi decoding, forward-backward decoding, and lattice-based decoding.</p>
+</li>
+</ol>
+<p>Kaldi Components</p>
+<p>Kaldi consists of several components that work together to form an ASR system. The main components of Kaldi are:</p>
+<ol>
+<li>
+<p>Data preparation: This component is responsible for preparing the audio data and text transcripts for training ASR models. The input audio data is typically stored in the form of audio files, while the text transcripts are stored in text files.</p>
+</li>
+<li>
+<p>Feature extraction: This component is responsible for extracting audio features from the training data. The most common audio features used in ASR are MFCCs, which capture the spectral features of the audio signal.</p>
+</li>
+<li>
+<p>Acoustic modeling: This component is responsible for creating a statistical model of the audio features. The statistical model is typically based on Hidden Markov Models (HMMs) or deep neural networks (DNNs).</p>
+</li>
+<li>
+<p>Language modeling: This component is responsible for modeling the language or speech being spoken. The language model is typically based on n-grams or recurrent neural networks (RNNs).</p>
+</li>
+<li>
+<p>Decoding: This component is responsible for generating the output transcripts from the acoustic and language models. The most common decoding technique used in ASR is Viterbi decoding, which finds the most likely sequence of words given the audio input.</p>
+</li>
+</ol>
+<p>Kaldi Code Snippets</p>
+<p>Here are some Kaldi code snippets that demonstrate how to use Kaldi&rsquo;s feature extraction and acoustic modeling components:</p>
+<ol>
+<li>Feature extraction:</li>
+</ol>
+<pre tabindex="0"><code>compute-mfcc-feats --config=conf/mfcc.conf scp:data/train/wav.scp ark:- | \
+apply-cmvn --utt2spk=ark:data/train/utt2spk scp:data/train/cmvn.scp ark:- ark:- | \
+splice-feats --left-context=4 --right-context=4 ark:- ark:- | \
+copy-feats --compress=true ark:- ark,scp:exp/mfcc/train.ark,exp/mfcc/train.scp
+</code></pre><p>In this code snippet, we are using Kaldi&rsquo;s <code>compute-mfcc-feats</code> component to extract MFCC features from the audio data. We then apply cepstral mean normalization (<code>apply-cmvn</code>) and splicing (<code>splice-feats</code>) to the extracted features. Finally, we copy the features to the <code>exp/mfcc/train.ark</code> and <code>exp/mfcc/train.scp</code> files.</p>
+<ol start="2">
+<li>Acoustic modeling:</li>
+</ol>
+<pre tabindex="0"><code>steps/train_mono.sh --nj $nj --cmd &#34;$train_cmd&#34; data/train data/lang exp/mono || exit 1;
+</code></pre><p>In this code snippet, we are using Kaldi&rsquo;s <code>steps/train_mono.sh</code> script to train a monophone acoustic model using the data in <code>data/train</code> and the language model in <code>data/lang</code>. The resulting model is stored in the <code>exp/mono</code> directory.</p>
+<p>Additional Resources</p>
+<p>Kaldi&rsquo;s official website provides comprehensive documentation, tutorials, and code examples that can help users learn and use the toolkit effectively. Some additional resources that can be useful to readers are:</p>
+<ol>
+<li>
+<p>Kaldi GitHub repository: <a href="https://github.com/kaldi-asr/kaldi">https://github.com/kaldi-asr/kaldi</a></p>
+</li>
+<li>
+<p>Kaldi tutorial: <a href="https://kaldi-asr.org/doc/tutorial.html">https://kaldi-asr.org/doc/tutorial.html</a></p>
+</li>
+<li>
+<p>Kaldi cookbook: <a href="https://kaldi-asr.org/doc/kaldi_for_dummies.html">https://kaldi-asr.org/doc/kaldi_for_dummies.html</a></p>
+</li>
+<li>
+<p>Kaldi discussion group: <a href="https://groups.google.com/forum/#!forum/kaldi-help">https://groups.google.com/forum/#!forum/kaldi-help</a></p>
+</li>
+</ol>
+<p>Conclusion</p>
+<p>In conclusion, Kaldi is a powerful open-source toolkit that enables researchers and developers to create state-of-the-art ASR systems. It is highly modular, flexible, and scalable, and supports a variety of ASR architectures, algorithms, and feature extraction techniques. With its extensive documentation, tutorials, and code examples, Kaldi is an excellent tool for anyone looking to dive into the world of ASR.</p>
+</div>
+        </div>
+        
+    </div>
+    
+            </div>
+        </div><footer class=" text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2023 <a href="http://opensourcebox.com/" class="duration-200 hover:opacity-50">OpenSourceBox</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>

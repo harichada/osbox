@@ -5,6 +5,61 @@
     <link>http://opensourcebox.com/categories/</link>
     <description>Recent content in Categories on OpenSourceBox</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="http://opensourcebox.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Wed, 20 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://opensourcebox.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI</title>
+      <link>http://opensourcebox.com/categories/ai/</link>
+      <pubDate>Wed, 20 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://opensourcebox.com/categories/ai/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Chatbots</title>
+      <link>http://opensourcebox.com/categories/chatbots/</link>
+      <pubDate>Wed, 20 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://opensourcebox.com/categories/chatbots/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Open Source</title>
+      <link>http://opensourcebox.com/categories/open-source/</link>
+      <pubDate>Wed, 20 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://opensourcebox.com/categories/open-source/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Healthcare</title>
+      <link>http://opensourcebox.com/categories/healthcare/</link>
+      <pubDate>Thu, 11 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://opensourcebox.com/categories/healthcare/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Server Administration</title>
+      <link>http://opensourcebox.com/categories/server-administration/</link>
+      <pubDate>Thu, 21 Oct 2021 20:22:46 +0530</pubDate>
+      
+      <guid>http://opensourcebox.com/categories/server-administration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>finance</title>
+      <link>http://opensourcebox.com/categories/finance/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://opensourcebox.com/categories/finance/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

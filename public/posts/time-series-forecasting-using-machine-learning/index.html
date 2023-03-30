@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+
+<title>OpenSourceBox | Time Series Forecasting using Machine Learning</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="OpenSourceBox | Time Series Forecasting using Machine Learning" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="Time Series Forecasting using Machine Learning
+Time series forecasting is a critical approach to anticipate future trends and behaviors depending upon historical facts. With the advancements in machine learning, it has become more feasible and viable to generate accurate predictions, which are considered more reliable and precise. This blog post presents an overview of time series forecasting, focusing on its significance, challenges, and machine learning techniques used for this task.">
+<meta property="og:site_name" content="OpenSourceBox">
+<meta property="og:description" content="Time Series Forecasting using Machine Learning
+Time series forecasting is a critical approach to anticipate future trends and behaviors depending upon historical facts. With the advancements in machine learning, it has become more feasible and viable to generate accurate predictions, which are considered more reliable and precise. This blog post presents an overview of time series forecasting, focusing on its significance, challenges, and machine learning techniques used for this task.">
+<meta property="og:url" content="http://opensourcebox.com/posts/time-series-forecasting-using-machine-learning/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="http://opensourcebox.com/posts/time-series-forecasting-using-machine-learning/">
+
+<meta name="twitter:description" content="Time Series Forecasting using Machine Learning
+Time series forecasting is a critical approach to anticipate future trends and behaviors depending upon historical facts. With the advancements in machine learning, it has become more feasible and viable to generate accurate predictions, which are considered more reliable and precise. This blog post presents an overview of time series forecasting, focusing on its significance, challenges, and machine learning techniques used for this task.">
+<meta property="article:published_time" content="2022-09-20T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2022-09-20T00:00:00&#43;00:00">
+
+
+
+
+
+<meta property="og:image" content="http://opensourcebox.com/">
+<meta property="og:image:url" content="http://opensourcebox.com/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap  p-6">
+            <div class="flex items-center flex-no-shrink  text-white mr-6">
+                <a href="http://opensourcebox.com/"><span class="font-semibold text-2xl tracking-tight">OpenSourceBox</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+    
+        <div class="bg-white col-span-3 p-5 dark:bg-warmgray-900 dark:text-white">
+            
+            <h1 class="title text-4xl font-bold mb-2">Time Series Forecasting using Machine Learning</h1>
+            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><p>Time Series Forecasting using Machine Learning</p>
+<p>Time series forecasting is a critical approach to anticipate future trends and behaviors depending upon historical facts. With the advancements in machine learning, it has become more feasible and viable to generate accurate predictions, which are considered more reliable and precise. This blog post presents an overview of time series forecasting, focusing on its significance, challenges, and machine learning techniques used for this task.</p>
+<p>What is Time Series Forecasting?</p>
+<p>Time series forecasting is a statistical method that involves analyzing past data points and patterns to predict future trends relating to any time-dependent series. Examples of time series data vary from hourly stock costs, daily sales data to monthly weather forecasts, and yearly population estimates. Time series forecasting can help determine whether trends may continue or reverse, where anomalies are present, and the possible ranges of values that will be observed in the future.</p>
+<p>Time series forecasting problems are classified into three categories:</p>
+<ul>
+<li>
+<p>Univariate Time Series Forecasting: where prediction occurs on a single variable such as demand, sales, or temperature.</p>
+</li>
+<li>
+<p>Multivariate Time Series Forecasting: where prediction occurs on more than one variable simultaneously. For instance, predicting the sales of a particular product through its respective cost, market saturation, or online reviews.</p>
+</li>
+<li>
+<p>Energy Consumption Big-Data Time Series Forecasting: a specific type of forecasting focusing on the power and energy consumption across times and locations.</p>
+</li>
+</ul>
+<p>The Challenges of Time Series Forecasting</p>
+<p>Time series forecasting involves many challenges such as seasonality patterns, sudden changes, random errors, missing data, and predicting far into the future.</p>
+<ul>
+<li>
+<p>Seasonality Patterns: A typical phenomenon that commonly appears in time series and includes a repetitive pattern which is visible in a defined time period.</p>
+</li>
+<li>
+<p>Sudden Changes: Quick changes may occur in time series because of many external factors, such as natural disasters or economic downfalls.</p>
+</li>
+<li>
+<p>Random Errors: These mistakes are not necessarily due to seasonality or sudden changes; they may happen due to the equipment malfunctioning or alterations in operational processes.</p>
+</li>
+<li>
+<p>Missing Data: Sometimes, data may not be recorded in a time series. Therefore, forecasting models may have challenges to include all data while using various models.</p>
+</li>
+<li>
+<p>Predicting Far into the Future: It is hard to predict events far into the future due to multiple factors affecting trends and patterns over time.</p>
+</li>
+</ul>
+<p>Machine Learning techniques for Time Series Forecasting</p>
+<p>There are several machine learning techniques available for time series forecasting; some of these techniques include:</p>
+<ul>
+<li>
+<p>ARIMA (Auto-Regression Integrated Moving Average): ARIMA is one of the most widely used methods for time series forecasting. It takes into account the past patterns of a time series to make predictions about the future.</p>
+</li>
+<li>
+<p>LSTM (Long Short-Term Memory): A scientifically advanced neural network system that is capable of learning long-term dependencies over time. This makes it suitable for use in time series forecasting.</p>
+</li>
+<li>
+<p>Prophet: A procedure developed by Facebook that enables researchers to forecast time series data. Prophet is designed for large-scale forecasting where automatic forecasting procedures are required.</p>
+</li>
+</ul>
+<p>Example Use Case:</p>
+<p>In this example, we will be using the air passenger data set from 1949 to 1960, which has the total number of passengers on international flights from 1949 to 1960.</p>
+<p>First, we load the data using the pandas library, convert it into a time-series data format, and display the first five records:</p>
+<pre tabindex="0"><code>import pandas as pd
+data=pd.read_csv(‘AirPassengerData.csv’)
+data[‘Month’]=pd.to_datetime(data[‘Month’])
+data.set_index(‘Month’, inplace=True)
+print(data.head())
+</code></pre><p>Next, we use the LSTM model to produce a time series of predicted values for the years 1959-1962:</p>
+<pre tabindex="0"><code>from keras.models import Sequential
+from keras.layers import Dense
+from keras.layers import LSTM
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler(feature_range=(0, 1))
+dataset = scaler.fit_transform(data)
+train= dataset.copy()
+test= dataset[-4:,:]
+n_input = 12
+n_features= 1
+model = Sequential()
+model.add(LSTM(200, activation=&#39;relu&#39;, input_shape=(n_input, n_features)))
+model.add(Dense(1))
+model.compile(optimizer=&#39;adam&#39;, loss=&#39;mse&#39;)
+model.fit(X, y, epochs=100, verbose=1)
+</code></pre><p>After the model has been trained, we use it to predict future values:</p>
+<pre tabindex="0"><code>test_predictions = []
+first_eval_batch = train[-n_input:]
+current_batch = first_eval_batch.reshape((1, n_input, n_features))
+for i in range(len(test)):
+    current_pred = model.predict(current_batch)[0]
+    test_predictions.append(current_pred)
+    current_batch = np.append(current_batch[:,1:,:],[[current_pred]],axis=1)
+</code></pre><p>As a result, the LSTM model predicts that the total number of international air passengers on flight may reach 450,710 by the end of 1962.</p>
+<p>Conclusion:</p>
+<p>Time series forecasting using machine learning is a vital analytical tool that can help companies make more informed decisions by predicting future trends. ARIMA and LSTM are two excellent models that companies can use to make predictions about future outcomes based on past data. Nevertheless, time-series forecasting poses challenges such as the prediction of anomalous abrupt changes, high deviations, and seasonal patterns. Companies must identify their specific issues and select the appropriate time-series forecasting methods with care.</p>
+<p>Additional Resources:</p>
+<ul>
+<li>
+<p>A detailed tutorial on time series forecasting using ARIMA and LSTM in Python:
+<a href="https://machinelearningmastery.com/time-series-forecasting-methods-in-python-cheat-sheet/">https://machinelearningmastery.com/time-series-forecasting-methods-in-python-cheat-sheet/</a></p>
+</li>
+<li>
+<p>Time Series Forecasting in Python: A Comprehensive Guide:
+<a href="https://towardsdatascience.com/time-series-forecasting-in-python-a-comprehensive-guide-e2c42abbcc6f">https://towardsdatascience.com/time-series-forecasting-in-python-a-comprehensive-guide-e2c42abbcc6f</a></p>
+</li>
+<li>
+<p>Prophet (Facebook) Documentation:
+<a href="https://facebook.github.io/prophet/docs/quick_start.html">https://facebook.github.io/prophet/docs/quick_start.html</a></p>
+</li>
+</ul>
+</div>
+        </div>
+        
+    </div>
+    
+            </div>
+        </div><footer class=" text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2023 <a href="http://opensourcebox.com/" class="duration-200 hover:opacity-50">OpenSourceBox</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>

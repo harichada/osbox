@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+
+<title>OpenSourceBox | Automated backups using cron jobs</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="OpenSourceBox | Automated backups using cron jobs" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="Automated Backups Using Cron Jobs
+Backing up your data is crucial in ensuring that your crucial files are protected in case of system failures or data breaches. However, manually backing up your files can be time-consuming, repetitive, and prone to errors. Automation can help solve these issues.
+Cron is a time-based job scheduler that allows you to schedule repetitive tasks on Linux systems. It is an essential tool for automating critical system maintenance tasks, including backups.">
+<meta property="og:site_name" content="OpenSourceBox">
+<meta property="og:description" content="Automated Backups Using Cron Jobs
+Backing up your data is crucial in ensuring that your crucial files are protected in case of system failures or data breaches. However, manually backing up your files can be time-consuming, repetitive, and prone to errors. Automation can help solve these issues.
+Cron is a time-based job scheduler that allows you to schedule repetitive tasks on Linux systems. It is an essential tool for automating critical system maintenance tasks, including backups.">
+<meta property="og:url" content="http://opensourcebox.com/posts/automated-backups-using-cron-jobs/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="http://opensourcebox.com/posts/automated-backups-using-cron-jobs/">
+
+<meta name="twitter:description" content="Automated Backups Using Cron Jobs
+Backing up your data is crucial in ensuring that your crucial files are protected in case of system failures or data breaches. However, manually backing up your files can be time-consuming, repetitive, and prone to errors. Automation can help solve these issues.
+Cron is a time-based job scheduler that allows you to schedule repetitive tasks on Linux systems. It is an essential tool for automating critical system maintenance tasks, including backups.">
+<meta property="article:published_time" content="2022-09-20T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2022-09-20T00:00:00&#43;00:00">
+
+
+
+
+
+<meta property="og:image" content="http://opensourcebox.com/">
+<meta property="og:image:url" content="http://opensourcebox.com/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap  p-6">
+            <div class="flex items-center flex-no-shrink  text-white mr-6">
+                <a href="http://opensourcebox.com/"><span class="font-semibold text-2xl tracking-tight">OpenSourceBox</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+    
+        <div class="bg-white col-span-3 p-5 dark:bg-warmgray-900 dark:text-white">
+            
+            <h1 class="title text-4xl font-bold mb-2">Automated backups using cron jobs</h1>
+            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><p>Automated Backups Using Cron Jobs</p>
+<p>Backing up your data is crucial in ensuring that your crucial files are protected in case of system failures or data breaches. However, manually backing up your files can be time-consuming, repetitive, and prone to errors. Automation can help solve these issues.</p>
+<p>Cron is a time-based job scheduler that allows you to schedule repetitive tasks on Linux systems. It is an essential tool for automating critical system maintenance tasks, including backups. In this post, we will explore how to automate backups using cron jobs.</p>
+<p>Setting Up the Backup Script</p>
+<p>The first step in automating backups is to create a backup script. The backup script is a simple bash script that copies your files to an external storage device, either a physical external hard drive or a cloud-based storage service like AWS S3, Dropbox, or Google Drive. The script can be customized to match your specific backup needs.</p>
+<p>Here is an example of a backup script that backs up a specific folder and its contents:</p>
+<pre tabindex="0"><code>#!/bin/bash
+BACKUP_DIR=/mnt/backup
+SOURCE_DIR=/home/user/myfolder
+rsync -av $SOURCE_DIR $BACKUP_DIR
+</code></pre><p>In this script, the <code>$BACKUP_DIR</code> variable defines the path to the backup destination, while the <code>$SOURCE_DIR</code> variable defines the path to the folder being backed up. The <code>rsync</code> command copies the contents of the source folder to the backup folder.</p>
+<p>Once you have created the backup script, make it executable using the following command:</p>
+<pre tabindex="0"><code>chmod +x backup.sh
+</code></pre><p>Scheduling the Backup Job</p>
+<p>After creating the backup script, the next step is to schedule the backup job using cron. Cron uses a configuration file, <code>crontab</code>, to define scheduled tasks.</p>
+<p>To open the <code>crontab</code> file, use the following command:</p>
+<pre tabindex="0"><code>crontab -e
+</code></pre><p>This command opens the <code>crontab</code> file in the default editor. If this is the first time editing the <code>crontab</code> file, the editor prompts you to choose your preferred editor.</p>
+<p>The <code>crontab</code> file has the following format:</p>
+<pre tabindex="0"><code>*   *   *   *   *   command to be executed
+-   -   -   -   -
+|   |   |   |   |
+|   |   |   |   ----- Day of the week (0 - 7) (Sunday is both 0 and 7)
+|   |   |   ------- Month (1 - 12)
+|   |   --------- Day of the month (1 - 31)
+|   ----------- Hour (0 - 23)
+------------- Minute (0 - 59)
+</code></pre><p>The asterisks and dashes represent time values. For example, to run the backup script every day at 01:00 AM, you can add the following line to the <code>crontab</code> file:</p>
+<pre tabindex="0"><code>0 1 * * * /home/user/backup.sh
+</code></pre><p>In this example, <code>0</code> and <code>1</code> represent the minute and hour, respectively, while <code>* * *</code> represent the day of the month, month, and day of the week, respectively. The backup script is located in the <code>/home/user</code> directory.</p>
+<p>Using Cron to Compress and Rotate Old Backups</p>
+<p>Over time, backups can take up a lot of storage space. One way to manage this issue is to compress and rotate backups using cron. This process involves compressing old backups into a single file and deleting older backups to free up disk space. Here is an example of a cron job that compresses and rotates backups:</p>
+<pre tabindex="0"><code>15 1 * * * tar -zcvf /mnt/backups/$(date +&#34;%Y-%m-%d&#34;).tar.gz /mnt/backups/backups-$(date +&#34;%Y-%m-*&#34;).tar.gz --remove-files
+</code></pre><p>This cron job compresses backups that were created in the current month and creates a new compressed file with the current date. The <code>--remove-files</code> option removes the older backups.</p>
+<p>Additional Resources</p>
+<p>Cron is a powerful tool that can automate a wide range of system maintenance tasks. To learn more about cron and how to use it effectively, here are some additional resources:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Cron">Cron Wikipedia page</a></li>
+<li><a href="https://linux.die.net/man/5/crontab">crontab(5) - Linux man page</a></li>
+<li><a href="https://www.linux.com/training-tutorials/linux-basics-schedule-jobs-using-cron/">Linux Basics: Schedule Jobs Using Cron</a></li>
+<li><a href="https://www.paul.sladen.org/cron/">Cron HowTo by Paul Vixie</a></li>
+<li><a href="https://www.sitepoint.com/backing-up-your-linux-server-to-aws-s3-with-s3cmd-and-cron/">Backing Up Your Linux Server to AWS S3 with <code>s3cmd</code> and Cron</a></li>
+</ul>
+<p>Conclusion</p>
+<p>Automating backups using cron can help ensure that your files are safe and secure. With the help of a backup script and the <code>crontab</code> command, you can schedule backups to run automatically, compress and rotate backups, and free up storage space. With these tools, you can take control of your backups and protect your critical data.</p>
+</div>
+        </div>
+        
+    </div>
+    
+            </div>
+        </div><footer class=" text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2023 <a href="http://opensourcebox.com/" class="duration-200 hover:opacity-50">OpenSourceBox</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>

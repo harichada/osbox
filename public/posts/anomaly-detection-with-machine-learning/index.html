@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+
+<title>OpenSourceBox | Anomaly detection with machine learning</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="OpenSourceBox | Anomaly detection with machine learning" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="Anomaly detection is a machine learning technique used to identify observations that differ significantly from the majority of data. These observations are considered anomalies, outliers or abnormalities. Anomaly detection has broad applications, from fraud detection and intrusion detection in cybersecurity to predictive maintenance in IoT systems. In this post, we&rsquo;ll explore the theory and concepts behind Anomaly Detection, along with code examples in Python to help you understand this important machine learning technique.">
+<meta property="og:site_name" content="OpenSourceBox">
+<meta property="og:description" content="Anomaly detection is a machine learning technique used to identify observations that differ significantly from the majority of data. These observations are considered anomalies, outliers or abnormalities. Anomaly detection has broad applications, from fraud detection and intrusion detection in cybersecurity to predictive maintenance in IoT systems. In this post, we&rsquo;ll explore the theory and concepts behind Anomaly Detection, along with code examples in Python to help you understand this important machine learning technique.">
+<meta property="og:url" content="http://opensourcebox.com/posts/anomaly-detection-with-machine-learning/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="http://opensourcebox.com/posts/anomaly-detection-with-machine-learning/">
+
+<meta name="twitter:description" content="Anomaly detection is a machine learning technique used to identify observations that differ significantly from the majority of data. These observations are considered anomalies, outliers or abnormalities. Anomaly detection has broad applications, from fraud detection and intrusion detection in cybersecurity to predictive maintenance in IoT systems. In this post, we&rsquo;ll explore the theory and concepts behind Anomaly Detection, along with code examples in Python to help you understand this important machine learning technique.">
+<meta property="article:published_time" content="2022-09-20T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2022-09-20T00:00:00&#43;00:00">
+
+
+
+
+
+<meta property="og:image" content="http://opensourcebox.com/">
+<meta property="og:image:url" content="http://opensourcebox.com/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap  p-6">
+            <div class="flex items-center flex-no-shrink  text-white mr-6">
+                <a href="http://opensourcebox.com/"><span class="font-semibold text-2xl tracking-tight">OpenSourceBox</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+    
+        <div class="bg-white col-span-3 p-5 dark:bg-warmgray-900 dark:text-white">
+            
+            <h1 class="title text-4xl font-bold mb-2">Anomaly detection with machine learning</h1>
+            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><p>Anomaly detection is a machine learning technique used to identify observations that differ significantly from the majority of data. These observations are considered anomalies, outliers or abnormalities. Anomaly detection has broad applications, from fraud detection and intrusion detection in cybersecurity to predictive maintenance in IoT systems. In this post, we&rsquo;ll explore the theory and concepts behind Anomaly Detection, along with code examples in Python to help you understand this important machine learning technique.</p>
+<h2 id="what-is-anomaly-detection">What is Anomaly Detection?</h2>
+<p>Anomaly Detection is the identification of data points, events, or observations considered rare, unusual, or outside the normal behavior or pattern. These unusual observations might be due to errors, unusual system behavior, or that the data is simply different from what is expected. Anomaly detection plays a crucial role in ensuring data integrity, protecting systems and devices from vulnerabilities, and detecting fraud before any loss occurs.</p>
+<p>Anomaly detection can be achieved through machine learning techniques, which can learn from past data to detect unusual patterns or behaviors that might represent anomalies.</p>
+<h2 id="types-of-anomaly-detection">Types of Anomaly Detection</h2>
+<p>There are three main types of Anomaly Detection; Unsupervised, Supervised, and Semi-Supervised.</p>
+<h3 id="unsupervised-anomaly-detection">Unsupervised Anomaly Detection</h3>
+<p>This method of anomaly detection does not rely on historical labeled data to detect anomalies. Instead, unsupervised techniques make assumptions about data distribution that is different from what is considered normal in the data. These assumptions include the Gaussian distribution, distance methods such as clustering algorithms and density estimation algorithms.</p>
+<p>The most commonly used unsupervised Anomaly Detection algorithms include:</p>
+<ul>
+<li><strong>K-means clustering</strong> - this algorithm splits the data into k clusters, where each point belongs to the cluster classified by it.</li>
+<li><strong>Local Outlier Factor (LOF)</strong> - this algorithm measures the density of data points in the data space. It reports a high LOF score for observations that are rare or isolated by a mass of similar objects.</li>
+<li><strong>One-class SVM</strong> - This algorithm builds a boundary around the entire distribution of the dataset, marking observations on the periphery as anomalous.</li>
+</ul>
+<p>Unsupervised anomaly detection techniques can be useful where labelled data is hard to come by or expensive to create.</p>
+<h3 id="supervised-anomaly-detection">Supervised Anomaly Detection</h3>
+<p>With supervised Anomaly Detection, a model is developed using historical, labeled data as a reference. This requires the collection of data, labeling it as normal or anomalous, fitting a supervised algorithm such as Decision Trees, Random Forests, or even Deep Learning algorithms, then validating the accuracy of the results using the test data set.</p>
+<p>The most commonly used supervised Anomaly Detection algorithms include:</p>
+<ul>
+<li><strong>Decision Trees</strong> - Decision Trees algorithms work by recursively selecting features to split the data into subsets. It generates a tree model that can be used to vet new data.</li>
+<li><strong>Random Forests</strong> - This works by fitting multiple decision tree models to subsets of data, then combining them into one model with the highest accuracy.</li>
+<li><strong>Support Vector Machines (SVM)</strong> - This also builds a boundary around the entire distribution of the dataset, similar to one-class SVM. The SVM algorithm detects any data point that falls outside of the boundary.</li>
+</ul>
+<p>In Supervised Learning, the Anomaly Detection algorithm becomes highly secure and accurate. It&rsquo;s, however, costly due to the requirement for labelled data.</p>
+<h3 id="semi-supervised-anomaly-detection">Semi-Supervised Anomaly Detection</h3>
+<p>Semi-Supervised learning is a combination of supervised and unsupervised learning techniques. This approach mostly uses labeled data, but supplemented with anomalies that are inferred using unsupervised methods. Semi-supervised learning is used in scenarios where a limited amount of labeled data is available, but more unlabeled data is accessible.</p>
+<h2 id="applications-of-anomaly-detection">Applications of Anomaly Detection</h2>
+<p>Anomaly Detection has wide applications in various fields, including cybersecurity, finance, alert systems, and machine health status monitoring. Here are some examples;</p>
+<h3 id="fraud-detection">Fraud Detection</h3>
+<p>Financial institutions and companies use Anomaly Detection algorithms to detect fraud and prevent economic crimes. For example, banks can use Anomaly Detection techniques to detect unusual transaction patterns, such as a sudden increase in spending or an expedited withdrawal of large amounts of cash.</p>
+<h3 id="cybersecurity">Cybersecurity</h3>
+<p>Anomaly Detection techniques, such as machine learning algorithms, can be used to detect unusual behavior on enterprise networks, warning of cyber-attacks, and potential data breaches.</p>
+<h3 id="predictive-maintenance">Predictive Maintenance</h3>
+<p>Anomaly Detection can help reduce unplanned downtime in industrial applications by detecting unusual machine behavior before they break down. This detection ensures timely preventative maintenance, reducing repair costs and extending capital investments.</p>
+<h2 id="example-in-python">Example in Python</h2>
+<p>Here is a code example in Python demonstrating the use of the One-class SVM algorithm for Anomaly Detection. We will use the credit card dataset from Kaggle to predict fraudulent activities.</p>
+<p>Let&rsquo;s start by installing and importing the necessary libraries:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">!</span>pip install pandas numpy matplotlib seaborn sklearn
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> seaborn <span style="color:#66d9ef">as</span> sns
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.preprocessing <span style="color:#f92672">import</span> StandardScaler
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.svm <span style="color:#f92672">import</span> OneClassSVM
+</span></span></code></pre></div><p>Next, read in the credit card dataset and inspect the data:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;creditcard.csv&#39;</span>)
+</span></span><span style="display:flex;"><span>print(df<span style="color:#f92672">.</span>head())
+</span></span></code></pre></div><p>Preprocess the data by scaling the time and amount columns:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df[<span style="color:#e6db74">&#39;Normalized Time&#39;</span>] <span style="color:#f92672">=</span> StandardScaler()<span style="color:#f92672">.</span>fit_transform(df[<span style="color:#e6db74">&#39;Time&#39;</span>]<span style="color:#f92672">.</span>values<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#39;Normalized Amount&#39;</span>] <span style="color:#f92672">=</span> StandardScaler()<span style="color:#f92672">.</span>fit_transform(df[<span style="color:#e6db74">&#39;Amount&#39;</span>]<span style="color:#f92672">.</span>values<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>df<span style="color:#f92672">.</span>drop([<span style="color:#e6db74">&#39;Time&#39;</span>, <span style="color:#e6db74">&#39;Amount&#39;</span>], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span></code></pre></div><p>Partition the data into test and train data:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df_train <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>iloc[:<span style="color:#ae81ff">170000</span>, :]
+</span></span><span style="display:flex;"><span>df_test <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>iloc[<span style="color:#ae81ff">170000</span>:, :]
+</span></span></code></pre></div><p>Train the One-class SVM model:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>model <span style="color:#f92672">=</span> OneClassSVM(nu<span style="color:#f92672">=</span><span style="color:#ae81ff">0.01</span>)
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>fit(df_train[df_train<span style="color:#f92672">.</span>Class <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>])
+</span></span></code></pre></div><p>Predict which observations in the test data are outliers:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>y_predict <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>predict(df_test<span style="color:#f92672">.</span>drop(<span style="color:#e6db74">&#39;Class&#39;</span>, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>))
+</span></span></code></pre></div><p>Evaluate the precision score of the model:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> precision_score
+</span></span><span style="display:flex;"><span>precision <span style="color:#f92672">=</span> precision_score(df_test[<span style="color:#e6db74">&#39;Class&#39;</span>], y_predict, average<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;binary&#39;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Precision of One-Class SVM model: </span><span style="color:#e6db74">{</span>precision<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>Anomaly Detection is a useful machine learning technique that helps identify unusual events or data points that differ from what is expected. We have explored the different algorithms that can be used to detect anomalies, including unsupervised, semi-supervised, and supervised learning techniques. We also provide a code example in Python demonstrating the use of One-class SVM algorithm for Anomaly Detection. Anomaly Detection finds applications in various fields, including fraud detection, cybersecurity, and predictive maintenance, and with ongoing improvements in technology, the demand for anomaly detection continues to grow.</p>
+<h2 id="additional-resources">Additional Resources</h2>
+<ul>
+<li><a href="https://www.hindawi.com/journals/am/2017/2149328/">Anomaly Detection in Wireless Sensor Network with K-Means Clustering Algorithm Using Attribute Selection and PCA Techniques</a></li>
+<li><a href="https://www.hindawi.com/journals/js/2013/191385/">Support Vector Machines-Based Anomaly Detection in Water Monitoring Sensor Networks</a></li>
+<li><a href="https://arxiv.org/abs/2006.06821">A Systematic Analysis of Performance Models for Anomaly Detection</a></li>
+</ul>
+</div>
+        </div>
+        
+    </div>
+    
+            </div>
+        </div><footer class=" text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2023 <a href="http://opensourcebox.com/" class="duration-200 hover:opacity-50">OpenSourceBox</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>

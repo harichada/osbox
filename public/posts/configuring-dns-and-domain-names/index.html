@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+
+<title>OpenSourceBox | Configuring DNS and domain names</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="OpenSourceBox | Configuring DNS and domain names" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="Introduction to Configuring DNS and Domain Names
+Domain names are a crucial component of any website or online service. They serve as a unique identifier for businesses, individuals or organizations and help with brand recognition and credibility. However, no domain name can be useful without a functional DNS (Domain Name System) configuration.
+DNS is a critical part of the internet infrastructure that translates domain names into IP addresses. An IP address is the numerical identifier assigned to networked devices to track them on the internet.">
+<meta property="og:site_name" content="OpenSourceBox">
+<meta property="og:description" content="Introduction to Configuring DNS and Domain Names
+Domain names are a crucial component of any website or online service. They serve as a unique identifier for businesses, individuals or organizations and help with brand recognition and credibility. However, no domain name can be useful without a functional DNS (Domain Name System) configuration.
+DNS is a critical part of the internet infrastructure that translates domain names into IP addresses. An IP address is the numerical identifier assigned to networked devices to track them on the internet.">
+<meta property="og:url" content="http://opensourcebox.com/posts/configuring-dns-and-domain-names/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="http://opensourcebox.com/posts/configuring-dns-and-domain-names/">
+
+<meta name="twitter:description" content="Introduction to Configuring DNS and Domain Names
+Domain names are a crucial component of any website or online service. They serve as a unique identifier for businesses, individuals or organizations and help with brand recognition and credibility. However, no domain name can be useful without a functional DNS (Domain Name System) configuration.
+DNS is a critical part of the internet infrastructure that translates domain names into IP addresses. An IP address is the numerical identifier assigned to networked devices to track them on the internet.">
+<meta property="article:published_time" content="2022-09-20T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2022-09-20T00:00:00&#43;00:00">
+
+
+
+
+
+<meta property="og:image" content="http://opensourcebox.com/">
+<meta property="og:image:url" content="http://opensourcebox.com/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap  p-6">
+            <div class="flex items-center flex-no-shrink  text-white mr-6">
+                <a href="http://opensourcebox.com/"><span class="font-semibold text-2xl tracking-tight">OpenSourceBox</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+    
+        <div class="bg-white col-span-3 p-5 dark:bg-warmgray-900 dark:text-white">
+            
+            <h1 class="title text-4xl font-bold mb-2">Configuring DNS and domain names</h1>
+            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><p>Introduction to Configuring DNS and Domain Names</p>
+<p>Domain names are a crucial component of any website or online service. They serve as a unique identifier for businesses, individuals or organizations and help with brand recognition and credibility. However, no domain name can be useful without a functional DNS (Domain Name System) configuration.</p>
+<p>DNS is a critical part of the internet infrastructure that translates domain names into IP addresses. An IP address is the numerical identifier assigned to networked devices to track them on the internet. DNS works by matching domain names with their corresponding IP addresses, allowing users to access websites using human-readable names instead of numeric addresses.</p>
+<p>In this blog post, we will take a comprehensive look at how to configure DNS and domain names, touching on all relevant aspects of the topic.</p>
+<p>Types of DNS Records</p>
+<p>Before configuring DNS, it is important to understand the different types of DNS records. Each record has a specific function and needs to be configured to guarantee the proper functioning of a DNS.</p>
+<ol>
+<li>A Record</li>
+</ol>
+<p>An A Record is the most common DNS record type used to map a hostname to an IP address. It is used to direct traffic to a specific IP address so that Internet services are highly available and accessible to users around the world.</p>
+<ol start="2">
+<li>CNAME Record</li>
+</ol>
+<p>A CNAME Record (Canonical Name Record) is used to map one domain name to another domain name. It enables the redirection of traffic from one URL to another without having to configure multiple URLs.</p>
+<ol start="3">
+<li>MX Record</li>
+</ol>
+<p>MX Records (Mail Exchange Record) are DNS records used to route email messages to mail servers. When a user sends an email, the MX Record lists the domain name of the email server receiving the messages.</p>
+<ol start="4">
+<li>TXT Record</li>
+</ol>
+<p>TXT Records are used to store arbitrary, text-based information about a domain. For instance, a website may use a TXT Record to publish Sender Policy Framework (SPF) entries or DomainKeys Identified Mail (DKIM) public keys.</p>
+<p>Creating DNS Records</p>
+<p>To configure DNS and domain names, an understanding of the steps involved in creating a DNS record is essential. The following steps should be used when creating DNS records:</p>
+<ol>
+<li>
+<p>Identify the record type to create.</p>
+</li>
+<li>
+<p>Determine the record name.</p>
+</li>
+<li>
+<p>Verify the data to be entered in the record.</p>
+</li>
+<li>
+<p>Enter the appropriate information.</p>
+</li>
+<li>
+<p>Save the changes and allow time for the DNS settings to propagate across the internet.</p>
+</li>
+</ol>
+<p>Configuring Domain Names</p>
+<p>To configure a domain name, first, you must identify where the domain name is registered. This is the service that manages the relationship between the domain name and its DNS servers. Once you identify where the domain is registered, follow the following steps:</p>
+<ol>
+<li>
+<p>Access your domain registrar and log in.</p>
+</li>
+<li>
+<p>Find and access the DNS Configuration settings section.</p>
+</li>
+<li>
+<p>Modify or add the required DNS Records.</p>
+</li>
+<li>
+<p>Save the configuration changes.</p>
+</li>
+<li>
+<p>Wait a few hours or days for the changes to propagate and take effect globally.</p>
+</li>
+</ol>
+<p>DHCP and DNS</p>
+<p>Dynamic Host Configuration Protocol (DHCP) and DNS work closely together. DHCP assigns IP addresses to networked devices, while DNS maps domain names to IP addresses. DHCP within a network will automatically configure network devices with the relevant DNS server IPs.</p>
+<p>When utilizing DHCP, it is important to configure your DNS record to support dynamic updates so that the changes propagated on the local DHCP server are efficiently updated globally.</p>
+<p>Conclusion</p>
+<p>In summary, configuring DNS and domain names is a critical exercise for organizations that require a robust online presence. DNS mapping enables users to access websites using domain names instead of IP addresses. An adequate understanding of different DNS record types and their configurations is essential for correct configuration, and efficient operations.</p>
+<p>Additional Resources:</p>
+<ol>
+<li>
+<p>RFC 1035 - Domain Names - Implementation and Specification</p>
+</li>
+<li>
+<p>DNS &amp; BIND ebook</p>
+</li>
+<li>
+<p>Understanding DNS by IBM</p>
+</li>
+</ol>
+</div>
+        </div>
+        
+    </div>
+    
+            </div>
+        </div><footer class=" text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2023 <a href="http://opensourcebox.com/" class="duration-200 hover:opacity-50">OpenSourceBox</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>

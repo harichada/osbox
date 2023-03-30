@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+
+<title>OpenSourceBox | Monitoring system performance and resource usage</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="OpenSourceBox | Monitoring system performance and resource usage" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="Monitoring System Performance and Resource Usage
+As systems become increasingly complex, it is crucial to monitor their performance and resource usage to ensure optimal operation. This monitoring process involves tracking critical system metrics and identifying anomalies such as bottlenecks, resource overutilization, or underutilization. In this blog post, we will discuss the importance of monitoring system performance and resource usage, the key metrics to monitor, and techniques for monitoring these metrics.">
+<meta property="og:site_name" content="OpenSourceBox">
+<meta property="og:description" content="Monitoring System Performance and Resource Usage
+As systems become increasingly complex, it is crucial to monitor their performance and resource usage to ensure optimal operation. This monitoring process involves tracking critical system metrics and identifying anomalies such as bottlenecks, resource overutilization, or underutilization. In this blog post, we will discuss the importance of monitoring system performance and resource usage, the key metrics to monitor, and techniques for monitoring these metrics.">
+<meta property="og:url" content="http://opensourcebox.com/posts/monitoring-system-performance-and-resource-usage/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="http://opensourcebox.com/posts/monitoring-system-performance-and-resource-usage/">
+
+<meta name="twitter:description" content="Monitoring System Performance and Resource Usage
+As systems become increasingly complex, it is crucial to monitor their performance and resource usage to ensure optimal operation. This monitoring process involves tracking critical system metrics and identifying anomalies such as bottlenecks, resource overutilization, or underutilization. In this blog post, we will discuss the importance of monitoring system performance and resource usage, the key metrics to monitor, and techniques for monitoring these metrics.">
+<meta property="article:published_time" content="2022-09-20T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2022-09-20T00:00:00&#43;00:00">
+
+
+
+
+
+<meta property="og:image" content="http://opensourcebox.com/">
+<meta property="og:image:url" content="http://opensourcebox.com/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap  p-6">
+            <div class="flex items-center flex-no-shrink  text-white mr-6">
+                <a href="http://opensourcebox.com/"><span class="font-semibold text-2xl tracking-tight">OpenSourceBox</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+    
+        <div class="bg-white col-span-3 p-5 dark:bg-warmgray-900 dark:text-white">
+            
+            <h1 class="title text-4xl font-bold mb-2">Monitoring system performance and resource usage</h1>
+            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><p>Monitoring System Performance and Resource Usage</p>
+<p>As systems become increasingly complex, it is crucial to monitor their performance and resource usage to ensure optimal operation. This monitoring process involves tracking critical system metrics and identifying anomalies such as bottlenecks, resource overutilization, or underutilization. In this blog post, we will discuss the importance of monitoring system performance and resource usage, the key metrics to monitor, and techniques for monitoring these metrics.</p>
+<p>Why is Monitoring System Performance and Resource Usage Important?</p>
+<p>To keep your system running smoothly and avoid unnecessary downtime, it is essential to continuously monitor its performance and resources. Monitoring helps you quickly identify potential problems, track trends, and enable you to proactively take appropriate measures to prevent or mitigate problems.</p>
+<p>In addition, monitoring your system performance and resource usage allows you to optimize your hardware and software resources, which can maximize the efficiency of your system. By leveraging data collected over time, you can identify areas where you may have over-provisioned resources or under-utilized others, which can help you better allocate your resources.</p>
+<p>Key Metrics to Monitor</p>
+<p>To effectively monitor system performance and resource usage, there are certain key metrics that you should track. These metrics differ depending on the system type and the underlying infrastructure. Let’s take a closer look at some of the essential metrics:</p>
+<ol>
+<li>CPU Usage:</li>
+</ol>
+<p>Monitoring CPU usage is an important system performance metric to measure. It involves tracking the percentage of time the CPU is in use. High CPU utilization can be an indicator of a system bottleneck, while low utilization can indicate under-utilized resources.</p>
+<p>You can measure CPU utilization through various system tools like:</p>
+<pre><code>top - stats of CPU Utilization summary
+sar - longitudinal analysis
+vmstat - overall system information
+</code></pre>
+<p>Code Snippets:</p>
+<pre><code>top
+top - 11:26:44 up 61 days,  7:03,  3 users,  load average: 0.00, 0.01, 0.05
+Tasks: 309 total,   2 running, 307 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.0 us,  0.0 sy,  0.0 ni,100.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem : 12995628 total,  6462712 free,   443052 used,  6103864 buff/cache
+KiB Swap: 16777212 total, 16629624 free,   147588 used.  1173472 avail Mem 
+
+vmstat - this command will show the system with overall memory usage, CPU utilization and IO information.
+vmstat 1 5 
+procs -----------memory---------- —swap-- —io--- --system-- ------cpu-----
+r  b     swpd   free     buff  cache  si    so   bi     bo   in   cs  us  sy  io  wa  st
+0  0 166376 22731152 131588 4738692  0   0    0       0       0     0   0    0     0  100  0
+</code></pre>
+<ol start="2">
+<li>Memory Usage:</li>
+</ol>
+<p>Monitoring memory usage is also critical for system performance since it identifies whether your system has sufficient memory to execute applications smoothly. You can monitor memory usage through commands such as:</p>
+<p>Code Snippets:</p>
+<pre><code>free: used to check the overall memory usage
+free -h
+            total          used          free        shared  buff/cache   available
+Mem:           3.7G          225M          3.3G           17M          129M          3.2G
+Swap:          2.0G          369M          1.7G 
+
+top: it can monitor the current running processes with their memory usage
+top - 11:20:40 up 61 days,  7:00,  3 users,  load average: 0.00, 0.01, 0.05
+Tasks: 309 total,   2 running, 307 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.0 us,  0.0 sy,  0.0 ni,100.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem : 12997192 total,  6444512 free,   411532 used,  6544148 buff/cache
+KiB Swap: 16777212 total, 16629624 free,   147588 used.  1175304 avail Mem
+</code></pre>
+<ol start="3">
+<li>Disk Usage:</li>
+</ol>
+<p>Monitoring disk usage helps in identifying potential disk space allocation problems. You can monitor disk usage by running the following command to list general disk usage details:</p>
+<p>Code Snippet:</p>
+<pre><code>df -h
+Filesystem       Size         Used     Avail     Use%     Mounted on 
+udev             1.9G          0           1.9G      0%        /dev
+tmpfs            389M         11M       378M    3%        /run
+/dev/nvme0n1p2  28G         12G       14G       46%      /
+tmpfs            2.0G          0          2.0G     0%        /dev/shm
+tmpfs            5.0M          0         5.0M     0%        /run/lock
+tmpfs            2.0G          0         2.0G     0%        /sys/fs/cgroup
+</code></pre>
+<ol start="4">
+<li>Network Usage:</li>
+</ol>
+<p>Monitoring network usage helps in identifying network bottlenecks, identifying security threats, and identifying user behavior towards the system. You can monitor network usage through commands like:</p>
+<p>Code Snippet:</p>
+<pre><code>netstat: It helps identify the active network connections.
+netstat -atup 
+
+tcp        0      0 localhost:3306          0.0.0.0:*             LISTEN      1622/mysqld   
+tcp        0      0 10.0.1.15:22            10.0.1.10:49622        ESTABLISHED 613/sshd: abhi [p  ssh]
+tcp6       0      0 [::]:22                 [::]:*                LISTEN      610/sshd        
+</code></pre>
+<ol start="5">
+<li>Application Performance:</li>
+</ol>
+<p>It is important to monitor the performance of the underlying applications running in your system. It helps identify memory leaks and performance issues, which can impact system performance. You can monitor application performance using tools like:</p>
+<p>Code Snippets:</p>
+<pre><code>AppDynamics: It helps to identify performance issues in Java, Python, and .NET applications.
+New Relic: This tool collects data about application performance and creates reports, graphs, and dashboards.
+</code></pre>
+<p>Monitoring Techniques</p>
+<p>Now that we have gone through the key metrics that need monitoring, let&rsquo;s talk about various techniques used in monitoring systems performance.</p>
+<ol>
+<li>System Logging:</li>
+</ol>
+<p>System logging provides crucial insights into your system’s behavior over time. By analyzing system log files, administrators gain a deeper understanding of what is happening within the system, detect potential issues, and identify trends.</p>
+<p>Code Snippet:</p>
+<pre><code>Logging in Ubuntu-based system can be done using rsyslogd(server software) and Logrotate(daily rotation of files)
+</code></pre>
+<ol start="2">
+<li>Performance Testing:</li>
+</ol>
+<p>Performance testing involves simulating high-stress scenarios in your system to identify bottlenecks and other performance issues. It is an excellent way to identify defects and optimize the system performance.</p>
+<p>Code Snippets:</p>
+<pre><code>Locust: allows developers to define scenarios that simulate user behavior with your system.
+</code></pre>
+<ol start="3">
+<li>Load Balancing:</li>
+</ol>
+<p>Load balancing enables higher traffic to be evenly distributed across multiple servers or nodes rapidly.</p>
+<p>Code Snippet:</p>
+<pre><code>NGINX: load-balancing capabilities.
+</code></pre>
+<p>Conclusion</p>
+<p>Monitoring system performance and resource usage is critical to ensure the smooth operation of complex systems. The metrics that you monitor, such as CPU usage, memory usage, disk usage, network usage, and application performance, can be key indicators of problems that you may need to solve. By leveraging the appropriate toolsets, you can monitor your system effectively, identify problems early, and take proactive action to keep your system running smoothly.</p>
+<p>Useful Resources:</p>
+<ol>
+<li>Linux System Monitoring Basics - <a href="https://linode.com/docs/guides/remote-server-monitoring-with-sysdig/">https://linode.com/docs/guides/remote-server-monitoring-with-sysdig/</a></li>
+<li>Performance testing - <a href="https://locust.io/">https://locust.io/</a></li>
+<li>Applicational monitoring - <a href="https://www.appdynamics.com/product/server-monitoring/">https://www.appdynamics.com/product/server-monitoring/</a></li>
+<li>Logging tutorial - <a href="https://www.digitalocean.com/community/tutorials/how-to-use-rsyslog-to-send-logs-to-remote-server-on-ubuntu-18-04">https://www.digitalocean.com/community/tutorials/how-to-use-rsyslog-to-send-logs-to-remote-server-on-ubuntu-18-04</a></li>
+<li>Load testing using NGIX - <a href="https://www.nginx.com/blog/building-a-scalable-web-application-with-nginx-and-node-js/">https://www.nginx.com/blog/building-a-scalable-web-application-with-nginx-and-node-js/</a></li>
+</ol>
+</div>
+        </div>
+        
+    </div>
+    
+            </div>
+        </div><footer class=" text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2023 <a href="http://opensourcebox.com/" class="duration-200 hover:opacity-50">OpenSourceBox</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>

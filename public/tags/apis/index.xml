@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>APIs on OpenSourceBox</title>
+    <link>http://opensourcebox.com/tags/apis/</link>
+    <description>Recent content in APIs on OpenSourceBox</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 20 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://opensourcebox.com/tags/apis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI-powered Chatbots with Open Source</title>
+      <link>http://opensourcebox.com/posts/ai-powered-chatbots-with-open-source/</link>
+      <pubDate>Wed, 20 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://opensourcebox.com/posts/ai-powered-chatbots-with-open-source/</guid>
+      <description>AI-powered chatbots have become an indispensable tool for businesses to enhance customer experience and reduce operational costs. Open source chatbot platforms are particularly popular because they offer flexibility, customizability, and scalability at a reduced cost. In this blog post, we shall explore the key features of AI-powered chatbots and how open source technology can be leveraged to build robust and powerful chatbots.
+What are AI-powered chatbots? Chatbots are computer programs that simulate conversation with human users through a voice or text-based interface.</description>
+    </item>
+    
+  </channel>
+</rss>

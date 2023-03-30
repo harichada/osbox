@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+
+<title>OpenSourceBox | GAN(Artificial Intelligence) in action with OpenCV</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="OpenSourceBox | GAN(Artificial Intelligence) in action with OpenCV" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="In recent years, Generative Adversarial Networks (GANs) have become incredibly popular in the field of Artificial Intelligence (AI) due to their ability to create new data that is similar to the training data. This has many applications, such as image generation or video synthesis, where GANs can generate new images, videos or even entire scenes on their own. One of the powerful tools used to work with GANs is OpenCV, a powerful open-source computer vision library.">
+<meta property="og:site_name" content="OpenSourceBox">
+<meta property="og:description" content="In recent years, Generative Adversarial Networks (GANs) have become incredibly popular in the field of Artificial Intelligence (AI) due to their ability to create new data that is similar to the training data. This has many applications, such as image generation or video synthesis, where GANs can generate new images, videos or even entire scenes on their own. One of the powerful tools used to work with GANs is OpenCV, a powerful open-source computer vision library.">
+<meta property="og:url" content="http://opensourcebox.com/posts/ganartificial-intelligence-in-action-with-opencv/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="http://opensourcebox.com/posts/ganartificial-intelligence-in-action-with-opencv/">
+
+<meta name="twitter:description" content="In recent years, Generative Adversarial Networks (GANs) have become incredibly popular in the field of Artificial Intelligence (AI) due to their ability to create new data that is similar to the training data. This has many applications, such as image generation or video synthesis, where GANs can generate new images, videos or even entire scenes on their own. One of the powerful tools used to work with GANs is OpenCV, a powerful open-source computer vision library.">
+<meta property="article:published_time" content="2022-09-20T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2022-09-20T00:00:00&#43;00:00">
+
+
+
+
+
+<meta property="og:image" content="http://opensourcebox.com/">
+<meta property="og:image:url" content="http://opensourcebox.com/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap  p-6">
+            <div class="flex items-center flex-no-shrink  text-white mr-6">
+                <a href="http://opensourcebox.com/"><span class="font-semibold text-2xl tracking-tight">OpenSourceBox</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+    
+        <div class="bg-white col-span-3 p-5 dark:bg-warmgray-900 dark:text-white">
+            
+            <h1 class="title text-4xl font-bold mb-2">GAN(Artificial Intelligence) in action with OpenCV</h1>
+            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><p>In recent years, Generative Adversarial Networks (GANs) have become incredibly popular in the field of Artificial Intelligence (AI) due to their ability to create new data that is similar to the training data. This has many applications, such as image generation or video synthesis, where GANs can generate new images, videos or even entire scenes on their own. One of the powerful tools used to work with GANs is OpenCV, a powerful open-source computer vision library.</p>
+<p>In this blog post, we will explore how GANs can be used in practice with OpenCV. We will start by providing a brief overview of GANs, then dive into how to implement them with Python and OpenCV.</p>
+<h3 id="what-are-gans">What are GANs?</h3>
+<p>Generative Adversarial Networks (GANs) are a type of neural network that consists of two parts: a generator and a discriminator. The generator takes a random noise vector as input and generates a sample similar to the training data. The discriminator, on the other hand, takes in the generated sample and attempts to distinguish it from the real data. During the training, the generator learns to generate samples that are indistinguishable from the real data, while the discriminator learns to distinguish the real data from the generated samples.</p>
+<h3 id="gans-in-action">GANs in Action</h3>
+<p>There are several ways to use GANs in practice, but one of the most widely used applications is image generation. In this section, we will explore an example of how to use GANs with OpenCV for generating new images.</p>
+<p>First, we need to install the necessary libraries. In addition to OpenCV, we will also use the TensorFlow and Keras libraries for our GAN implementation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>pip install opencv<span style="color:#f92672">-</span>python
+</span></span><span style="display:flex;"><span>pip install tensorflow
+</span></span><span style="display:flex;"><span>pip install keras
+</span></span></code></pre></div><p>Next, we can start by defining our generator and discriminator models. For this example, we will use a simple architecture with a dense layer followed by a reshape layer for the generator and two convolutional layers followed by two dense layers for the discriminator.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> keras <span style="color:#f92672">import</span> Sequential
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> keras.layers <span style="color:#f92672">import</span> Dense, Reshape, Flatten, Conv2D, Conv2DTranspose
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> keras.optimizers <span style="color:#f92672">import</span> Adam
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">build_generator</span>(latent_dim):
+</span></span><span style="display:flex;"><span>    generator <span style="color:#f92672">=</span> Sequential()
+</span></span><span style="display:flex;"><span>    generator<span style="color:#f92672">.</span>add(Dense(<span style="color:#ae81ff">128</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">7</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">7</span>, input_dim<span style="color:#f92672">=</span>latent_dim, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
+</span></span><span style="display:flex;"><span>    generator<span style="color:#f92672">.</span>add(Reshape((<span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">128</span>)))
+</span></span><span style="display:flex;"><span>    generator<span style="color:#f92672">.</span>add(Conv2DTranspose(<span style="color:#ae81ff">128</span>, (<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">4</span>), strides<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
+</span></span><span style="display:flex;"><span>    generator<span style="color:#f92672">.</span>add(Conv2DTranspose(<span style="color:#ae81ff">128</span>, (<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">4</span>), strides<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
+</span></span><span style="display:flex;"><span>    generator<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">1</span>, (<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">7</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sigmoid&#39;</span>, padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> generator
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">build_discriminator</span>(img_shape):
+</span></span><span style="display:flex;"><span>    discriminator <span style="color:#f92672">=</span> Sequential()
+</span></span><span style="display:flex;"><span>    discriminator<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">64</span>, (<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">3</span>), strides<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, input_shape<span style="color:#f92672">=</span>img_shape, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
+</span></span><span style="display:flex;"><span>    discriminator<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">128</span>, (<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">3</span>), strides<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>), padding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;same&#39;</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
+</span></span><span style="display:flex;"><span>    discriminator<span style="color:#f92672">.</span>add(Flatten())
+</span></span><span style="display:flex;"><span>    discriminator<span style="color:#f92672">.</span>add(Dense(<span style="color:#ae81ff">128</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
+</span></span><span style="display:flex;"><span>    discriminator<span style="color:#f92672">.</span>add(Dense(<span style="color:#ae81ff">1</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sigmoid&#39;</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> discriminator
+</span></span></code></pre></div><p>After defining the models, we can initialize and compile them with the following code.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>img_shape <span style="color:#f92672">=</span> (<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>latent_dim <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Build the discriminator</span>
+</span></span><span style="display:flex;"><span>discriminator <span style="color:#f92672">=</span> build_discriminator(img_shape)
+</span></span><span style="display:flex;"><span>discriminator<span style="color:#f92672">.</span>compile(loss<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;binary_crossentropy&#39;</span>, optimizer<span style="color:#f92672">=</span>Adam(), metrics<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;accuracy&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Build the generator</span>
+</span></span><span style="display:flex;"><span>generator <span style="color:#f92672">=</span> build_generator(latent_dim)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># The generator takes noise as input and generates imgs</span>
+</span></span><span style="display:flex;"><span>z <span style="color:#f92672">=</span> Input(shape<span style="color:#f92672">=</span>(latent_dim,))
+</span></span><span style="display:flex;"><span>img <span style="color:#f92672">=</span> generator(z)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># For the combined model we will only train the generator</span>
+</span></span><span style="display:flex;"><span>discriminator<span style="color:#f92672">.</span>trainable <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># The discriminator takes generated images as input and determines validity</span>
+</span></span><span style="display:flex;"><span>valid <span style="color:#f92672">=</span> discriminator(img)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># The combined model links the generator and discriminator</span>
+</span></span><span style="display:flex;"><span>combined <span style="color:#f92672">=</span> Model(z, valid)
+</span></span><span style="display:flex;"><span>combined<span style="color:#f92672">.</span>compile(loss<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;binary_crossentropy&#39;</span>, optimizer<span style="color:#f92672">=</span>Adam())
+</span></span></code></pre></div><p>Now, we can train the GAN with real images taken from the MNIST dataset.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> keras.datasets <span style="color:#f92672">import</span> mnist
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load the dataset</span>
+</span></span><span style="display:flex;"><span>(X_train, _), (_, _) <span style="color:#f92672">=</span> mnist<span style="color:#f92672">.</span>load_data()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Rescale -1 to 1</span>
+</span></span><span style="display:flex;"><span>X_train <span style="color:#f92672">=</span> X_train <span style="color:#f92672">/</span> <span style="color:#ae81ff">127.5</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1.</span>
+</span></span><span style="display:flex;"><span>X_train <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>expand_dims(X_train, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Train the discriminator</span>
+</span></span><span style="display:flex;"><span>valid <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>ones((batch_size, <span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>fake <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((batch_size, <span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> epoch <span style="color:#f92672">in</span> range(epochs):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Select a random batch of images</span>
+</span></span><span style="display:flex;"><span>    idx <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">0</span>, X_train<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>], batch_size)
+</span></span><span style="display:flex;"><span>    imgs <span style="color:#f92672">=</span> X_train[idx]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Generate a batch of new images</span>
+</span></span><span style="display:flex;"><span>    noise <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, (batch_size, latent_dim))
+</span></span><span style="display:flex;"><span>    gen_imgs <span style="color:#f92672">=</span> generator<span style="color:#f92672">.</span>predict(noise)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Train the discriminator</span>
+</span></span><span style="display:flex;"><span>    d_loss_real <span style="color:#f92672">=</span> discriminator<span style="color:#f92672">.</span>train_on_batch(imgs, valid)
+</span></span><span style="display:flex;"><span>    d_loss_fake <span style="color:#f92672">=</span> discriminator<span style="color:#f92672">.</span>train_on_batch(gen_imgs, fake)
+</span></span><span style="display:flex;"><span>    d_loss <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span> <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>add(d_loss_real, d_loss_fake)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Train the generator</span>
+</span></span><span style="display:flex;"><span>    noise <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, (batch_size, latent_dim))
+</span></span><span style="display:flex;"><span>    g_loss <span style="color:#f92672">=</span> combined<span style="color:#f92672">.</span>train_on_batch(noise, valid)
+</span></span></code></pre></div><p>After training the GAN, we can sample from the generator to generate new images.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Generate a random noise vector</span>
+</span></span><span style="display:flex;"><span>noise <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, (<span style="color:#ae81ff">1</span>, latent_dim))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Generate a new image</span>
+</span></span><span style="display:flex;"><span>gen_img <span style="color:#f92672">=</span> generator<span style="color:#f92672">.</span>predict(noise)[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Rescale the image from [-1,1] to [0,1]</span>
+</span></span><span style="display:flex;"><span>gen_img <span style="color:#f92672">=</span> (<span style="color:#ae81ff">0.5</span> <span style="color:#f92672">*</span> gen_img <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.5</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Display the image</span>
+</span></span><span style="display:flex;"><span>cv2<span style="color:#f92672">.</span>imshow(<span style="color:#e6db74">&#39;Generated Image&#39;</span>, gen_img)
+</span></span><span style="display:flex;"><span>cv2<span style="color:#f92672">.</span>waitKey(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>cv2<span style="color:#f92672">.</span>destroyAllWindows()
+</span></span></code></pre></div><h3 id="conclusion">Conclusion</h3>
+<p>In this blog post, we explored how to use GANs with OpenCV for image generation. We started by providing an overview of GANs and then dove into the implementation details using Python and OpenCV. We explored how to define the generator and discriminator models, how to initialize and compile them, and how to train the GAN. Finally, we generated new images using the trained GAN.</p>
+<p>This is just one example of GANs in action with OpenCV. GANs have many applications, such as video synthesis, and can be used to generate data for a wide range of purposes. If you want to learn more about GANs, you can check out the following resources:</p>
+<ul>
+<li><a href="https://github.com/hindupuravinash/the-gan-zoo">The GAN Zoo</a>: A collection of GAN implementations in TensorFlow.</li>
+<li><a href="https://www.oreilly.com/library/view/generative-deep-learning/9781492041931/">Generative Deep Learning</a>: A book on generative modeling with deep learning.</li>
+<li><a href="https://github.com/PauliSairanen/python-ai-opencv-gan">GitHub repository for this project</a>: The source code for this project.</li>
+</ul>
+<p>We hope this blog post has given you a better understanding of how GANs can be used with OpenCV for image generation. If you have any questions or comments, please feel free to leave them below!</p>
+</div>
+        </div>
+        
+    </div>
+    
+            </div>
+        </div><footer class=" text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2023 <a href="http://opensourcebox.com/" class="duration-200 hover:opacity-50">OpenSourceBox</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>

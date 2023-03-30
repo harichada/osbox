@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>reinforcement-learning on OpenSourceBox</title>
+    <link>http://opensourcebox.com/tags/reinforcement-learning/</link>
+    <description>Recent content in reinforcement-learning on OpenSourceBox</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 14 Nov 2022 12:00:00 +0000</lastBuildDate><atom:link href="http://opensourcebox.com/tags/reinforcement-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Human-like interaction with gaming bots</title>
+      <link>http://opensourcebox.com/posts/human-like-interaction-with-gaming-bots/</link>
+      <pubDate>Mon, 14 Nov 2022 12:00:00 +0000</pubDate>
+      
+      <guid>http://opensourcebox.com/posts/human-like-interaction-with-gaming-bots/</guid>
+      <description>Human-like interaction with gaming bots: An introduction
+The rise of artificial intelligence (AI) in gaming has been on the upswing in recent years, and gaming bots have been at the forefront of this trend. Gaming bots, or game agents, are AI-powered entities in computer games that can interact and respond to player actions. One of the key objectives of gaming bots is to make the gaming experience more immersive and realistic by mimicking human-like behavior.</description>
+    </item>
+    
+  </channel>
+</rss>

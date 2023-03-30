@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Server Administration on OpenSourceBox</title>
+    <link>http://opensourcebox.com/categories/server-administration/</link>
+    <description>Recent content in Server Administration on OpenSourceBox</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 21 Oct 2021 20:22:46 +0530</lastBuildDate><atom:link href="http://opensourcebox.com/categories/server-administration/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Migrating Data and Applications Between Servers</title>
+      <link>http://opensourcebox.com/posts/migrating-data-and-applications-between-servers/</link>
+      <pubDate>Thu, 21 Oct 2021 20:22:46 +0530</pubDate>
+      
+      <guid>http://opensourcebox.com/posts/migrating-data-and-applications-between-servers/</guid>
+      <description>Migrating data and applications between servers is one of the most critical tasks a system administrator can undertake. It may be done for various reasons, but the most common include upgrading to a newer version of the operating system or hardware, consolidating servers, or moving to the cloud. Regardless of the reason, it can be a daunting task that requires careful planning and execution.
+In this blog post, we will explore the different steps involved in moving data and applications between servers.</description>
+    </item>
+    
+  </channel>
+</rss>

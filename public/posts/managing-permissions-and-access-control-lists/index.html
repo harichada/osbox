@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+
+<title>OpenSourceBox | Managing permissions and access control lists</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="OpenSourceBox | Managing permissions and access control lists" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="Managing Permissions and Access Control Lists
+One of the most critical aspects of an organization&rsquo;s security infrastructure is the management of permissions and access control lists (ACLs). Companies today have a wide range of resources and tools, both on-premises and in the cloud, that are critical to their operations. Proper management of these resources is essential to keeping information secure and ensuring that only authorized personnel can access sensitive data.">
+<meta property="og:site_name" content="OpenSourceBox">
+<meta property="og:description" content="Managing Permissions and Access Control Lists
+One of the most critical aspects of an organization&rsquo;s security infrastructure is the management of permissions and access control lists (ACLs). Companies today have a wide range of resources and tools, both on-premises and in the cloud, that are critical to their operations. Proper management of these resources is essential to keeping information secure and ensuring that only authorized personnel can access sensitive data.">
+<meta property="og:url" content="http://opensourcebox.com/posts/managing-permissions-and-access-control-lists/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="http://opensourcebox.com/posts/managing-permissions-and-access-control-lists/">
+
+<meta name="twitter:description" content="Managing Permissions and Access Control Lists
+One of the most critical aspects of an organization&rsquo;s security infrastructure is the management of permissions and access control lists (ACLs). Companies today have a wide range of resources and tools, both on-premises and in the cloud, that are critical to their operations. Proper management of these resources is essential to keeping information secure and ensuring that only authorized personnel can access sensitive data.">
+<meta property="article:published_time" content="2022-09-20T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2022-09-20T00:00:00&#43;00:00">
+
+
+
+
+
+<meta property="og:image" content="http://opensourcebox.com/">
+<meta property="og:image:url" content="http://opensourcebox.com/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap  p-6">
+            <div class="flex items-center flex-no-shrink  text-white mr-6">
+                <a href="http://opensourcebox.com/"><span class="font-semibold text-2xl tracking-tight">OpenSourceBox</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+    
+        <div class="bg-white col-span-3 p-5 dark:bg-warmgray-900 dark:text-white">
+            
+            <h1 class="title text-4xl font-bold mb-2">Managing permissions and access control lists</h1>
+            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><p>Managing Permissions and Access Control Lists</p>
+<p>One of the most critical aspects of an organization&rsquo;s security infrastructure is the management of permissions and access control lists (ACLs). Companies today have a wide range of resources and tools, both on-premises and in the cloud, that are critical to their operations. Proper management of these resources is essential to keeping information secure and ensuring that only authorized personnel can access sensitive data.</p>
+<p>In this blog post, we will explore the concepts of permissions and ACLs, and how to effectively manage them in modern computing environments.</p>
+<p>Understanding Permissions</p>
+<p>In general, permissions are a way to limit the access that users or processes have to resources on a system. These resources could be files, directories, databases, or any other type of resource that is central to your organization&rsquo;s operations.</p>
+<p>Permissions are typically defined by creating a set of rules that govern how a resource can be accessed. These rules can be broken down into three basic components: read, write, and execute. By default, when a new resource is created, certain permissions are assigned to it. Depending on the environment, these permissions could be assigned to individual users or groups of users.</p>
+<p>It is important to note that permissions are defined at the operating system (OS) level. Therefore, if you want to set permissions for a particular resource, you need to ensure that the underlying OS supports those permissions.</p>
+<p>Managing Permissions in Linux</p>
+<p>Linux is a popular operating system that is widely used in both on-premises and cloud environments. It is known for its robust security features, including its support for permissions and ACLs.</p>
+<p>In Linux, permissions are managed using chmod, a command-line tool that allows you to set permissions for specific files or directories. To set permissions for a file or directory, you need to use a combination of three letters (r, w, and x) which correspond to the read, write, and execute permission, respectively.</p>
+<p>For example, to allow a user to read and write a file, you would use the following command:</p>
+<pre tabindex="0"><code>$ chmod u+rw myFile.txt 
+</code></pre><p>Here, the &ldquo;u&rdquo; stands for the user, and &ldquo;rw&rdquo; stands for read and write. You can also set permissions for groups and for other users by replacing the &ldquo;u&rdquo; with &ldquo;g&rdquo; or &ldquo;o&rdquo;, respectively.</p>
+<p>Managing Permissions in Windows</p>
+<p>Windows is another popular OS that is widely used in both on-premises and cloud environments. Like Linux, it also supports permissions and ACLs.</p>
+<p>In Windows, permissions are managed using the Security tab of the Properties dialog box. To set permissions for a file or directory, you need to open the Properties dialog box and select the Security tab. From there, you can add or remove users or groups and set their permissions.</p>
+<p>Understanding Access Control Lists (ACLs)</p>
+<p>In addition to basic permissions, many modern computing environments support access control lists (ACLs). ACLs are a more advanced way of managing security permissions.</p>
+<p>ACLs allow you to define more granular permissions for users, groups, or even individual processes. With ACLs, you can specify permissions such as &ldquo;read but not write&rdquo; or &ldquo;execute only during certain hours&rdquo;.</p>
+<p>ACLs are typically defined using a set of rules that describe the access that each user or group has to a particular resource. Like basic permissions, ACLs are defined at the OS level and are usually accessed using command-line tools.</p>
+<p>Managing ACLs in Linux</p>
+<p>In Linux, ACLs are managed using the setfacl command. This command allows you to set ACLs for a specific file or directory.</p>
+<p>For example, to allow a user to read and write a file, but not execute it, you would use the following command:</p>
+<pre tabindex="0"><code>$ setfacl -m u:joe:rw- myFile.txt
+</code></pre><p>Here, the &ldquo;u&rdquo; stands for user, and &ldquo;joe&rdquo; is the name of the user. The &ldquo;rw-&rdquo; stands for read and write, but not execute.</p>
+<p>Managing ACLs in Windows</p>
+<p>In Windows, ACLs are managed using the Advanced Security Settings dialog box. This dialog box allows you to set permissions for individual users or groups.</p>
+<p>To set an ACL in Windows, you need to open the Advanced Security Settings dialog box for a particular resource, then select the user or group for which you want to set the ACL. From there, you can define the specific permissions that you want to grant or deny for that user or group.</p>
+<p>Conclusion</p>
+<p>Managing permissions and access control lists is an essential part of an organization&rsquo;s security infrastructure. Properly managing these resources is critical to keeping information secure and ensuring that only authorized personnel can access sensitive data.</p>
+<p>In this blog post, we have explored the concepts of permissions and ACLs, and how to effectively manage them in modern computing environments. We have also described common tools and techniques that are used to manage permissions and ACLs in both Linux and Windows operating systems.</p>
+<p>By following best practices for managing permissions and ACLs, organizations can ensure that their critical resources are secure and accessible only to those who need them.</p>
+<p>Additional Resources</p>
+<p>To learn more about managing permissions and ACLs, check out the following resources:</p>
+<ul>
+<li>The Linux man pages for chmod and setfacl</li>
+<li>The Microsoft documentation on Managing File and Folder Permissions in Windows</li>
+<li>The NIST Guidelines for Access Control in Information Systems</li>
+</ul>
+</div>
+        </div>
+        
+    </div>
+    
+            </div>
+        </div><footer class=" text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2023 <a href="http://opensourcebox.com/" class="duration-200 hover:opacity-50">OpenSourceBox</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>

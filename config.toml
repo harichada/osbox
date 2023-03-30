@@ -2,3 +2,6 @@ baseURL = 'http://opensourcebox.com/'
 languageCode = 'en-us'
 title = 'OpenSourceBox'
 theme = 'Blonde'
+[params]
+  mainSections = ['blog', 'docs']
+  paginator_pages = 10

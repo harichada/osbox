@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>finance on OpenSourceBox</title>
+    <link>http://opensourcebox.com/categories/finance/</link>
+    <description>Recent content in finance on OpenSourceBox</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="http://opensourcebox.com/categories/finance/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Time Series Analysis for Finance Using AI</title>
+      <link>http://opensourcebox.com/posts/time-series-analysis-for-finance-using-ai/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://opensourcebox.com/posts/time-series-analysis-for-finance-using-ai/</guid>
+      <description>Introduction
+Time series analysis has grown increasingly popular in finance, and for good reason: the ability to predict and forecast market trends and movements is critical for investors and financial analysts alike. In recent years, artificial intelligence (AI) has become an important tool in time series analysis, allowing investors to glean valuable insights and make informed investment decisions. In this blog post, we will examine the basics of time series analysis for finance using AI, including its applications, key concepts, and the tools necessary for successful implementation.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+
+<title>OpenSourceBox | OCR (Optical Character Recognition) with Tesseract</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="OpenSourceBox | OCR (Optical Character Recognition) with Tesseract" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="OCR (Optical Character Recognition) with Tesseract: Understanding the Concept
+OCR (Optical Character Recognition) is an important technology that enables the recognition of printed or handwritten text characters from an image (JPG, PNG, TIFF, PDF, etc.) or a scanned document. It is an efficient way of digitizing physical text documents and converting them into machine-readable text format. Tesseract is an open-source OCR engine that has been widely used for optical character recognition.">
+<meta property="og:site_name" content="OpenSourceBox">
+<meta property="og:description" content="OCR (Optical Character Recognition) with Tesseract: Understanding the Concept
+OCR (Optical Character Recognition) is an important technology that enables the recognition of printed or handwritten text characters from an image (JPG, PNG, TIFF, PDF, etc.) or a scanned document. It is an efficient way of digitizing physical text documents and converting them into machine-readable text format. Tesseract is an open-source OCR engine that has been widely used for optical character recognition.">
+<meta property="og:url" content="http://opensourcebox.com/posts/ocr-optical-character-recognition-with-tesseract/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="http://opensourcebox.com/posts/ocr-optical-character-recognition-with-tesseract/">
+
+<meta name="twitter:description" content="OCR (Optical Character Recognition) with Tesseract: Understanding the Concept
+OCR (Optical Character Recognition) is an important technology that enables the recognition of printed or handwritten text characters from an image (JPG, PNG, TIFF, PDF, etc.) or a scanned document. It is an efficient way of digitizing physical text documents and converting them into machine-readable text format. Tesseract is an open-source OCR engine that has been widely used for optical character recognition.">
+<meta property="article:published_time" content="2022-09-20T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2022-09-20T00:00:00&#43;00:00">
+
+
+
+
+
+<meta property="og:image" content="http://opensourcebox.com/">
+<meta property="og:image:url" content="http://opensourcebox.com/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap  p-6">
+            <div class="flex items-center flex-no-shrink  text-white mr-6">
+                <a href="http://opensourcebox.com/"><span class="font-semibold text-2xl tracking-tight">OpenSourceBox</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+    
+        <div class="bg-white col-span-3 p-5 dark:bg-warmgray-900 dark:text-white">
+            
+            <h1 class="title text-4xl font-bold mb-2">OCR (Optical Character Recognition) with Tesseract</h1>
+            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><p>OCR (Optical Character Recognition) with Tesseract: Understanding the Concept</p>
+<p>OCR (Optical Character Recognition) is an important technology that enables the recognition of printed or handwritten text characters from an image (JPG, PNG, TIFF, PDF, etc.) or a scanned document. It is an efficient way of digitizing physical text documents and converting them into machine-readable text format. Tesseract is an open-source OCR engine that has been widely used for optical character recognition. In this blog post, we will explore how to use Tesseract for OCR and the relevant concepts associated with it.</p>
+<ol>
+<li>Installing Tesseract with Python
+Before we dive into the use of Tesseract, let&rsquo;s quickly go over how to install Tesseract with Python.</li>
+</ol>
+<pre tabindex="0"><code>!pip install pytesseract
+</code></pre><p>Now that we have installed pytesseract, we can now use Tesseract for OCR.</p>
+<ol start="2">
+<li>Using Tesseract for OCR
+Tesseract provides a simple way of performing OCR on an image or scanned document. The following example shows how to use Tesseract to extract text from an image in Python.</li>
+</ol>
+<pre tabindex="0"><code>import pytesseract
+from PIL import Image
+
+img = Image.open(&#39;example.jpg&#39;)
+
+text = pytesseract.image_to_string(img, lang=&#39;eng&#39;)
+</code></pre><p>The <code>image_to_string</code> function is the main method of Tesseract that performs OCR on the image provided as input. This method accepts an image in PIL format and the language parameter for language customization.</p>
+<ol start="3">
+<li>Language Customization with Tesseract
+The <code>language</code> parameter in the <code>image_to_string</code> method is used to specify the language of the text. If the language is not specified, Tesseract will use its default language, which is English. To use a specific language, we need to download the language pack for that language.</li>
+</ol>
+<pre tabindex="0"><code>!sudo apt-get install tesseract-ocr
+!sudo apt-get install libtesseract-dev
+
+import requests
+from bs4 import BeautifulSoup
+
+url = &#34;https://github.com/tesseract-ocr/tessdata&#34;
+response = requests.get(url)
+soup = BeautifulSoup(response.content, &#39;html.parser&#39;)
+
+languages = []
+
+for a in soup.find_all(&#39;a&#39;, href=True):
+    if &#39;.traineddata&#39; in a.get(&#39;href&#39;):
+        language = a.get(&#39;href&#39;).replace(&#39;/&#39;, &#39;&#39;)
+        languages.append(language)
+
+print(languages)
+</code></pre><p>This code snippet downloads the available language packs for Tesseract from the official GitHub repository. Once you&rsquo;ve downloaded the language pack you want, place it in the Tesseract&rsquo;s <code>tessdata</code> directory.</p>
+<ol start="4">
+<li>Tesseract Configuration Options
+Tesseract provides a number of configuration options that can be used to customize OCR results. Here are some of the options:</li>
+</ol>
+<ul>
+<li>
+<p><code>--psm N</code>: It is used to set page segmentation mode, where N is an integer that specifies the mode. The page segmentation mode determines how Tesseract recognizes text regions on the page.</p>
+</li>
+<li>
+<p><code>--oem N</code>: It is used to set OCR engine mode, where N is an integer that specifies the mode. The OCR engine mode determines how Tesseract recognizes text.</p>
+</li>
+<li>
+<p><code>-c key=value</code>: It is used to set a custom configuration variable. The <code>-c</code> parameter is followed by the key and value separated by an equals sign.</p>
+</li>
+</ul>
+<p>Here is an example of using configuration options with Tesseract in Python.</p>
+<pre tabindex="0"><code>config = &#39;--psm 6&#39;
+
+img = Image.open(&#39;example.jpg&#39;)
+text = pytesseract.image_to_string(img, lang=&#39;eng&#39;, config=config)
+</code></pre><p>This snippet shows how to use the <code>--psm</code> configuration option with Tesseract to set the page segmentation mode to <code>6</code>.</p>
+<ol start="5">
+<li>Conclusion
+In this blog post, we have discussed the concept and practical implementation of using Tesseract for OCR in Python. We have also covered language customization and Tesseract configuration options to further enhance the OCR results.</li>
+</ol>
+<p>Links to Additional Resources:</p>
+<ul>
+<li>The official Tesseract GitHub repository: <a href="https://github.com/tesseract-ocr/tesseract">https://github.com/tesseract-ocr/tesseract</a></li>
+<li>Official documentation for the Tesseract OCR engine: <a href="https://tesseract-ocr.github.io/tessdoc/Home.html">https://tesseract-ocr.github.io/tessdoc/Home.html</a></li>
+<li>An overview of OCR with Tesseract: <a href="https://nanonets.com/blog/ocr-with-tesseract/">https://nanonets.com/blog/ocr-with-tesseract/</a></li>
+</ul>
+</div>
+        </div>
+        
+    </div>
+    
+            </div>
+        </div><footer class=" text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2023 <a href="http://opensourcebox.com/" class="duration-200 hover:opacity-50">OpenSourceBox</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>

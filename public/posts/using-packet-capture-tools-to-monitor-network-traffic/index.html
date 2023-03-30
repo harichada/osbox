@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+
+<title>OpenSourceBox | Using packet capture tools to monitor network traffic</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="OpenSourceBox | Using packet capture tools to monitor network traffic" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="Using Packet Capture Tools to Monitor Network Traffic
+Network traffic monitoring is an integral part of network security. Nowadays, businesses of all sizes have access to a broad range of packet capture tools that can be used to monitor network traffic in real-time. These tools help to identify network vulnerabilities, monitor network usage patterns and identify potential threats before they become network security incidents.
+This blog post aims to provide a comprehensive guide on how to use packet capture tools to monitor network traffic.">
+<meta property="og:site_name" content="OpenSourceBox">
+<meta property="og:description" content="Using Packet Capture Tools to Monitor Network Traffic
+Network traffic monitoring is an integral part of network security. Nowadays, businesses of all sizes have access to a broad range of packet capture tools that can be used to monitor network traffic in real-time. These tools help to identify network vulnerabilities, monitor network usage patterns and identify potential threats before they become network security incidents.
+This blog post aims to provide a comprehensive guide on how to use packet capture tools to monitor network traffic.">
+<meta property="og:url" content="http://opensourcebox.com/posts/using-packet-capture-tools-to-monitor-network-traffic/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="http://opensourcebox.com/posts/using-packet-capture-tools-to-monitor-network-traffic/">
+
+<meta name="twitter:description" content="Using Packet Capture Tools to Monitor Network Traffic
+Network traffic monitoring is an integral part of network security. Nowadays, businesses of all sizes have access to a broad range of packet capture tools that can be used to monitor network traffic in real-time. These tools help to identify network vulnerabilities, monitor network usage patterns and identify potential threats before they become network security incidents.
+This blog post aims to provide a comprehensive guide on how to use packet capture tools to monitor network traffic.">
+<meta property="article:published_time" content="2022-09-20T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2022-09-20T00:00:00&#43;00:00">
+
+
+
+
+
+<meta property="og:image" content="http://opensourcebox.com/">
+<meta property="og:image:url" content="http://opensourcebox.com/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap  p-6">
+            <div class="flex items-center flex-no-shrink  text-white mr-6">
+                <a href="http://opensourcebox.com/"><span class="font-semibold text-2xl tracking-tight">OpenSourceBox</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+    
+        <div class="bg-white col-span-3 p-5 dark:bg-warmgray-900 dark:text-white">
+            
+            <h1 class="title text-4xl font-bold mb-2">Using packet capture tools to monitor network traffic</h1>
+            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><p>Using Packet Capture Tools to Monitor Network Traffic</p>
+<p>Network traffic monitoring is an integral part of network security. Nowadays, businesses of all sizes have access to a broad range of packet capture tools that can be used to monitor network traffic in real-time. These tools help to identify network vulnerabilities, monitor network usage patterns and identify potential threats before they become network security incidents.</p>
+<p>This blog post aims to provide a comprehensive guide on how to use packet capture tools to monitor network traffic. We&rsquo;ll discuss the types of packet capture tools available, how to install and configure them, how to capture network traffic, and how to analyze the captured packets.</p>
+<p>Types of Packet Capture Tools</p>
+<p>Packet capture tools come in various forms and are designed to cater to different user needs. Some of the most widely used packet capture tools include:</p>
+<ol>
+<li>
+<p>tcpdump - This is a command-line packet capture tool that is available on most Linux and UNIX systems. It allows users to capture network traffic and store it in a file for later analysis.</p>
+</li>
+<li>
+<p>Wireshark - This is a powerful packet capture and analysis tool that runs on a variety of platforms. It offers users the ability to capture packets and analyze them in real-time.</p>
+</li>
+<li>
+<p>Microsoft Network Monitor - This is a popular packet capture tool for Windows systems that allows users to capture and view network traffic in real-time.</p>
+</li>
+</ol>
+<p>Installing and Configuring Packet Capture Tools</p>
+<p>The installation process varies from tool to tool. For instance, tcpdump can be installed on Linux by running a simple command on the terminal. Wireshark and Microsoft Network Monitor, on the other hand, can be downloaded and installed from the official websites.</p>
+<p>Once installed, packet capture tools require some configuration before monitoring network traffic. This may include setting the network interface to monitor, specifying capture filters or defining display filters. Most packet capture tools are equipped with comprehensive documentation that outlines the configuration process.</p>
+<p>Capturing Network Traffic</p>
+<p>Packet capture tools allow users to capture network traffic in real-time or capture packets and store them in a file for later analysis. When using packet capture tools to monitor network traffic in real-time, users can set up filters to capture specific packets that match predefined criteria. Examples of such criteria include the source/destination IP address, source/destination ports, and protocol type.</p>
+<p>Analyzing Captured Packets</p>
+<p>Captured packets can be analyzed in a variety of ways. Packet capture tools such as Wireshark have built-in analysis features that allow users to view, filter and sort packets to understand the network traffic better. User-defined filters can also be created to locate packets that match custom criteria.</p>
+<p>Packet capture tools often provide a wealth of information about network traffic, such as protocol distribution, network latency and packet loss. Advanced features such as application-layer protocol decoding or packet replay can also come in handy when analyzing captured packets.</p>
+<p>Conclusion</p>
+<p>Packet capture tools are essential for monitoring network traffic, identifying security vulnerabilities and potential security incidents. They offer users valuable insights into their network infrastructure, allowing them to detect potential security incidents and optimize network performance.</p>
+<p>In conclusion, packet capture tools such as tcpdump, Wireshark and Microsoft Network Monitor are powerful tools that can help users keep their networks secure. By using them to monitor network traffic, businesses can take proactive steps to identify and mitigate network security threats.</p>
+<p>Additional Resources</p>
+<ol>
+<li>
+<p>Wireshark Documentation: <a href="https://www.wireshark.org/docs/">https://www.wireshark.org/docs/</a></p>
+</li>
+<li>
+<p>Microsoft Network Monitor User Guide: <a href="https://docs.microsoft.com/en-us/archive/blogs/networking/microsoft-network-monitor-34-user-guide">https://docs.microsoft.com/en-us/archive/blogs/networking/microsoft-network-monitor-34-user-guide</a></p>
+</li>
+<li>
+<p>Tcpdump Man Page: <a href="https://www.tcpdump.org/manpages/tcpdump.1.html">https://www.tcpdump.org/manpages/tcpdump.1.html</a></p>
+</li>
+</ol>
+<p>Markdown Tags</p>
+<p>To format this post in Hugo, the following Markdown tags can be used:</p>
+<ol>
+<li>
+<h1 id="to-denote-headers">to denote headers</h1>
+</li>
+<li>``` to format code snippets</li>
+<li>
+<ul>
+<li>to denote bullet points</li>
+</ul>
+</li>
+<li><a href="link">text</a> to insert links</li>
+</ol>
+</div>
+        </div>
+        
+    </div>
+    
+            </div>
+        </div><footer class=" text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2023 <a href="http://opensourcebox.com/" class="duration-200 hover:opacity-50">OpenSourceBox</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>

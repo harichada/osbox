@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+
+<title>OpenSourceBox | Using machine learning for network intrusion detection</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="OpenSourceBox | Using machine learning for network intrusion detection" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="Introduction Cybersecurity has become a critical issue in today&rsquo;s world since the number and sophistication of attacks are constantly increasing. One of the most challenging tasks in cybersecurity is the detection of network intrusion. Traditional network intrusion detection techniques, such as signature-based intrusion detection systems (IDS), are not effective against zero-day attacks that are not yet known to the system. Thus, machine learning-based intrusion detection techniques have emerged as a promising solution to detect and prevent such attacks.">
+<meta property="og:site_name" content="OpenSourceBox">
+<meta property="og:description" content="Introduction Cybersecurity has become a critical issue in today&rsquo;s world since the number and sophistication of attacks are constantly increasing. One of the most challenging tasks in cybersecurity is the detection of network intrusion. Traditional network intrusion detection techniques, such as signature-based intrusion detection systems (IDS), are not effective against zero-day attacks that are not yet known to the system. Thus, machine learning-based intrusion detection techniques have emerged as a promising solution to detect and prevent such attacks.">
+<meta property="og:url" content="http://opensourcebox.com/posts/using-machine-learning-for-network-intrusion-detection/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="http://opensourcebox.com/posts/using-machine-learning-for-network-intrusion-detection/">
+
+<meta name="twitter:description" content="Introduction Cybersecurity has become a critical issue in today&rsquo;s world since the number and sophistication of attacks are constantly increasing. One of the most challenging tasks in cybersecurity is the detection of network intrusion. Traditional network intrusion detection techniques, such as signature-based intrusion detection systems (IDS), are not effective against zero-day attacks that are not yet known to the system. Thus, machine learning-based intrusion detection techniques have emerged as a promising solution to detect and prevent such attacks.">
+<meta property="article:published_time" content="2022-09-20T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2022-09-20T00:00:00&#43;00:00">
+
+
+
+
+
+<meta property="og:image" content="http://opensourcebox.com/">
+<meta property="og:image:url" content="http://opensourcebox.com/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap  p-6">
+            <div class="flex items-center flex-no-shrink  text-white mr-6">
+                <a href="http://opensourcebox.com/"><span class="font-semibold text-2xl tracking-tight">OpenSourceBox</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+    
+        <div class="bg-white col-span-3 p-5 dark:bg-warmgray-900 dark:text-white">
+            
+            <h1 class="title text-4xl font-bold mb-2">Using machine learning for network intrusion detection</h1>
+            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><h2 id="introduction">Introduction</h2>
+<p>Cybersecurity has become a critical issue in today&rsquo;s world since the number and sophistication of attacks are constantly increasing. One of the most challenging tasks in cybersecurity is the detection of network intrusion. Traditional network intrusion detection techniques, such as signature-based intrusion detection systems (IDS), are not effective against zero-day attacks that are not yet known to the system. Thus, machine learning-based intrusion detection techniques have emerged as a promising solution to detect and prevent such attacks. This blog post will discuss the use of machine learning for network intrusion detection and the benefits of using machine learning-based intrusion detection techniques.</p>
+<h2 id="network-intrusion-detection">Network Intrusion Detection</h2>
+<p>Network Intrusion Detection is the process of monitoring network traffic to detect malicious activities that are not authorized, such as unauthorized access, data theft, network scanning, and other attacks that may compromise the confidentiality, availability, or integrity of the network. The primary purpose of network intrusion detection is to identify potential attacks and protect the network from unauthorized access by attackers.</p>
+<h2 id="traditional-intrusion-detection-systems-ids">Traditional Intrusion Detection Systems (IDS)</h2>
+<p>Traditional Intrusion Detection Systems (IDS) work based on predefined signatures of known malicious activities. These signatures are created based on known vulnerabilities and threat vectors. IDS passively monitor network traffic and compare it to the predefined signatures; if the signature matches the network traffic, an alert is triggered. The main disadvantage of using traditional IDS is that they are only effective against known attacks, and they are not effective against unknown and zero-day attacks.</p>
+<h2 id="machine-learning-for-network-intrusion-detection">Machine Learning for Network Intrusion Detection</h2>
+<p>Machine Learning-based Network Intrusion Detection (ML-NID) is a technique that uses machine learning algorithms to detect network intrusion. ML-NID can help to identify previously unseen attacks, as it learns the patterns of normal network behavior and detects any deviations from the normal pattern. In ML-NID, a model is trained on a large dataset of normal network traffic to learn the patterns of normal behavior.</p>
+<h2 id="supervised-learning">Supervised Learning</h2>
+<p>Supervised learning is a technique of machine learning where the algorithm learns to predict the outcomes by learning the patterns from the input data. In supervised learning, a labeled dataset is used to train the model. The labeled dataset consists of the input features and the corresponding output values. After the model is trained, it can be used to classify new network traffic.</p>
+<h2 id="unsupervised-learning">Unsupervised Learning</h2>
+<p>Unsupervised learning is a technique of machine learning where the algorithm learns the patterns of the input data without the need for labeled data. In unsupervised learning, the model learns to identify the differences between the normal and abnormal behavior of the network. Unsupervised learning techniques such as clustering, anomaly detection, and principal component analysis can be used for network intrusion detection.</p>
+<h2 id="the-benefits-of-using-machine-learning-based-intrusion-detection">The Benefits of Using Machine Learning-Based Intrusion Detection</h2>
+<p>There are several benefits of using machine learning-based intrusion detection techniques, including:</p>
+<ol>
+<li>
+<p>Improved detection accuracy: Machine learning-based techniques can detect the previously unknown attacks that traditional IDS cannot detect.</p>
+</li>
+<li>
+<p>Reduced false positives: Machine learning-based techniques have a lower false positive rate than traditional IDS, which can reduce the number of false alarms.</p>
+</li>
+<li>
+<p>Quick response: Machine learning-based techniques can respond quickly to new threats, as they can detect previously unseen attacks in real-time.</p>
+</li>
+<li>
+<p>Scalability: Machine learning-based techniques can handle large amounts of data and scale to the size of the network.</p>
+</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>Machine learning-based network intrusion detection can provide an effective solution for detecting unknown and zero-day attacks. It can learn the normal network behavior and detect deviations from the normal pattern of the network. The use of machine learning-based intrusion detection can improve the accuracy and speed of detecting network intrusion. Machine learning-based techniques can be implemented in a supervised or unsupervised way, depending on the availability of labeled data. The use of machine learning-based techniques can provide significant benefits, such as reduced false positives and quick response to new threats.</p>
+<h2 id="resources">Resources</h2>
+<ol>
+<li>Scikit-learn documentation: <a href="https://scikit-learn.org">https://scikit-learn.org</a></li>
+<li>Keras documentation: <a href="https://keras.io">https://keras.io</a></li>
+<li>TensorFlow documentation: <a href="https://www.tensorflow.org/tutorials">https://www.tensorflow.org/tutorials</a></li>
+<li>Intrusion Detection Datasets: <a href="https://www.unb.ca/cic/datasets/index.html">https://www.unb.ca/cic/datasets/index.html</a></li>
+<li>Research papers: <a href="https://ieeexplore.ieee.org/xpl/aboutJournal.jsp?punumber=8856">https://ieeexplore.ieee.org/xpl/aboutJournal.jsp?punumber=8856</a></li>
+</ol>
+</div>
+        </div>
+        
+    </div>
+    
+            </div>
+        </div><footer class=" text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2023 <a href="http://opensourcebox.com/" class="duration-200 hover:opacity-50">OpenSourceBox</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>

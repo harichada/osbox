@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+
+<title>OpenSourceBox | Sentiment analysis using machine learning with Python</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="OpenSourceBox | Sentiment analysis using machine learning with Python" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="Sentiment analysis is a technique used to determine the attitude or emotional state of a person, organization, or topic by analyzing text data. In recent years, sentiment analysis has gained prominence in many industries, such as marketing and customer service, where it is used to understand customer feedback, detect trends, and make data-driven decisions. In this blog post, we will discuss sentiment analysis using machine learning with Python.
+Understanding Sentiment Analysis">
+<meta property="og:site_name" content="OpenSourceBox">
+<meta property="og:description" content="Sentiment analysis is a technique used to determine the attitude or emotional state of a person, organization, or topic by analyzing text data. In recent years, sentiment analysis has gained prominence in many industries, such as marketing and customer service, where it is used to understand customer feedback, detect trends, and make data-driven decisions. In this blog post, we will discuss sentiment analysis using machine learning with Python.
+Understanding Sentiment Analysis">
+<meta property="og:url" content="http://opensourcebox.com/posts/sentiment-analysis-using-machine-learning-with-python/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="http://opensourcebox.com/posts/sentiment-analysis-using-machine-learning-with-python/">
+
+<meta name="twitter:description" content="Sentiment analysis is a technique used to determine the attitude or emotional state of a person, organization, or topic by analyzing text data. In recent years, sentiment analysis has gained prominence in many industries, such as marketing and customer service, where it is used to understand customer feedback, detect trends, and make data-driven decisions. In this blog post, we will discuss sentiment analysis using machine learning with Python.
+Understanding Sentiment Analysis">
+<meta property="article:published_time" content="2022-09-20T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2022-09-20T00:00:00&#43;00:00">
+
+
+
+
+
+<meta property="og:image" content="http://opensourcebox.com/">
+<meta property="og:image:url" content="http://opensourcebox.com/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap  p-6">
+            <div class="flex items-center flex-no-shrink  text-white mr-6">
+                <a href="http://opensourcebox.com/"><span class="font-semibold text-2xl tracking-tight">OpenSourceBox</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+    
+        <div class="bg-white col-span-3 p-5 dark:bg-warmgray-900 dark:text-white">
+            
+            <h1 class="title text-4xl font-bold mb-2">Sentiment analysis using machine learning with Python</h1>
+            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><p>Sentiment analysis is a technique used to determine the attitude or emotional state of a person, organization, or topic by analyzing text data. In recent years, sentiment analysis has gained prominence in many industries, such as marketing and customer service, where it is used to understand customer feedback, detect trends, and make data-driven decisions. In this blog post, we will discuss sentiment analysis using machine learning with Python.</p>
+<p>Understanding Sentiment Analysis</p>
+<p>Sentiment analysis involves analyzing textual data to determine the sentiment or opinion behind the text. This can be positive, negative, or neutral. Sentiment analysis can be done manually by reading through text and determining the underlying sentiment or by using automated techniques.</p>
+<p>With the rise of machine learning and natural language processing, automated sentiment analysis has become increasingly popular because of its accuracy and speed. Machine learning algorithms are trained on labeled data to recognize patterns and classify sentiment in text data.</p>
+<p>Sentiment Analysis Process</p>
+<p>The typical sentiment analysis process involves data cleaning, feature extraction, and model training.</p>
+<p>Data Cleaning: This involves removing any irrelevant information such as stop words, punctuations, and special characters from the text data.</p>
+<p>Feature Extraction: This is the process of converting the raw text data into a more useful format that machine learning algorithms can understand. Some of the features that can be extracted include word frequency, n-grams, and part-of-speech tags.</p>
+<p>Model Training: This is where the machine learning algorithm is trained on labeled data. The labeled data is used to teach the algorithm how to recognize patterns and classify sentiment in text data.</p>
+<p>Python Libraries for Sentiment Analysis</p>
+<p>Python has many libraries that can be used for sentiment analysis. Some of the most common libraries are:</p>
+<ol>
+<li>
+<p>Natural Language Toolkit (NLTK): This is a powerful library for processing human language data. NLTK has many tools for tasks such as tokenization, stemming, and part-of-speech tagging.</p>
+</li>
+<li>
+<p>TextBlob: This is another popular library for sentiment analysis. TextBlob is built on top of NLTK and provides an easy-to-use interface for sentiment analysis.</p>
+</li>
+<li>
+<p>Scikit-Learn: This is a general-purpose machine learning library that can be used for sentiment analysis. Scikit-Learn provides many algorithms that can be used for text classification tasks.</p>
+</li>
+</ol>
+<p>Sentiment Analysis using NLTK</p>
+<p>Let&rsquo;s explore how to perform sentiment analysis using the Natural Language Toolkit (NLTK) library.</p>
+<p>Step 1: Install NLTK</p>
+<p>To install NLTK, open your command prompt and enter the command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">!</span>pip install nltk
+</span></span></code></pre></div><p>Step 2: Import NLTK and download the necessary corpora</p>
+<p>To use NLTK, you first need to import it and download the necessary corpora. The following code downloads the necessary corpora:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>   <span style="color:#f92672">import</span> nltk
+</span></span><span style="display:flex;"><span>   nltk<span style="color:#f92672">.</span>download(<span style="color:#e6db74">&#39;punkt&#39;</span>)
+</span></span><span style="display:flex;"><span>   nltk<span style="color:#f92672">.</span>download(<span style="color:#e6db74">&#39;averaged_perceptron_tagger&#39;</span>)
+</span></span><span style="display:flex;"><span>   nltk<span style="color:#f92672">.</span>download(<span style="color:#e6db74">&#39;stopwords&#39;</span>)
+</span></span></code></pre></div><p>Step 3: Load the Data</p>
+<p>Let&rsquo;s load the data that we&rsquo;ll use for sentiment analysis. In this example, we&rsquo;ll use the movie review dataset from NLTK:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>   <span style="color:#f92672">from</span> nltk.corpus <span style="color:#f92672">import</span> movie_reviews
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e"># Load positive and negative reviews</span>
+</span></span><span style="display:flex;"><span>   pos_reviews <span style="color:#f92672">=</span> movie_reviews<span style="color:#f92672">.</span>fileids(<span style="color:#e6db74">&#39;pos&#39;</span>)
+</span></span><span style="display:flex;"><span>   neg_reviews <span style="color:#f92672">=</span> movie_reviews<span style="color:#f92672">.</span>fileids(<span style="color:#e6db74">&#39;neg&#39;</span>)
+</span></span></code></pre></div><p>Step 4: Data preprocessing</p>
+<p>Before we can train the sentiment analysis model, we need to clean and preprocess the data.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>   <span style="color:#f92672">from</span> nltk.tokenize <span style="color:#f92672">import</span> word_tokenize
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">from</span> nltk.corpus <span style="color:#f92672">import</span> stopwords
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">from</span> nltk.stem <span style="color:#f92672">import</span> WordNetLemmatizer
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   stop_words <span style="color:#f92672">=</span> set(stopwords<span style="color:#f92672">.</span>words(<span style="color:#e6db74">&#39;english&#39;</span>))
+</span></span><span style="display:flex;"><span>   lemmatizer <span style="color:#f92672">=</span> WordNetLemmatizer()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">clean_review</span>(review):
+</span></span><span style="display:flex;"><span>       <span style="color:#75715e"># Tokenize the review</span>
+</span></span><span style="display:flex;"><span>       tokens <span style="color:#f92672">=</span> word_tokenize(review<span style="color:#f92672">.</span>lower())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>       <span style="color:#75715e"># Remove stop words</span>
+</span></span><span style="display:flex;"><span>       tokens <span style="color:#f92672">=</span> [token <span style="color:#66d9ef">for</span> token <span style="color:#f92672">in</span> tokens <span style="color:#66d9ef">if</span> token <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> stop_words]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>       <span style="color:#75715e"># Lemmatize tokens</span>
+</span></span><span style="display:flex;"><span>       tokens <span style="color:#f92672">=</span> [lemmatizer<span style="color:#f92672">.</span>lemmatize(token) <span style="color:#66d9ef">for</span> token <span style="color:#f92672">in</span> tokens]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>       <span style="color:#75715e"># Return clean text</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39; &#39;</span><span style="color:#f92672">.</span>join(tokens)
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e"># Clean positive and negative reviews</span>
+</span></span><span style="display:flex;"><span>   clean_pos_reviews <span style="color:#f92672">=</span> [clean_review(movie_reviews<span style="color:#f92672">.</span>raw(review)) <span style="color:#66d9ef">for</span> review <span style="color:#f92672">in</span> pos_reviews]
+</span></span><span style="display:flex;"><span>   clean_neg_reviews <span style="color:#f92672">=</span> [clean_review(movie_reviews<span style="color:#f92672">.</span>raw(review)) <span style="color:#66d9ef">for</span> review <span style="color:#f92672">in</span> neg_reviews]
+</span></span></code></pre></div><p>Step 5: Data splitting</p>
+<p>Before we can train the sentiment analysis model, we need to split the data into training and testing data sets.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>   <span style="color:#f92672">from</span> sklearn.model_selection <span style="color:#f92672">import</span> train_test_split
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e"># Split positive and negative reviews into training and testing data</span>
+</span></span><span style="display:flex;"><span>   X_train, X_test, y_train, y_test <span style="color:#f92672">=</span> train_test_split(
+</span></span><span style="display:flex;"><span>       clean_pos_reviews <span style="color:#f92672">+</span> clean_neg_reviews,
+</span></span><span style="display:flex;"><span>       [<span style="color:#e6db74">&#39;pos&#39;</span>]<span style="color:#f92672">*</span>len(clean_pos_reviews) <span style="color:#f92672">+</span> [<span style="color:#e6db74">&#39;neg&#39;</span>]<span style="color:#f92672">*</span>len(clean_neg_reviews),
+</span></span><span style="display:flex;"><span>       test_size<span style="color:#f92672">=</span><span style="color:#ae81ff">0.2</span>,
+</span></span><span style="display:flex;"><span>       random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">42</span>,
+</span></span><span style="display:flex;"><span>   )
+</span></span></code></pre></div><p>Step 6: Feature extraction</p>
+<p>We need to convert the raw text data into a more useful format that machine learning algorithms can understand. For this example, we will use the bag-of-words model to transform the text data into numerical vectors.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>   <span style="color:#f92672">from</span> sklearn.feature_extraction.text <span style="color:#f92672">import</span> CountVectorizer
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e"># Create document-term matrix</span>
+</span></span><span style="display:flex;"><span>   vectorizer <span style="color:#f92672">=</span> CountVectorizer(min_df<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>   X_train_counts <span style="color:#f92672">=</span> vectorizer<span style="color:#f92672">.</span>fit_transform(X_train)
+</span></span><span style="display:flex;"><span>   X_test_counts <span style="color:#f92672">=</span> vectorizer<span style="color:#f92672">.</span>transform(X_test)
+</span></span></code></pre></div><p>Step 7: Model training</p>
+<p>Finally, we can train the sentiment analysis model using the document-term matrix.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>   <span style="color:#f92672">from</span> sklearn.naive_bayes <span style="color:#f92672">import</span> MultinomialNB
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> accuracy_score
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e"># Train Multinomial Naive Bayes model</span>
+</span></span><span style="display:flex;"><span>   clf <span style="color:#f92672">=</span> MultinomialNB()
+</span></span><span style="display:flex;"><span>   clf<span style="color:#f92672">.</span>fit(X_train_counts, y_train)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e"># Predict sentiment of test set</span>
+</span></span><span style="display:flex;"><span>   y_pred <span style="color:#f92672">=</span> clf<span style="color:#f92672">.</span>predict(X_test_counts)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e"># Print accuracy score</span>
+</span></span><span style="display:flex;"><span>   print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;Accuracy: </span><span style="color:#e6db74">{</span>accuracy_score(y_test, y_pred)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)
+</span></span></code></pre></div><p>Additional Resources</p>
+<p>Sentiment Analysis with Python NLTK, by Sushant Kumar</p>
+<p>Machine Learning Mastery</p>
+<p>Python NLTK Documentation</p>
+<p>In conclusion, sentiment analysis is a useful technique for analyzing text data and understanding the emotional state of a topic, person, or organization. Machine learning algorithms enable automated sentiment analysis with high accuracy and speed. Python has many libraries, including NLTK, that can be used for sentiment analysis. With the right tools and techniques, sentiment analysis can provide valuable insights that can inform decision-making processes across a range of industries.</p>
+</div>
+        </div>
+        
+    </div>
+    
+            </div>
+        </div><footer class=" text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2023 <a href="http://opensourcebox.com/" class="duration-200 hover:opacity-50">OpenSourceBox</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>

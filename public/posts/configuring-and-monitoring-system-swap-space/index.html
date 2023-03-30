@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+
+<title>OpenSourceBox | Configuring and monitoring system swap space</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="OpenSourceBox | Configuring and monitoring system swap space" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="Configuring and Monitoring System Swap Space
+Understanding Swap Space
+Swap space is an essential component of modern computing systems. It is a designated portion of the hard drive that is used when the system requires additional memory beyond the available RAM. When a system runs out of RAM, it moves some data from RAM to swap space to free up RAM. This data is not actively being used, and therefore, swapping it out of RAM does not affect the performance of the system.">
+<meta property="og:site_name" content="OpenSourceBox">
+<meta property="og:description" content="Configuring and Monitoring System Swap Space
+Understanding Swap Space
+Swap space is an essential component of modern computing systems. It is a designated portion of the hard drive that is used when the system requires additional memory beyond the available RAM. When a system runs out of RAM, it moves some data from RAM to swap space to free up RAM. This data is not actively being used, and therefore, swapping it out of RAM does not affect the performance of the system.">
+<meta property="og:url" content="http://opensourcebox.com/posts/configuring-and-monitoring-system-swap-space/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="http://opensourcebox.com/posts/configuring-and-monitoring-system-swap-space/">
+
+<meta name="twitter:description" content="Configuring and Monitoring System Swap Space
+Understanding Swap Space
+Swap space is an essential component of modern computing systems. It is a designated portion of the hard drive that is used when the system requires additional memory beyond the available RAM. When a system runs out of RAM, it moves some data from RAM to swap space to free up RAM. This data is not actively being used, and therefore, swapping it out of RAM does not affect the performance of the system.">
+<meta property="article:published_time" content="2022-09-20T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2022-09-20T00:00:00&#43;00:00">
+
+
+
+
+
+<meta property="og:image" content="http://opensourcebox.com/">
+<meta property="og:image:url" content="http://opensourcebox.com/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap  p-6">
+            <div class="flex items-center flex-no-shrink  text-white mr-6">
+                <a href="http://opensourcebox.com/"><span class="font-semibold text-2xl tracking-tight">OpenSourceBox</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+    
+        <div class="bg-white col-span-3 p-5 dark:bg-warmgray-900 dark:text-white">
+            
+            <h1 class="title text-4xl font-bold mb-2">Configuring and monitoring system swap space</h1>
+            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><p>Configuring and Monitoring System Swap Space</p>
+<p>Understanding Swap Space</p>
+<p>Swap space is an essential component of modern computing systems. It is a designated portion of the hard drive that is used when the system requires additional memory beyond the available RAM. When a system runs out of RAM, it moves some data from RAM to swap space to free up RAM. This data is not actively being used, and therefore, swapping it out of RAM does not affect the performance of the system.</p>
+<p>The amount of swap space required depends on the workload and the available RAM. In general, the amount of swap space should be at least equal to the amount of RAM available. If the system runs out of swap space, it could crash, and data loss could occur.</p>
+<p>In this article, we will discuss how to configure swap space and monitor its usage to ensure optimal system performance.</p>
+<p>Configuring Swap Space</p>
+<p>The following is a step-by-step guide to configuring swap space on your Linux system.</p>
+<p>Step 1: Check if Swap Space Exists</p>
+<p>Before creating swap space, it is important to verify if swap space already exists on your system. To do so, execute the following command in the terminal:</p>
+<pre tabindex="0"><code>sudo swapon --show
+</code></pre><p>If this command does not return any output, there is no active swap space on the system.</p>
+<p>Step 2: Create a Swap File</p>
+<p>To create a swap file, execute the following command:</p>
+<pre tabindex="0"><code>sudo fallocate -l [SIZE] /swapfile
+</code></pre><p>Replace [SIZE] with the desired size of the swap file. For example, if you want to create a 2GB swap file, you would use the following command:</p>
+<pre tabindex="0"><code>sudo fallocate -l 2G /swapfile
+</code></pre><p>Step 3: Format Swap File</p>
+<p>Execute the following command to format the swap file:</p>
+<pre tabindex="0"><code>sudo mkswap /swapfile
+</code></pre><p>Step 4: Activate Swap File</p>
+<p>Execute the following command to activate the swap file:</p>
+<pre tabindex="0"><code>sudo swapon /swapfile
+</code></pre><p>Step 5: Verify Swap Space</p>
+<p>Execute the following command to verify the existence of the new swap space:</p>
+<pre tabindex="0"><code>sudo swapon --show
+</code></pre><p>The system should now be using the newly created swap space.</p>
+<p>Monitoring Swap Space</p>
+<p>Monitoring swap space is essential to ensure optimal system performance. In this section, we will discuss how to monitor swap space usage using various tools.</p>
+<ol>
+<li>Top</li>
+</ol>
+<p>Top is a Linux utility that provides real-time information on system processes and resource usage. To view swap space usage using Top, execute the following command in the terminal:</p>
+<pre tabindex="0"><code>top -o %MEM
+</code></pre><p>This command will display the processes consuming the most memory, including swap space usage.</p>
+<ol start="2">
+<li>vmstat</li>
+</ol>
+<p>The vmstat utility displays various statistics pertaining to system memory, including swap space usage. To view swap space usage using vmstat, execute the following command:</p>
+<pre tabindex="0"><code>vmstat -s
+</code></pre><p>This command will produce output similar to the following:</p>
+<pre tabindex="0"><code>        2097151 K total swap space
+              0 K used swap space
+        2097151 K free swap space
+        4294967295 non-nice user cpu ticks
+</code></pre><p>This output shows that there is 2GB (2097151 K) of total swap space, with 0 KB used and 2GB free.</p>
+<ol start="3">
+<li>sar</li>
+</ol>
+<p>The sar utility is used for system resource monitoring and reporting. To view swap space usage using sar, execute the following command:</p>
+<pre tabindex="0"><code>sudo sar -S -s [START TIME] -e [END TIME]
+</code></pre><p>Replace [START TIME] and [END TIME] with the start and end times of the monitoring period. For example, to monitor swap space usage from 12:00 PM to 1:00 PM on July 1st, you would use the following command:</p>
+<pre tabindex="0"><code>sudo sar -S -s 12:00:00 -e 13:00:00 01
+</code></pre><p>This command will produce output similar to the following:</p>
+<pre tabindex="0"><code>Linux 5.11.0-25-generic (hostname) 	07/01/2022 	_x86_64_	(4 CPU)
+
+12:00:01 PM swpall  swpcadswp  swpocc
+12:10:01 PM       0         0         0
+12:20:01 PM       0         0         0
+12:30:01 PM       0         0         0
+12:40:01 PM       0         0         0
+12:50:01 PM       0         0         0
+</code></pre><p>This output shows that there is no swap space usage during the monitoring period.</p>
+<p>Conclusion</p>
+<p>Configuring and monitoring swap space is essential to ensure optimal system performance. In this article, we discussed how to configure swap space on a Linux system and monitor its usage using various tools. By following these best practices, you can ensure that your system is using swap space efficiently and prevent system crashes or data loss.</p>
+<p>Additional Resources:</p>
+<ul>
+<li>Red Hat Blog: Understanding Swap Space in Linux: <a href="https://www.redhat.com/en/blog/understanding-swap-space-linux">https://www.redhat.com/en/blog/understanding-swap-space-linux</a></li>
+<li>Linuxize: How to Add Swap Space on Ubuntu 20.04: <a href="https://linuxize.com/post/how-to-add-swap-space-on-ubuntu-20-04/">https://linuxize.com/post/how-to-add-swap-space-on-ubuntu-20-04/</a></li>
+<li>Linux Journal: Understanding Linux Virtual Memory and Swap Space: <a href="https://www.linuxjournal.com/content/understanding-linux-virtual-memory-and-swap-space">https://www.linuxjournal.com/content/understanding-linux-virtual-memory-and-swap-space</a></li>
+</ul>
+</div>
+        </div>
+        
+    </div>
+    
+            </div>
+        </div><footer class=" text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2023 <a href="http://opensourcebox.com/" class="duration-200 hover:opacity-50">OpenSourceBox</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>

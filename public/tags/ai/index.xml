@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI on OpenSourceBox</title>
+    <link>http://opensourcebox.com/tags/ai/</link>
+    <description>Recent content in AI on OpenSourceBox</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 14 Nov 2022 12:00:00 +0000</lastBuildDate><atom:link href="http://opensourcebox.com/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Human-like interaction with gaming bots</title>
+      <link>http://opensourcebox.com/posts/human-like-interaction-with-gaming-bots/</link>
+      <pubDate>Mon, 14 Nov 2022 12:00:00 +0000</pubDate>
+      
+      <guid>http://opensourcebox.com/posts/human-like-interaction-with-gaming-bots/</guid>
+      <description>Human-like interaction with gaming bots: An introduction
+The rise of artificial intelligence (AI) in gaming has been on the upswing in recent years, and gaming bots have been at the forefront of this trend. Gaming bots, or game agents, are AI-powered entities in computer games that can interact and respond to player actions. One of the key objectives of gaming bots is to make the gaming experience more immersive and realistic by mimicking human-like behavior.</description>
+    </item>
+    
+    <item>
+      <title>AI-powered Chatbots with Open Source</title>
+      <link>http://opensourcebox.com/posts/ai-powered-chatbots-with-open-source/</link>
+      <pubDate>Wed, 20 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://opensourcebox.com/posts/ai-powered-chatbots-with-open-source/</guid>
+      <description>AI-powered chatbots have become an indispensable tool for businesses to enhance customer experience and reduce operational costs. Open source chatbot platforms are particularly popular because they offer flexibility, customizability, and scalability at a reduced cost. In this blog post, we shall explore the key features of AI-powered chatbots and how open source technology can be leveraged to build robust and powerful chatbots.
+What are AI-powered chatbots? Chatbots are computer programs that simulate conversation with human users through a voice or text-based interface.</description>
+    </item>
+    
+    <item>
+      <title>Time Series Analysis for Finance Using AI</title>
+      <link>http://opensourcebox.com/posts/time-series-analysis-for-finance-using-ai/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://opensourcebox.com/posts/time-series-analysis-for-finance-using-ai/</guid>
+      <description>Introduction
+Time series analysis has grown increasingly popular in finance, and for good reason: the ability to predict and forecast market trends and movements is critical for investors and financial analysts alike. In recent years, artificial intelligence (AI) has become an important tool in time series analysis, allowing investors to glean valuable insights and make informed investment decisions. In this blog post, we will examine the basics of time series analysis for finance using AI, including its applications, key concepts, and the tools necessary for successful implementation.</description>
+    </item>
+    
+  </channel>
+</rss>

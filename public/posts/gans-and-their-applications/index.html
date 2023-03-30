@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+
+<title>OpenSourceBox | GANs And their Applications</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="OpenSourceBox | GANs And their Applications" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="Generative Adversarial Networks, commonly referred to as GANs, are a class of deep learning neural networks that have revolutionized the field of computer vision and image generation. Invented in 2014 by Ian Goodfellow, GANs have captured the imagination of researchers and enthusiasts alike, and their applications have been increasing in number and diversity ever since. In this post, we will explore what GANs are, how they work, and their applications in various domains.">
+<meta property="og:site_name" content="OpenSourceBox">
+<meta property="og:description" content="Generative Adversarial Networks, commonly referred to as GANs, are a class of deep learning neural networks that have revolutionized the field of computer vision and image generation. Invented in 2014 by Ian Goodfellow, GANs have captured the imagination of researchers and enthusiasts alike, and their applications have been increasing in number and diversity ever since. In this post, we will explore what GANs are, how they work, and their applications in various domains.">
+<meta property="og:url" content="http://opensourcebox.com/posts/gans-and-their-applications/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="http://opensourcebox.com/posts/gans-and-their-applications/">
+
+<meta name="twitter:description" content="Generative Adversarial Networks, commonly referred to as GANs, are a class of deep learning neural networks that have revolutionized the field of computer vision and image generation. Invented in 2014 by Ian Goodfellow, GANs have captured the imagination of researchers and enthusiasts alike, and their applications have been increasing in number and diversity ever since. In this post, we will explore what GANs are, how they work, and their applications in various domains.">
+<meta property="article:published_time" content="2022-09-20T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2022-09-20T00:00:00&#43;00:00">
+
+
+
+
+
+<meta property="og:image" content="http://opensourcebox.com/">
+<meta property="og:image:url" content="http://opensourcebox.com/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap  p-6">
+            <div class="flex items-center flex-no-shrink  text-white mr-6">
+                <a href="http://opensourcebox.com/"><span class="font-semibold text-2xl tracking-tight">OpenSourceBox</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+    
+        <div class="bg-white col-span-3 p-5 dark:bg-warmgray-900 dark:text-white">
+            
+            <h1 class="title text-4xl font-bold mb-2">GANs And their Applications</h1>
+            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><p>Generative Adversarial Networks, commonly referred to as GANs, are a class of deep learning neural networks that have revolutionized the field of computer vision and image generation. Invented in 2014 by Ian Goodfellow, GANs have captured the imagination of researchers and enthusiasts alike, and their applications have been increasing in number and diversity ever since. In this post, we will explore what GANs are, how they work, and their applications in various domains.</p>
+<p>What are GANs?</p>
+<p>Generative Adversarial Networks operate by generating samples that are structurally similar to the training dataset given to them. GANs are trained by establishing a game between two neural networks: the generator tries to create data that can fool the discriminator, whereas the discriminator tries to identify whether the data is real or fake. The architecture of GANs is composed of two distinct neural networks: the generator and the discriminator. The generator is responsible for creating fake data samples that mimic the real data seen by the discriminator, while the discriminator is responsible for distinguishing between the real and fake data samples.</p>
+<p>How do GANs work?</p>
+<p>The core concept of a GAN is that two neural networks compete with each other in a game. The generator learns to create data that can fool the discriminator into thinking it’s real, while the discriminator learns to spot the differences between the fake data created by the generator and the real data it has seen.</p>
+<p>The GAN model is composed of two neural networks, as previously mentioned:</p>
+<ol>
+<li>The Generator: This network takes in a random noise image and tries to generate new data that resembles the training dataset.</li>
+<li>The Discriminator: This network takes in a mix of real and fake data and tries to identify which is real and which is fake.</li>
+</ol>
+<p>The generator network is trained to create data samples that deceive the discriminator network into thinking they are real data, while the discriminator network is trained to distinguish between the real and fake data. This process continues until the generator can create data samples that are so good that the discriminator can no longer tell if the data is real or fake.</p>
+<p>Applications of GANs</p>
+<ol>
+<li>
+<p>Image Generation:
+One of the most common uses of GANs is the generation of new images. The generator can be trained to create a new image that is similar to the provided images, but not identical. This technique has been used in many applications, such as creating realistic looking faces, generating art, and even generating realistic images of animals and objects.</p>
+</li>
+<li>
+<p>Video Generation and Prediction:
+GANs can also be used in the video domain to generate new video content or to predict future frames in a video. Like the image generation process, the generator network creates fake video frames that look similar to real video frames, and the discriminator network identifies differences between real and fake frames. This technique can be used for video compression or video editing.</p>
+</li>
+<li>
+<p>Improving Data Augmentation Techniques:
+GANs have been used to improve data augmentation techniques for deep learning networks. The generator network can be trained to generate slightly altered versions of the input data, which can help reduce overfitting and improve the accuracy of the final model.</p>
+</li>
+<li>
+<p>Super-Resolution:
+GANs can be used for image super-resolution, wherein small images are up-sampled to larger sizes while preserving the quality of the image. The generator network can be trained to predict the high-resolution version of a low-resolution image.</p>
+</li>
+<li>
+<p>Improving Image Editing Tools:
+GANs can be used to improve image editing tools such as Photoshop. The generator can generate new image versions of existing images based on user input, while the discriminator ensures that the output image is realistic and closely matches the original image.</p>
+</li>
+</ol>
+<p>Conclusion</p>
+<p>Generative Adversarial Networks represent a significant advancement in deep learning, and their applications stretch across many domains. With continued improvements in the technology, we can expect GANs to offer even more possibilities for data generation and manipulation. By combining the strengths of neural networks and game theory, GANs are pushing the limits of what’s possible in data science and computer vision.</p>
+<p>Additional Resources</p>
+<ol>
+<li>GANs tutorial on Tensorflow: <a href="https://www.tensorflow.org/tutorials/generative/gan">https://www.tensorflow.org/tutorials/generative/gan</a></li>
+<li>GANs research paper: <a href="https://arxiv.org/pdf/1406.2661.pdf">https://arxiv.org/pdf/1406.2661.pdf</a></li>
+<li>GANs tutorial on PyTorch: <a href="https://pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html">https://pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html</a></li>
+</ol>
+</div>
+        </div>
+        
+    </div>
+    
+            </div>
+        </div><footer class=" text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2023 <a href="http://opensourcebox.com/" class="duration-200 hover:opacity-50">OpenSourceBox</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>

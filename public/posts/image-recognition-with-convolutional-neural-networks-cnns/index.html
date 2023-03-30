@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+
+<title>OpenSourceBox | Image Recognition with Convolutional Neural Networks (CNNs)</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="OpenSourceBox | Image Recognition with Convolutional Neural Networks (CNNs)" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="Image recognition, or image classification, is the task of assigning a label or category to an image based on its content. It has vast applications in various fields, including self-driving cars, medical image diagnosis, surveillance, and social media. Convolutional Neural Networks (CNNs) have been the cornerstone in the development of image recognition and have shown remarkable results. In this post, we will explore the different concepts of CNNs and their applications in image recognition.">
+<meta property="og:site_name" content="OpenSourceBox">
+<meta property="og:description" content="Image recognition, or image classification, is the task of assigning a label or category to an image based on its content. It has vast applications in various fields, including self-driving cars, medical image diagnosis, surveillance, and social media. Convolutional Neural Networks (CNNs) have been the cornerstone in the development of image recognition and have shown remarkable results. In this post, we will explore the different concepts of CNNs and their applications in image recognition.">
+<meta property="og:url" content="http://opensourcebox.com/posts/image-recognition-with-convolutional-neural-networks-cnns/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="http://opensourcebox.com/posts/image-recognition-with-convolutional-neural-networks-cnns/">
+
+<meta name="twitter:description" content="Image recognition, or image classification, is the task of assigning a label or category to an image based on its content. It has vast applications in various fields, including self-driving cars, medical image diagnosis, surveillance, and social media. Convolutional Neural Networks (CNNs) have been the cornerstone in the development of image recognition and have shown remarkable results. In this post, we will explore the different concepts of CNNs and their applications in image recognition.">
+<meta property="article:published_time" content="2022-09-20T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2022-09-20T00:00:00&#43;00:00">
+
+
+
+
+
+<meta property="og:image" content="http://opensourcebox.com/">
+<meta property="og:image:url" content="http://opensourcebox.com/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap  p-6">
+            <div class="flex items-center flex-no-shrink  text-white mr-6">
+                <a href="http://opensourcebox.com/"><span class="font-semibold text-2xl tracking-tight">OpenSourceBox</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+    
+        <div class="bg-white col-span-3 p-5 dark:bg-warmgray-900 dark:text-white">
+            
+            <h1 class="title text-4xl font-bold mb-2">Image Recognition with Convolutional Neural Networks (CNNs)</h1>
+            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><p>Image recognition, or image classification, is the task of assigning a label or category to an image based on its content. It has vast applications in various fields, including self-driving cars, medical image diagnosis, surveillance, and social media. Convolutional Neural Networks (CNNs) have been the cornerstone in the development of image recognition and have shown remarkable results. In this post, we will explore the different concepts of CNNs and their applications in image recognition.</p>
+<h2 id="what-are-convolutional-neural-networks">What are Convolutional Neural Networks?</h2>
+<p>CNNs are a type of neural network that  are inspired by the structure and function of the human visual system. They are composed of multiple layers that extract and learn features from images. These features are then scaled hierarchically to enable the classification of the input image. The core building block of CNNs is the convolution operation, which is essentially a sliding window operation over a given image with a predefined kernel or filter. During the convolution process, the filter learns to detect a certain feature in the image, such as edges or corners, that are relevant to the classification task. This filter is then applied in a sliding window over the entire image to convert it into a feature map.</p>
+<p><img src="https://miro.medium.com/max/3000/1*vkQ0hXDaQv57sALXAJquxA.png" alt="Alt Text"></p>
+<p>The image above shows a typical CNN architecture, composed of input, output, and convolutional layers. The input layer receives the raw image data, and the output layer returns the predicted class probabilities. The convolutional layers consist of filters that learn the relevant features, and max-pooling layers that downsample the feature maps. These downsampled feature maps are then passed to fully connected layers, which learn the high-level representations and map them to the output probabilities.</p>
+<h2 id="image-recognition-with-cnns">Image Recognition with CNNs</h2>
+<p>Let&rsquo;s dive deeper into the process of image recognition with CNNs. The first step is to train the model using a large dataset of labeled images. This is typically done using supervised learning, where the model is trained on data that has been labeled with the ground truth class. The training process involves adjusting the weights and biases of the model to minimize the error (i.e., loss) between the predicted output and the ground truth.</p>
+<p>In the case of image recognition, the loss function used is typically the cross-entropy loss, which is a measure of the dissimilarity between the predicted class distribution and the true class distribution. The optimizer used to adjust the weights and biases is usually stochastic gradient descent (SGD) or one of its variants, such as Adam or RMSProp.</p>
+<p>Once the model is trained, it can be used to predict the class of new, unseen images. The process involves passing the image through the CNN, which will output a probability distribution over the different classes. The class with the highest probability is then chosen as the predicted output.</p>
+<p>Here&rsquo;s a code snippet that demonstrates the process of training a CNN on the MNIST dataset, which consists of handwritten digits:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> tensorflow <span style="color:#66d9ef">as</span> tf
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> tensorflow.keras.datasets <span style="color:#f92672">import</span> mnist
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load the dataset</span>
+</span></span><span style="display:flex;"><span>(x_train, y_train), (x_test, y_test) <span style="color:#f92672">=</span> mnist<span style="color:#f92672">.</span>load_data()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Normalize the pixel values to be between 0 and 1</span>
+</span></span><span style="display:flex;"><span>x_train <span style="color:#f92672">=</span> x_train <span style="color:#f92672">/</span> <span style="color:#ae81ff">255.0</span>
+</span></span><span style="display:flex;"><span>x_test <span style="color:#f92672">=</span> x_test <span style="color:#f92672">/</span> <span style="color:#ae81ff">255.0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Define the model architecture</span>
+</span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>Sequential([
+</span></span><span style="display:flex;"><span>    tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">32</span>, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>, input_shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">1</span>)),
+</span></span><span style="display:flex;"><span>    tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>MaxPooling2D((<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)),
+</span></span><span style="display:flex;"><span>    tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Flatten(),
+</span></span><span style="display:flex;"><span>    tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">10</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;softmax&#39;</span>)
+</span></span><span style="display:flex;"><span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Compile the model</span>
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>compile(optimizer<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;adam&#39;</span>,
+</span></span><span style="display:flex;"><span>              loss<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sparse_categorical_crossentropy&#39;</span>,
+</span></span><span style="display:flex;"><span>              metrics<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;accuracy&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Train the model</span>
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>fit(x_train, y_train, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>, validation_data<span style="color:#f92672">=</span>(x_test, y_test))
+</span></span></code></pre></div><p>In this code, we first load the MNIST dataset and normalize the pixel values to be between 0 and 1. We then define the model architecture using <code>tf.keras.Sequential</code>, which allows us to stack layers one after the other. The model consists of a convolutional layer with 32 filters, a max-pooling layer, a flattening layer, and a fully connected layer with 10 neurons, corresponding to the 10 possible classes. We use the <code>adam</code> optimizer and the <code>sparse_categorical_crossentropy</code> loss function. Finally, we train the model for 5 epochs and validate on the test set.</p>
+<h2 id="cnns-for-object-detection-and-segmentation">CNNs for Object Detection and Segmentation</h2>
+<p>CNNs can be also used for object detection and segmentation. Object detection involves identifying the location of objects within an image, along with their class labels. This is typically done using a variant of CNNs called Region-based CNNs (R-CNNs). The R-CNN architecture first proposes a set of regions within the image that are likely to contain objects, and then applies a CNN to each proposed region to predict the class and bounding box of the object.</p>
+<p><img src="https://miro.medium.com/max/1200/1*vU6B75g6jJlLZ3gqhZRMHA.png" alt="Alt Text"></p>
+<p>Image segmentation is the task of partitioning an image into multiple segments or regions, each of which corresponds to a different entity or object within the image. It is typically done using Fully Convolutional Networks (FCNs), which extend the convolutional operation to the entire image rather than just local regions. FCN-based segmentation networks essentially replace the fully connected layers of a CNN with convolutional layers, enabling them to output a segmentation map.</p>
+<p><img src="https://leonardoaraujosantos.gitbooks.io/artificial-inteligence/content/image_folder_5/CNNArchitecture.png" alt="Alt Text"></p>
+<p>Here&rsquo;s a code snippet that demonstrates the process of object detection using the Faster R-CNN algorithm:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> tensorflow <span style="color:#66d9ef">as</span> tf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load the dataset and label map</span>
+</span></span><span style="display:flex;"><span>dataset <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>TFRecordDataset(<span style="color:#e6db74">&#39;path/to/dataset.tfrecord&#39;</span>)
+</span></span><span style="display:flex;"><span>label_map <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>: <span style="color:#e6db74">&#39;person&#39;</span>, <span style="color:#ae81ff">2</span>: <span style="color:#e6db74">&#39;car&#39;</span>, <span style="color:#ae81ff">3</span>: <span style="color:#e6db74">&#39;dog&#39;</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Define the model architecture</span>
+</span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>applications<span style="color:#f92672">.</span>nasnet<span style="color:#f92672">.</span>NASNetMobile(include_top<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, weights<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Compile the model</span>
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>compile(optimizer<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;adam&#39;</span>,
+</span></span><span style="display:flex;"><span>              loss<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;binary_crossentropy&#39;</span>,
+</span></span><span style="display:flex;"><span>              metrics<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;accuracy&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Train the model</span>
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>fit(dataset, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Make predictions on new images</span>
+</span></span><span style="display:flex;"><span>image <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>io<span style="color:#f92672">.</span>read_file(<span style="color:#e6db74">&#39;path/to/image.jpg&#39;</span>)
+</span></span><span style="display:flex;"><span>image <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>image<span style="color:#f92672">.</span>decode_jpeg(image)
+</span></span><span style="display:flex;"><span>predictions <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>predict(image)
+</span></span></code></pre></div><p>In this code, we first load the dataset and label map, which contain the training data and corresponding class labels. We then define the model architecture using a pre-trained NASNetMobile model, which has been trained on a large-scale image classification dataset. We compile the model using binary cross-entropy loss, which is appropriate for binary classification tasks. Finally, we train the model for 10 epochs and use it to make predictions on new images.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this post, we have covered the concepts of CNNs and their applications in image recognition, object detection, and segmentation. We have discussed the architecture of CNNs, the training process, and the optimization techniques used to improve their performance. We have also provided code snippets to demonstrate the workflow of training and using CNNs for image recognition and object detection.</p>
+<p>If you&rsquo;re interested in learning more about CNNs, here are some additional resources:</p>
+<ul>
+<li><a href="http://cs231n.stanford.edu/">Stanford CS231n: Convolutional Neural Networks for Visual Recognition</a></li>
+<li><a href="https://www.manning.com/books/deep-learning-with-python">Deep Learning with Python by Francois Chollet</a></li>
+<li><a href="https://keras.io/api/layers/convolution_layers/">Keras Documentation: Convolutional Layers</a></li>
+<li><a href="https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/latest/">TensorFlow Documentation: Object Detection API</a></li>
+</ul>
+<p>Hope you enjoyed this post!</p>
+</div>
+        </div>
+        
+    </div>
+    
+            </div>
+        </div><footer class=" text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2023 <a href="http://opensourcebox.com/" class="duration-200 hover:opacity-50">OpenSourceBox</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>

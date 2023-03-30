@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+
+<title>OpenSourceBox | Building a recommendation engine with Open Source</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="OpenSourceBox | Building a recommendation engine with Open Source" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="Building a Recommendation Engine with Open Source
+In today&rsquo;s digital era, businesses are increasingly using recommendation engines to improve customer engagement and retention by providing personalized recommendations. A recommendation engine is a type of machine learning algorithm that provides suggestions to users based on their past activities and interests. In this blog post, we will discuss the various open-source tools and frameworks that can be used to build a recommendation engine.">
+<meta property="og:site_name" content="OpenSourceBox">
+<meta property="og:description" content="Building a Recommendation Engine with Open Source
+In today&rsquo;s digital era, businesses are increasingly using recommendation engines to improve customer engagement and retention by providing personalized recommendations. A recommendation engine is a type of machine learning algorithm that provides suggestions to users based on their past activities and interests. In this blog post, we will discuss the various open-source tools and frameworks that can be used to build a recommendation engine.">
+<meta property="og:url" content="http://opensourcebox.com/posts/building-a-recommendation-engine-with-open-source/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="http://opensourcebox.com/posts/building-a-recommendation-engine-with-open-source/">
+
+<meta name="twitter:description" content="Building a Recommendation Engine with Open Source
+In today&rsquo;s digital era, businesses are increasingly using recommendation engines to improve customer engagement and retention by providing personalized recommendations. A recommendation engine is a type of machine learning algorithm that provides suggestions to users based on their past activities and interests. In this blog post, we will discuss the various open-source tools and frameworks that can be used to build a recommendation engine.">
+<meta property="article:published_time" content="2022-09-20T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2022-09-20T00:00:00&#43;00:00">
+
+
+
+
+
+<meta property="og:image" content="http://opensourcebox.com/">
+<meta property="og:image:url" content="http://opensourcebox.com/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap  p-6">
+            <div class="flex items-center flex-no-shrink  text-white mr-6">
+                <a href="http://opensourcebox.com/"><span class="font-semibold text-2xl tracking-tight">OpenSourceBox</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+    
+        <div class="bg-white col-span-3 p-5 dark:bg-warmgray-900 dark:text-white">
+            
+            <h1 class="title text-4xl font-bold mb-2">Building a recommendation engine with Open Source</h1>
+            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><p>Building a Recommendation Engine with Open Source</p>
+<p>In today&rsquo;s digital era, businesses are increasingly using recommendation engines to improve customer engagement and retention by providing personalized recommendations. A recommendation engine is a type of machine learning algorithm that provides suggestions to users based on their past activities and interests. In this blog post, we will discuss the various open-source tools and frameworks that can be used to build a recommendation engine.</p>
+<ol>
+<li>Collaborative Filtering
+Collaborative filtering is a commonly used technique in recommendation systems, which discovers patterns in users&rsquo; activities and derives recommendations from them. The two most popular methods of collaborative filtering are User-based and Item-based filtering.</li>
+</ol>
+<p>In User-based filtering, the algorithm uses the past user activities to recommend similar items to the active user. Alternatively, Item-based filtering looks for items that are similar to the items that the active user has interacted before.</p>
+<p>Let&rsquo;s look at a code implementation of user-based collaborative filtering using Python and the Pandas library.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.neighbors <span style="color:#f92672">import</span> NearestNeighbors
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load dataset</span>
+</span></span><span style="display:flex;"><span>movies <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;data/movies.csv&#39;</span>)
+</span></span><span style="display:flex;"><span>ratings <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;data/ratings.csv&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Merge datasets</span>
+</span></span><span style="display:flex;"><span>combined_dataset <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>merge(movies, ratings, on<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;movieId&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create a pivot table</span>
+</span></span><span style="display:flex;"><span>pivot_table <span style="color:#f92672">=</span> combined_dataset<span style="color:#f92672">.</span>pivot_table(index<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;title&#39;</span>, columns<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;userId&#39;</span>, values<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;rating&#39;</span>)<span style="color:#f92672">.</span>fillna(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Train the model</span>
+</span></span><span style="display:flex;"><span>knn <span style="color:#f92672">=</span> NearestNeighbors(metric<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cosine&#39;</span>, algorithm<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;brute&#39;</span>)
+</span></span><span style="display:flex;"><span>knn<span style="color:#f92672">.</span>fit(pivot_table)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get recommendations for a user</span>
+</span></span><span style="display:flex;"><span>movie_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Toy Story (1995)&#39;</span>
+</span></span><span style="display:flex;"><span>movie_idx <span style="color:#f92672">=</span> pivot_table<span style="color:#f92672">.</span>index<span style="color:#f92672">.</span>get_loc(movie_name)
+</span></span><span style="display:flex;"><span>distances, indices <span style="color:#f92672">=</span> knn<span style="color:#f92672">.</span>kneighbors(pivot_table<span style="color:#f92672">.</span>iloc[movie_idx, :]<span style="color:#f92672">.</span>values<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>), n_neighbors<span style="color:#f92672">=</span><span style="color:#ae81ff">6</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(indices<span style="color:#f92672">.</span>flatten())):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> i <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;Recommendations for </span><span style="color:#e6db74">{</span>movie_name<span style="color:#e6db74">}</span><span style="color:#e6db74">:&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>i<span style="color:#e6db74">}</span><span style="color:#e6db74">. </span><span style="color:#e6db74">{</span>pivot_table<span style="color:#f92672">.</span>index[indices<span style="color:#f92672">.</span>flatten()][i]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)
+</span></span></code></pre></div><ol start="2">
+<li>Content-Based Filtering
+Content-based filtering is another popular method in recommendation engines, using past activities and user preferences to recommend similar items. Content-based filtering works by analyzing the metadata of the items, such as genre and actors, to determine the user&rsquo;s interests.</li>
+</ol>
+<p>Here&rsquo;s a code snippet for implementing content-based filtering in a Python framework:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.feature_extraction.text <span style="color:#f92672">import</span> TfidfVectorizer
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.metrics.pairwise <span style="color:#f92672">import</span> cosine_similarity
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load dataset</span>
+</span></span><span style="display:flex;"><span>movies <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;data/movies_metadata.csv&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create a feature vector</span>
+</span></span><span style="display:flex;"><span>tfidf <span style="color:#f92672">=</span> TfidfVectorizer(stop_words<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;english&#39;</span>)
+</span></span><span style="display:flex;"><span>movies[<span style="color:#e6db74">&#39;overview&#39;</span>] <span style="color:#f92672">=</span> movies[<span style="color:#e6db74">&#39;overview&#39;</span>]<span style="color:#f92672">.</span>fillna(<span style="color:#e6db74">&#39;&#39;</span>)
+</span></span><span style="display:flex;"><span>tfidf_matrix <span style="color:#f92672">=</span> tfidf<span style="color:#f92672">.</span>fit_transform(movies[<span style="color:#e6db74">&#39;overview&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate cosine similarity</span>
+</span></span><span style="display:flex;"><span>cosine_similarity <span style="color:#f92672">=</span> cosine_similarity(tfidf_matrix, tfidf_matrix)
+</span></span><span style="display:flex;"><span>indices <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Series(movies<span style="color:#f92672">.</span>index, index<span style="color:#f92672">=</span>movies[<span style="color:#e6db74">&#39;title&#39;</span>])<span style="color:#f92672">.</span>drop_duplicates()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get recommendations for a movie</span>
+</span></span><span style="display:flex;"><span>movie_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Toy Story&#39;</span>
+</span></span><span style="display:flex;"><span>movie_idx <span style="color:#f92672">=</span> indices[movie_name]
+</span></span><span style="display:flex;"><span>similar_movies <span style="color:#f92672">=</span> list(enumerate(cosine_similarity[movie_idx]))
+</span></span><span style="display:flex;"><span>sorted_movies <span style="color:#f92672">=</span> sorted(similar_movies, key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x: x[<span style="color:#ae81ff">1</span>], reverse<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)[<span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">6</span>]
+</span></span><span style="display:flex;"><span>movie_indices <span style="color:#f92672">=</span> [i[<span style="color:#ae81ff">0</span>] <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> sorted_movies]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;Recommendations for </span><span style="color:#e6db74">{</span>movie_name<span style="color:#e6db74">}</span><span style="color:#e6db74">:&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> idx <span style="color:#f92672">in</span> movie_indices:
+</span></span><span style="display:flex;"><span>    print(movies[<span style="color:#e6db74">&#39;title&#39;</span>]<span style="color:#f92672">.</span>iloc[idx])
+</span></span></code></pre></div><ol start="3">
+<li>Singular Value Decomposition (SVD)
+SVD is a matrix factorization technique used in recommendation engines to discover latent features and pattern in the data. It reduces the dimensionality of the large user-item matrix.</li>
+</ol>
+<p>Here&rsquo;s an implementation of SVD using Python and the Surprise library:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> surprise <span style="color:#f92672">import</span> SVD, Dataset, Reader
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> surprise.model_selection <span style="color:#f92672">import</span> cross_validate
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load dataset</span>
+</span></span><span style="display:flex;"><span>ratings <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;data/ratings.csv&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load data into Surprise dataset</span>
+</span></span><span style="display:flex;"><span>reader <span style="color:#f92672">=</span> Reader(rating_scale<span style="color:#f92672">=</span>(<span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">5</span>))
+</span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> Dataset<span style="color:#f92672">.</span>load_from_df(ratings[[<span style="color:#e6db74">&#39;userId&#39;</span>, <span style="color:#e6db74">&#39;movieId&#39;</span>, <span style="color:#e6db74">&#39;rating&#39;</span>]], reader)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Train the model</span>
+</span></span><span style="display:flex;"><span>svd <span style="color:#f92672">=</span> SVD()
+</span></span><span style="display:flex;"><span>cross_validate(svd, data, measures<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;RMSE&#39;</span>, <span style="color:#e6db74">&#39;MAE&#39;</span>], cv<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>, verbose<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get recommendations for a user</span>
+</span></span><span style="display:flex;"><span>user_id <span style="color:#f92672">=</span> <span style="color:#ae81ff">101</span>
+</span></span><span style="display:flex;"><span>rated_movies <span style="color:#f92672">=</span> ratings[ratings[<span style="color:#e6db74">&#39;userId&#39;</span>] <span style="color:#f92672">==</span> user_id][<span style="color:#e6db74">&#39;movieId&#39;</span>]
+</span></span><span style="display:flex;"><span>unrated_movies <span style="color:#f92672">=</span> set(ratings[<span style="color:#e6db74">&#39;movieId&#39;</span>]) <span style="color:#f92672">-</span> set(rated_movies)
+</span></span><span style="display:flex;"><span>predictions <span style="color:#f92672">=</span> [svd<span style="color:#f92672">.</span>predict(user_id, movie_id) <span style="color:#66d9ef">for</span> movie_id <span style="color:#f92672">in</span> unrated_movies]
+</span></span><span style="display:flex;"><span>recommendations <span style="color:#f92672">=</span> sorted(predictions, key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x: x<span style="color:#f92672">.</span>est, reverse<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)[:<span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;Recommendations for user </span><span style="color:#e6db74">{</span>user_id<span style="color:#e6db74">}</span><span style="color:#e6db74">:&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> prediction <span style="color:#f92672">in</span> recommendations:
+</span></span><span style="display:flex;"><span>    print(prediction<span style="color:#f92672">.</span>iid)
+</span></span></code></pre></div><p>Conclusion
+In this blog post, we&rsquo;ve covered three popular methods of building recommendation engines: collaborative filtering, content-based filtering, and SVD. We&rsquo;ve also demonstrated Python code examples using open-source libraries and frameworks that can be used to implement these techniques.</p>
+<p>Additional resources:</p>
+<ul>
+<li>Surprise documentation: <a href="https://surprise.readthedocs.io/">https://surprise.readthedocs.io/</a></li>
+<li>Scikit-learn documentation: <a href="https://scikit-learn.org/stable/documentation.html">https://scikit-learn.org/stable/documentation.html</a></li>
+<li>TfidfVectorizer documentation: <a href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html">https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html</a></li>
+</ul>
+</div>
+        </div>
+        
+    </div>
+    
+            </div>
+        </div><footer class=" text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2023 <a href="http://opensourcebox.com/" class="duration-200 hover:opacity-50">OpenSourceBox</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>

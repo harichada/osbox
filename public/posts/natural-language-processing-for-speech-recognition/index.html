@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+
+<title>OpenSourceBox | Natural language processing for speech recognition</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="OpenSourceBox | Natural language processing for speech recognition" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="Natural language processing (NLP) is a subfield of artificial intelligence that deals with the interaction between humans and computers using natural languages. One major application of NLP is in speech recognition, where computers convert audio signals into text. In this blog post, we will explore the various components of NLP that enable machines to process spoken language.
+Preprocessing Before any speech recognition can be done, the audio signal must be preprocessed.">
+<meta property="og:site_name" content="OpenSourceBox">
+<meta property="og:description" content="Natural language processing (NLP) is a subfield of artificial intelligence that deals with the interaction between humans and computers using natural languages. One major application of NLP is in speech recognition, where computers convert audio signals into text. In this blog post, we will explore the various components of NLP that enable machines to process spoken language.
+Preprocessing Before any speech recognition can be done, the audio signal must be preprocessed.">
+<meta property="og:url" content="http://opensourcebox.com/posts/natural-language-processing-for-speech-recognition/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="http://opensourcebox.com/posts/natural-language-processing-for-speech-recognition/">
+
+<meta name="twitter:description" content="Natural language processing (NLP) is a subfield of artificial intelligence that deals with the interaction between humans and computers using natural languages. One major application of NLP is in speech recognition, where computers convert audio signals into text. In this blog post, we will explore the various components of NLP that enable machines to process spoken language.
+Preprocessing Before any speech recognition can be done, the audio signal must be preprocessed.">
+<meta property="article:published_time" content="2022-09-20T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2022-09-20T00:00:00&#43;00:00">
+
+
+
+
+
+<meta property="og:image" content="http://opensourcebox.com/">
+<meta property="og:image:url" content="http://opensourcebox.com/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap  p-6">
+            <div class="flex items-center flex-no-shrink  text-white mr-6">
+                <a href="http://opensourcebox.com/"><span class="font-semibold text-2xl tracking-tight">OpenSourceBox</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+    
+        <div class="bg-white col-span-3 p-5 dark:bg-warmgray-900 dark:text-white">
+            
+            <h1 class="title text-4xl font-bold mb-2">Natural language processing for speech recognition</h1>
+            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><p>Natural language processing (NLP) is a subfield of artificial intelligence that deals with the interaction between humans and computers using natural languages. One major application of NLP is in speech recognition, where computers convert audio signals into text. In this blog post, we will explore the various components of NLP that enable machines to process spoken language.</p>
+<ol>
+<li>Preprocessing</li>
+</ol>
+<p>Before any speech recognition can be done, the audio signal must be preprocessed. Typically, this involves filtering out noise and amplifying the speech signal. It may also involve segmenting the audio signal into smaller chunks, which can be more easily processed by the system.</p>
+<p>Here&rsquo;s an example of one way to preprocess audio signals using the <code>pydub</code> library in Python:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pydub <span style="color:#f92672">import</span> AudioSegment
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load audio file and apply noise suppression</span>
+</span></span><span style="display:flex;"><span>audio <span style="color:#f92672">=</span> AudioSegment<span style="color:#f92672">.</span>from_file(<span style="color:#e6db74">&#34;input.wav&#34;</span>)
+</span></span><span style="display:flex;"><span>audio <span style="color:#f92672">=</span> audio<span style="color:#f92672">.</span>low_pass_filter(<span style="color:#ae81ff">2000</span>)<span style="color:#f92672">.</span>high_pass_filter(<span style="color:#ae81ff">300</span>)<span style="color:#f92672">.</span>fade_in(<span style="color:#ae81ff">1000</span>)<span style="color:#f92672">.</span>fade_out(<span style="color:#ae81ff">1000</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Split audio into chunks</span>
+</span></span><span style="display:flex;"><span>chunks <span style="color:#f92672">=</span> audio<span style="color:#f92672">.</span>split_to_mono()
+</span></span></code></pre></div><ol start="2">
+<li>Feature extraction</li>
+</ol>
+<p>Once the audio signal has been preprocessed, the next step is to extract features that describe it. Some common features used in speech recognition include mel-frequency cepstral coefficients (MFCCs), spectral features, and pitch.</p>
+<p>In the following example, we use the <code>librosa</code> library in Python to extract MFCCs from one of the chunks of preprocessed audio:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> librosa
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Extract MFCCs from a chunk of audio</span>
+</span></span><span style="display:flex;"><span>mfcc <span style="color:#f92672">=</span> librosa<span style="color:#f92672">.</span>feature<span style="color:#f92672">.</span>mfcc(y<span style="color:#f92672">=</span>chunks[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>get_array_of_samples(), sr<span style="color:#f92672">=</span>chunks[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>frame_rate)
+</span></span></code></pre></div><ol start="3">
+<li>Speech recognition</li>
+</ol>
+<p>Now that we have extracted features from the preprocessed audio signal, we can use a machine learning model to recognize the speech. The model typically takes in the extracted features as input and outputs the corresponding text.</p>
+<p>There are many machine learning models that can be used for speech recognition, but one widely used model is the hidden Markov model (HMM). In an HMM, the speech signal is modeled as a sequence of hidden states that generate the observed features.</p>
+<p>Here&rsquo;s an example of training an HMM using the <code>hmmlearn</code> library in Python:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> hmmlearn <span style="color:#f92672">import</span> hmm
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Train an HMM on a set of speech features</span>
+</span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> hmm<span style="color:#f92672">.</span>GaussianHMM(n_components<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, covariance_type<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;diag&#34;</span>)
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>fit([mfcc<span style="color:#f92672">.</span>T])
+</span></span></code></pre></div><ol start="4">
+<li>Language modeling</li>
+</ol>
+<p>In order to improve the accuracy of speech recognition, it&rsquo;s important to incorporate knowledge about the language being spoken. This is done using language models, which estimate the probability of a sequence of words occurring in a particular language.</p>
+<p>One common approach to language modeling is to use n-gram models, which estimate the probability of each word based on the words that come before it. For example, a 2-gram model would estimate the probability of each word based on the preceding word.</p>
+<p>Here&rsquo;s an example of using the <code>nltk</code> library in Python to build a 2-gram language model on a corpus of text:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> nltk.tokenize <span style="color:#f92672">import</span> word_tokenize
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> nltk.lm <span style="color:#f92672">import</span> NgramCounter
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> nltk.util <span style="color:#f92672">import</span> ngrams
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Build a 2-gram language model on a corpus of text</span>
+</span></span><span style="display:flex;"><span>text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;The quick brown fox jumped over the lazy dog&#34;</span>
+</span></span><span style="display:flex;"><span>tokens <span style="color:#f92672">=</span> word_tokenize(text)
+</span></span><span style="display:flex;"><span>bigrams <span style="color:#f92672">=</span> ngrams(tokens, <span style="color:#ae81ff">2</span>, pad_left<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, pad_right<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>counts <span style="color:#f92672">=</span> NgramCounter(bigrams)
+</span></span></code></pre></div><ol start="5">
+<li>Post-processing</li>
+</ol>
+<p>Even with the best speech recognition models, the output will always have errors. It&rsquo;s therefore important to perform post-processing to correct these errors and produce a more accurate transcription.</p>
+<p>One common approach to post-processing is to use a language model to identify the most likely sequence of words given the output of the speech recognition model. This is done using a technique called beam search, which searches through the space of possible word sequences to find the one with the highest probability.</p>
+<p>Here&rsquo;s an example of using the <code>python_speech_features</code> library in Python to correct errors in a speech recognition output using a language model:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> python_speech_features <span style="color:#f92672">import</span> mfcc
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> LanguageModel <span style="color:#f92672">import</span> LanguageModel
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Initialize language model and speech recognizer</span>
+</span></span><span style="display:flex;"><span>lm <span style="color:#f92672">=</span> LanguageModel(<span style="color:#e6db74">&#34;corpus.txt&#34;</span>)
+</span></span><span style="display:flex;"><span>sr <span style="color:#f92672">=</span> SpeechRecognizer()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Recognize speech and correct errors using language model</span>
+</span></span><span style="display:flex;"><span>signal <span style="color:#f92672">=</span> <span style="color:#f92672">...</span>  <span style="color:#75715e"># Load audio signal</span>
+</span></span><span style="display:flex;"><span>frames <span style="color:#f92672">=</span> signal<span style="color:#f92672">.</span>split(<span style="color:#ae81ff">0.02</span>)  <span style="color:#75715e"># Split audio into frames</span>
+</span></span><span style="display:flex;"><span>features <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> frame <span style="color:#f92672">in</span> frames:
+</span></span><span style="display:flex;"><span>    features<span style="color:#f92672">.</span>append(mfcc(frame))
+</span></span><span style="display:flex;"><span>output <span style="color:#f92672">=</span> sr<span style="color:#f92672">.</span>recognize(features)
+</span></span><span style="display:flex;"><span>corrected <span style="color:#f92672">=</span> lm<span style="color:#f92672">.</span>beam_search(output)
+</span></span></code></pre></div><p>Additional Resources:</p>
+<ul>
+<li>Natural Language Processing: <a href="https://en.wikipedia.org/wiki/Natural_language_processing">https://en.wikipedia.org/wiki/Natural_language_processing</a></li>
+<li>Speech Recognition: <a href="https://en.wikipedia.org/wiki/Speech_recognition">https://en.wikipedia.org/wiki/Speech_recognition</a></li>
+<li>pydub: <a href="https://github.com/jiaaro/pydub">https://github.com/jiaaro/pydub</a></li>
+<li>librosa: <a href="https://librosa.org/">https://librosa.org/</a></li>
+<li>hmmlearn: <a href="https://hmmlearn.readthedocs.io/">https://hmmlearn.readthedocs.io/</a></li>
+<li>NLTK: <a href="https://www.nltk.org/">https://www.nltk.org/</a></li>
+<li>python_speech_features: <a href="https://github.com/jameslyons/python_speech_features">https://github.com/jameslyons/python_speech_features</a></li>
+</ul>
+</div>
+        </div>
+        
+    </div>
+    
+            </div>
+        </div><footer class=" text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2023 <a href="http://opensourcebox.com/" class="duration-200 hover:opacity-50">OpenSourceBox</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>

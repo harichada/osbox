@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+
+<title>OpenSourceBox | Recommender Systems with Apache Spark</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="OpenSourceBox | Recommender Systems with Apache Spark" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="Introduction
+In this blog post, we&rsquo;ll be discussing Recommender Systems with Apache Spark, an open-source, distributed computing system for big data processing. Recommender systems have become increasingly popular with the growing amount of data online. They are algorithms that analyze large data sets and make recommendations based on the user&rsquo;s preferences or behavior. In this post, we&rsquo;ll go over some of the key concepts behind recommender systems and how you can build one with Apache Spark.">
+<meta property="og:site_name" content="OpenSourceBox">
+<meta property="og:description" content="Introduction
+In this blog post, we&rsquo;ll be discussing Recommender Systems with Apache Spark, an open-source, distributed computing system for big data processing. Recommender systems have become increasingly popular with the growing amount of data online. They are algorithms that analyze large data sets and make recommendations based on the user&rsquo;s preferences or behavior. In this post, we&rsquo;ll go over some of the key concepts behind recommender systems and how you can build one with Apache Spark.">
+<meta property="og:url" content="http://opensourcebox.com/posts/recommender-systems-with-apache-spark/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="http://opensourcebox.com/posts/recommender-systems-with-apache-spark/">
+
+<meta name="twitter:description" content="Introduction
+In this blog post, we&rsquo;ll be discussing Recommender Systems with Apache Spark, an open-source, distributed computing system for big data processing. Recommender systems have become increasingly popular with the growing amount of data online. They are algorithms that analyze large data sets and make recommendations based on the user&rsquo;s preferences or behavior. In this post, we&rsquo;ll go over some of the key concepts behind recommender systems and how you can build one with Apache Spark.">
+<meta property="article:published_time" content="2022-09-20T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2022-09-20T00:00:00&#43;00:00">
+
+
+
+
+
+<meta property="og:image" content="http://opensourcebox.com/">
+<meta property="og:image:url" content="http://opensourcebox.com/">
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap  p-6">
+            <div class="flex items-center flex-no-shrink  text-white mr-6">
+                <a href="http://opensourcebox.com/"><span class="font-semibold text-2xl tracking-tight">OpenSourceBox</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+    
+        <div class="bg-white col-span-3 p-5 dark:bg-warmgray-900 dark:text-white">
+            
+            <h1 class="title text-4xl font-bold mb-2">Recommender Systems with Apache Spark</h1>
+            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><p>Introduction</p>
+<p>In this blog post, we&rsquo;ll be discussing Recommender Systems with Apache Spark, an open-source, distributed computing system for big data processing. Recommender systems have become increasingly popular with the growing amount of data online. They are algorithms that analyze large data sets and make recommendations based on the user&rsquo;s preferences or behavior. In this post, we&rsquo;ll go over some of the key concepts behind recommender systems and how you can build one with Apache Spark.</p>
+<ol>
+<li>Collaborative Filtering</li>
+</ol>
+<p>Collaborative filtering is one of the most popular techniques used in recommender systems. It involves finding similarities between users and recommending items based on those similarities. In collaborative filtering, there are two types of filtering: user-based and item-based.</p>
+<p>i. User-based Filtering</p>
+<p>User-based filtering is where the system looks for similarities between users and recommends items based on the preferences of other users who are similar to the current user. Let&rsquo;s look at an example of how user-based filtering works using Apache Spark.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pyspark.mllib.recommendation <span style="color:#f92672">import</span> ALS, Rating
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> sc<span style="color:#f92672">.</span>textFile(<span style="color:#e6db74">&#34;data/user-item-ratings.csv&#34;</span>)
+</span></span><span style="display:flex;"><span>ratings <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>map(<span style="color:#66d9ef">lambda</span> l: l<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;,&#39;</span>))\
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">.</span>map(<span style="color:#66d9ef">lambda</span> l: Rating(int(l[<span style="color:#ae81ff">0</span>]), int(l[<span style="color:#ae81ff">1</span>]), float(l[<span style="color:#ae81ff">2</span>])))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>rank <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>numIterations <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> ALS<span style="color:#f92672">.</span>train(ratings, rank, numIterations)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># we can recommend top n products for a given user</span>
+</span></span><span style="display:flex;"><span>recommendations <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>recommendProducts(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">10</span>)
+</span></span></code></pre></div><p>Here we&rsquo;ve used the ALS algorithm in Spark for collaborative filtering. The data used is in the form of user-item-rating table, which is read from a CSV file. We trained an ALS model with the ratings data using 10 latent factors and 5 iterations. The model can then be used to recommend products for a user by calling the <code>recommendProducts</code> method with the user ID and the number of products to recommend.</p>
+<p>ii. Item-based Filtering</p>
+<p>Item-based filtering is where the system recommends items that are similar to the ones a user has already rated highly. Item-based filtering is faster than user-based filtering since the user similarity matrix doesn&rsquo;t need to be computed. Let&rsquo;s look at how to implement item-based filtering with Spark.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pyspark.mllib.recommendation <span style="color:#f92672">import</span> ALS, Rating
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> sc<span style="color:#f92672">.</span>textFile(<span style="color:#e6db74">&#34;data/user-item-ratings.csv&#34;</span>)
+</span></span><span style="display:flex;"><span>ratings <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>map(<span style="color:#66d9ef">lambda</span> l: l<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;,&#39;</span>))\
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">.</span>map(<span style="color:#66d9ef">lambda</span> l: Rating(int(l[<span style="color:#ae81ff">0</span>]), int(l[<span style="color:#ae81ff">1</span>]), float(l[<span style="color:#ae81ff">2</span>])))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>rank <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>numIterations <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> ALS<span style="color:#f92672">.</span>train(ratings, rank, numIterations)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># we can recommend top n similar products for a given item</span>
+</span></span><span style="display:flex;"><span>recommendations <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>recommendProducts(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">10</span>)
+</span></span></code></pre></div><p>Here, we used the same data set as in user-based filtering, but we will now call the <code>recommendProducts</code> method with an item ID instead of a user ID. The recommendations will be the top n products that are similar to the one with the given ID.</p>
+<ol start="2">
+<li>Matrix Factorization</li>
+</ol>
+<p>Matrix factorization is another popular method used in recommender systems. The idea behind matrix factorization is to transform the original data set into matrices and then find low-dimensional representations of those matrices. This is useful for finding similarities between items or users.</p>
+<p>In Spark, matrix factorization can be implemented using the ALS algorithm we saw earlier, which performs low-rank matrix factorization. In collaborative filtering, ALS factorizes the user-item rating matrix into two matrices, one for users and one for items, such that the product of those matrices approximates the original rating matrix.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pyspark.mllib.recommendation <span style="color:#f92672">import</span> ALS, Rating
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> sc<span style="color:#f92672">.</span>textFile(<span style="color:#e6db74">&#34;data/user-item-ratings.csv&#34;</span>)
+</span></span><span style="display:flex;"><span>ratings <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>map(<span style="color:#66d9ef">lambda</span> l: l<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;,&#39;</span>))\
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">.</span>map(<span style="color:#66d9ef">lambda</span> l: Rating(int(l[<span style="color:#ae81ff">0</span>]), int(l[<span style="color:#ae81ff">1</span>]), float(l[<span style="color:#ae81ff">2</span>])))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>rank <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>numIterations <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> ALS<span style="color:#f92672">.</span>train(ratings, rank, numIterations)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># get the user-factor matrix and item-factor matrix</span>
+</span></span><span style="display:flex;"><span>users <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>userFeatures()
+</span></span><span style="display:flex;"><span>items <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>productFeatures()
+</span></span></code></pre></div><p>Here we&rsquo;ve trained an ALS model just like before, but we&rsquo;ve now extracted the user-factors and item-factors matrices from the model. These matrices can be used to compute similarities between users or items.</p>
+<ol start="3">
+<li>Evaluation Metrics</li>
+</ol>
+<p>Evaluation metrics are used to assess the performance of a recommender system. Two popular evaluation metrics are RMSE (Root Mean Squared Error) and MAP (Mean Average Precision).</p>
+<p>RMSE measures the difference between the predicted rating and the actual rating for a given user-item pair. The lower the RMSE, the better the system&rsquo;s performance.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pyspark.ml.evaluation <span style="color:#f92672">import</span> RegressionEvaluator
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> spark<span style="color:#f92672">.</span>read<span style="color:#f92672">.</span>csv(<span style="color:#e6db74">&#34;ratings.csv&#34;</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, inferSchema<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(training, test) <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>randomSplit([<span style="color:#ae81ff">0.8</span>, <span style="color:#ae81ff">0.2</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>als <span style="color:#f92672">=</span> ALS(maxIter<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>, regParam<span style="color:#f92672">=</span><span style="color:#ae81ff">0.01</span>, userCol<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;userId&#34;</span>, itemCol<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;movieId&#34;</span>, ratingCol<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;rating&#34;</span>,
+</span></span><span style="display:flex;"><span>          coldStartStrategy<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;drop&#34;</span>)
+</span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> als<span style="color:#f92672">.</span>fit(training)
+</span></span><span style="display:flex;"><span>predictions <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>transform(test)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>evaluator <span style="color:#f92672">=</span> RegressionEvaluator(metricName<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;rmse&#34;</span>, labelCol<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;rating&#34;</span>,
+</span></span><span style="display:flex;"><span>                                predictionCol<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;prediction&#34;</span>)
+</span></span><span style="display:flex;"><span>rmse <span style="color:#f92672">=</span> evaluator<span style="color:#f92672">.</span>evaluate(predictions)
+</span></span></code></pre></div><p>In this example, we&rsquo;ve used the <code>RegressionEvaluator</code> class in Spark to compute the RMSE of an ALS model. We&rsquo;ve split the data into training and test sets, and trained an ALS model on the training set. We then evaluated the model&rsquo;s predictions on the test set using the RMSE metric.</p>
+<p>MAP measures the precision of a system&rsquo;s recommendations. The higher the MAP, the better the system&rsquo;s performance.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pyspark.ml.evaluation <span style="color:#f92672">import</span> BinaryClassificationEvaluator
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> spark<span style="color:#f92672">.</span>read<span style="color:#f92672">.</span>csv(<span style="color:#e6db74">&#34;data/user-item-ratings.csv&#34;</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, inferSchema<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>(training, test) <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>randomSplit([<span style="color:#ae81ff">0.8</span>, <span style="color:#ae81ff">0.2</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>als <span style="color:#f92672">=</span> ALS(maxIter<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>, regParam<span style="color:#f92672">=</span><span style="color:#ae81ff">0.01</span>, userCol<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;userId&#34;</span>, itemCol<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;movieId&#34;</span>, ratingCol<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;rating&#34;</span>,
+</span></span><span style="display:flex;"><span>          coldStartStrategy<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;drop&#34;</span>)
+</span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> als<span style="color:#f92672">.</span>fit(training)
+</span></span><span style="display:flex;"><span>predictions <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>transform(test)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>evaluator <span style="color:#f92672">=</span> BinaryClassificationEvaluator(labelCol<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;rating&#34;</span>, rawPredictionCol<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;prediction&#34;</span>)
+</span></span><span style="display:flex;"><span>P <span style="color:#f92672">=</span> evaluator<span style="color:#f92672">.</span>evaluate(predictions)
+</span></span></code></pre></div><p>In this example, we&rsquo;ve used the <code>BinaryClassificationEvaluator</code> class in Spark to compute the MAP of an ALS model. We&rsquo;ve split the data into training and test sets, and trained an ALS model on the training set. We then evaluated the model&rsquo;s predictions on the test set using the MAP metric.</p>
+<p>Conclusion</p>
+<p>In this blog post, we covered some of the key concepts of recommender systems, how to implement them using Apache Spark, and how to evaluate their performance. Collaborative filtering and matrix factorization are two popular techniques used in recommender systems. We also looked at two evaluation metrics, RMSE and MAP, which are used to measure the performance of recommender systems. If you&rsquo;re interested in learning more about Apache Spark and recommender systems, check out the links below.</p>
+<p>Link to additional resources:</p>
+<ul>
+<li>Apache Spark documentation: <a href="https://spark.apache.org/docs/latest/index.html">https://spark.apache.org/docs/latest/index.html</a></li>
+<li>ALS: <a href="https://spark.apache.org/docs/latest/ml-collaborative-filtering.html">https://spark.apache.org/docs/latest/ml-collaborative-filtering.html</a></li>
+<li>Evaluation metrics: <a href="https://spark.apache.org/docs/latest/ml-tuning.html#evaluation">https://spark.apache.org/docs/latest/ml-tuning.html#evaluation</a></li>
+</ul>
+</div>
+        </div>
+        
+    </div>
+    
+            </div>
+        </div><footer class=" text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2023 <a href="http://opensourcebox.com/" class="duration-200 hover:opacity-50">OpenSourceBox</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>
