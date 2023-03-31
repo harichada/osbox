@@ -1,114 +1,124 @@
 <!DOCTYPE html>
-
 <html lang="en-us">
-<head>
-
-<title>OpenSourceBox | Social network analysis with machine learning</title>
+  <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
-    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
-    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
-    <link rel="manifest" href='/favicon/site.webmanifest' />
-    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
-    <link rel="shortcut icon" href='/favicon/favicon.ico' />
-    <meta name="theme-color" content="#ffffff">
-    <meta property="og:title" content="OpenSourceBox | Social network analysis with machine learning" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    
-    
-    <link rel="stylesheet" href="/css/style.min.ef88d3b5be8646161728d2c8b8a5e9edfda1e59b414b00c424a9936397884558.css" />
-    
-    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
-        onload="this.media=' all'">
-    
-
-
-
-<meta name="description" content="Introduction
+    <title>Social network analysis with machine learning | OpenSourceBox</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Introduction
 Social network analysis is an essential technique that helps experts understand how people interact with each other in complex web structures. With machine learning capabilities, social network analysis becomes even more powerful, enabling us to identify actionable insights at scale. The reason why machine learning is such a great match for social network analysis is that it can help us identify sophisticated patterns in large data sets, allowing us to understand the structural components of social networks better.">
-<meta property="og:site_name" content="OpenSourceBox">
+    <meta name="generator" content="Hugo 0.111.3">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+    
+    
+      
+
+    
+
+    
+    
+    <meta property="og:title" content="Social network analysis with machine learning" />
 <meta property="og:description" content="Introduction
-Social network analysis is an essential technique that helps experts understand how people interact with each other in complex web structures. With machine learning capabilities, social network analysis becomes even more powerful, enabling us to identify actionable insights at scale. The reason why machine learning is such a great match for social network analysis is that it can help us identify sophisticated patterns in large data sets, allowing us to understand the structural components of social networks better.">
-<meta property="og:url" content="http://opensourcebox.com/posts/social-network-analysis-with-machine-learning/">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="en_US">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="">
-
-<link rel="canonical" href="http://opensourcebox.com/posts/social-network-analysis-with-machine-learning/">
-
+Social network analysis is an essential technique that helps experts understand how people interact with each other in complex web structures. With machine learning capabilities, social network analysis becomes even more powerful, enabling us to identify actionable insights at scale. The reason why machine learning is such a great match for social network analysis is that it can help us identify sophisticated patterns in large data sets, allowing us to understand the structural components of social networks better." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://opensourcebox.com/posts/social-network-analysis-with-machine-learning/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-09-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-09-20T00:00:00+00:00" />
+<meta itemprop="name" content="Social network analysis with machine learning">
+<meta itemprop="description" content="Introduction
+Social network analysis is an essential technique that helps experts understand how people interact with each other in complex web structures. With machine learning capabilities, social network analysis becomes even more powerful, enabling us to identify actionable insights at scale. The reason why machine learning is such a great match for social network analysis is that it can help us identify sophisticated patterns in large data sets, allowing us to understand the structural components of social networks better."><meta itemprop="datePublished" content="2022-09-20T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-09-20T00:00:00+00:00" />
+<meta itemprop="wordCount" content="809">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Social network analysis with machine learning"/>
 <meta name="twitter:description" content="Introduction
-Social network analysis is an essential technique that helps experts understand how people interact with each other in complex web structures. With machine learning capabilities, social network analysis becomes even more powerful, enabling us to identify actionable insights at scale. The reason why machine learning is such a great match for social network analysis is that it can help us identify sophisticated patterns in large data sets, allowing us to understand the structural components of social networks better.">
-<meta property="article:published_time" content="2022-09-20T00:00:00&#43;00:00">
-<meta property="article:updated_time" content="2022-09-20T00:00:00&#43;00:00">
+Social network analysis is an essential technique that helps experts understand how people interact with each other in complex web structures. With machine learning capabilities, social network analysis becomes even more powerful, enabling us to identify actionable insights at scale. The reason why machine learning is such a great match for social network analysis is that it can help us identify sophisticated patterns in large data sets, allowing us to understand the structural components of social networks better."/>
 
+	
+  </head>
 
-
-
-
-<meta property="og:image" content="http://opensourcebox.com/">
-<meta property="og:image:url" content="http://opensourcebox.com/">
+  <body class="ma0 avenir bg-near-white">
 
     
-    <link rel="stylesheet" href='/css/custom.css'>
-    <i class="dark hidden"></i>
-</head>
-<body class="font-sans">
-    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="">
-    <div class="container max-w-screen-xl mr-auto ml-auto">
-        <nav class="flex items-center justify-between flex-wrap  p-6">
-            <div class="flex items-center flex-no-shrink  text-white mr-6">
-                <a href="http://opensourcebox.com/"><span class="font-semibold text-2xl tracking-tight">OpenSourceBox</span></a>
-            </div>
-            <div class="flex md:hidden">
-                <div class="py-2">
-                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
-                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
-                    <span class="text-white">|</span>
-                </div>
-                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
-                    <span class="icon-menu text-2xl"></span>
-                </button>
-            </div>
-            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
-                <div class="text-sm lg:flex-grow">
-                </div>
-                <div class="navmenu">
-                    
-                </div>
-                <div class="text-white invisible md:visible">
-                    <span>|</span>
-                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
-                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
-                </div>
-            </div>
-        </nav>
-    </div>
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        OpenSourceBox
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
 </div>
-<style>
-    .active {
-        display: block;
-    }
-</style>
 
-<script>
-    let hamburger = document.getElementById('hamburgerbtn');
+    </div>
+  </div>
+</nav>
 
-    let mobileMenu = document.getElementById('mobileMenu');
+    </div>
+  </header>
 
-    hamburger.addEventListener('click', function () {
-        mobileMenu.classList.toggle('active');
-    });
-</script>
-<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
-            <div class="lg:mx-5">
-<div class="grid grid-cols-3 gap-4">
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        POSTS
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
     
-        <div class="bg-white col-span-3 p-5 dark:bg-warmgray-900 dark:text-white">
-            
-            <h1 class="title text-4xl font-bold mb-2">Social network analysis with machine learning</h1>
-            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><p>Introduction</p>
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Social network analysis with machine learning</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2022-09-20T00:00:00Z">September 20, 2022</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Introduction</p>
 <p>Social network analysis is an essential technique that helps experts understand how people interact with each other in complex web structures. With machine learning capabilities, social network analysis becomes even more powerful, enabling us to identify actionable insights at scale. The reason why machine learning is such a great match for social network analysis is that it can help us identify sophisticated patterns in large data sets, allowing us to understand the structural components of social networks better. In this blog post, we will discuss exactly how social network analysis can work in conjunction with machine learning algorithms.</p>
 <p>Step 1: Preprocessing</p>
 <p>The first step in implementing social network analysis is to preprocess your data. There are different ways to store social network data, but the most common technique is to use graph data structures. In a graph, each node represents a person or entity, and the edges show the linkages between those entities. With this data structure, we can then use machine learning algorithms to generate insights based on the network&rsquo;s topology.</p>
@@ -142,53 +152,37 @@ g.add_edges([(8, 5), (5, 9), (9, 8)])
 g.community_edge_betweenness().as_clustering()
 </code></pre><p>Conclusion</p>
 <p>In conclusion, social network analysis is a powerful technique that can provide insights into how people interact with each other online. Combining machine learning algorithms with social networks can lead to better insights into the community structure, outlier detection, and recommendation systems. This post covered some of the core concepts of social network analysis and machine learning, such as preprocessing, graph exploration, supervised and unsupervised machine learning, and provided code snippets to showcase the use of different packages. Finally, for more information about social network analysis and machine learning, readers can refer to resources such as academic papers or online courses.</p>
-</div>
-        </div>
-        
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
     </div>
-    
-            </div>
-        </div><footer class=" text-white p-6">
-  
-  <div class="container max-w-screen-xl mr-auto ml-auto">
-    <p>&copy; 2023 <a href="http://opensourcebox.com/" class="duration-200 hover:opacity-50">OpenSourceBox</a>
-    </p>
-    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
-        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
-  </div>
-  
-  <script>
-    var icon = document.getElementById("icon");
-    var icon2 = document.getElementById("icon2");
-    
-    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      icon.classList.remove("icon-moon");
-      icon.classList.add("icon-sun");
-      icon2.classList.remove("icon-moon");
-      icon2.classList.add("icon-sun");
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-    function toggleDarkMode() {
-      if (document.documentElement.classList.contains('dark')) {
-        icon.classList.remove("icon-sun");
-        icon.classList.add("icon-moon");
-        icon2.classList.remove("icon-sun");
-        icon2.classList.add("icon-moon");
-        document.documentElement.classList.remove('dark')
-        localStorage.theme = 'light'
-      } else {
-        icon.classList.remove("icon-moon");
-        icon.classList.add("icon-sun");
-        icon2.classList.remove("icon-moon");
-        icon2.classList.add("icon-sun");
-        document.documentElement.classList.add('dark')
-        localStorage.theme = 'dark'
-      }
-    }
-  </script>
-</footer></div>
-</body>
 
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://opensourcebox.com/" >
+    &copy;  OpenSourceBox 2023 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
 </html>

@@ -1,7 +1,7 @@
 baseURL = 'http://opensourcebox.com/'
 languageCode = 'en-us'
 title = 'OpenSourceBox'
-theme = 'Blonde'
+theme = 'ananke'
 [params]
   mainSections = ['blog', 'docs']
   paginator_pages = 10
