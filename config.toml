@@ -2,4 +2,3 @@ baseURL = 'http://opensourcebox.com/'
 languageCode = 'en-us'
 title = 'OpenSourceBox'
 theme = 'ananke'
-[params]
