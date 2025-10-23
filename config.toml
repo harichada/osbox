@@ -2,3 +2,11 @@ baseURL = 'http://opensourcebox.com/'
 languageCode = 'en-us'
 title = 'OpenSourceBox'
 theme = 'ananke'
+
+[params]
+  description = "Your source for AI, Machine Learning, and Open Source technology"
+  custom_css = ["css/custom.css"]
+
+[[params.ananke_socials]]
+  name = "github"
+  url = "https://github.com/opensourcebox"
