@@ -1,0 +1,69 @@
+OpenSourceBox WordPress Theme - File Structure
+==============================================
+
+Theme Directory: wordpress-theme/opensourcebox/
+
+Core Theme Files:
+-----------------
+style.css              - Main stylesheet with theme information and styles
+functions.php          - Theme functions, hooks, and WordPress features
+README.md              - Theme documentation and installation instructions
+
+Template Files:
+--------------
+index.php              - Main template (fallback for all views)
+header.php             - Header template
+footer.php             - Footer template
+sidebar.php            - Sidebar template
+single.php             - Single post template
+page.php               - Static page template
+archive.php            - Archive template (date archives, etc.)
+category.php           - Category archive template
+tag.php                - Tag archive template
+author.php             - Author archive template
+search.php             - Search results template
+404.php                - 404 error page template
+comments.php           - Comments template
+searchform.php         - Search form template
+
+Documentation:
+-------------
+README.md              - Theme README with installation and usage
+MIGRATION_GUIDE.md     - Complete Hugo to WordPress migration guide
+THEME_FILES.txt        - This file (theme structure overview)
+
+Total Files: 18 template files + 3 documentation files = 21 files
+
+Features Included:
+-----------------
+✓ Responsive design
+✓ Custom menus (Primary & Footer)
+✓ Widget areas (Sidebar + 3 Footer areas)
+✓ Post thumbnails/featured images
+✓ Custom logo support
+✓ HTML5 markup
+✓ Customizer integration
+✓ Translation ready
+✓ SEO-friendly
+✓ Comments support
+✓ Pagination
+✓ Tag and category support
+✓ Author pages
+✓ Search functionality
+
+Theme Information:
+-----------------
+Theme Name: OpenSourceBox
+Version: 1.0.0
+Author: OpenSourceBox Team
+License: GNU General Public License v2 or later
+Text Domain: opensourcebox
+
+Installation:
+------------
+1. Copy the 'opensourcebox' folder to /wp-content/themes/
+2. Activate via Appearance > Themes in WordPress admin
+3. Configure menus and widgets
+4. Customize via Appearance > Customize
+
+For detailed migration instructions, see MIGRATION_GUIDE.md
