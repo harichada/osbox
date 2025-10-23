@@ -74,91 +74,32 @@ If you haven't already installed WordPress:
 
 You'll need to convert your Hugo markdown files to WordPress WXR (WordPress eXtended RSS) format.
 
-**Option A: Use hugo-to-wordpress Tool**
+**Recommended: Use the Provided Python Script**
+
+A ready-to-use conversion script is included: `hugo-to-wordpress.py`
+
+This script requires **NO external dependencies** - it uses only Python standard library!
+
+**Usage:**
 
 ```bash
-# Install Node.js tool
-npm install -g wordpress-export-to-markdown
+# Run the script from the wordpress-theme directory
+python3 hugo-to-wordpress.py /path/to/hugo/content wordpress-import.xml
 
-# Or use Python script
-pip install markdown2 python-frontmatter
+# Or from your Hugo site root:
+cd /home/user/osbox
+python3 wordpress-theme/hugo-to-wordpress.py ./content wordpress-import.xml
 ```
 
-**Option B: Manual WordPress XML Creation**
+The script will:
+- ✓ Parse all markdown files in `content/posts/`
+- ✓ Extract frontmatter (title, date, author, categories, tags, description)
+- ✓ Convert markdown to HTML
+- ✓ Generate WordPress WXR XML file
+- ✓ Preserve all metadata and content
 
-Create a custom script to convert your Hugo posts. Here's a Python example:
-
-```python
-#!/usr/bin/env python3
-import os
-import frontmatter
-from datetime import datetime
-import xml.etree.ElementTree as ET
-
-def hugo_to_wordpress_xml(content_dir, output_file):
-    """Convert Hugo markdown posts to WordPress WXR format"""
-
-    # Create XML structure
-    rss = ET.Element('rss', version="2.0")
-    rss.set('xmlns:excerpt', 'http://wordpress.org/export/1.2/excerpt/')
-    rss.set('xmlns:content', 'http://purl.org/rss/1.0/modules/content/')
-    rss.set('xmlns:wfw', 'http://wellformedweb.org/CommentAPI/')
-    rss.set('xmlns:dc', 'http://purl.org/dc/elements/1.1/')
-    rss.set('xmlns:wp', 'http://wordpress.org/export/1.2/')
-
-    channel = ET.SubElement(rss, 'channel')
-    ET.SubElement(channel, 'title').text = 'OpenSourceBox'
-    ET.SubElement(channel, 'link').text = 'http://opensourcebox.com'
-    ET.SubElement(channel, 'description').text = 'OpenSourceBox Blog'
-    ET.SubElement(channel, 'wp:wxr_version').text = '1.2'
-
-    # Process all markdown files
-    posts_dir = os.path.join(content_dir, 'posts')
-    for filename in os.listdir(posts_dir):
-        if filename.endswith('.md'):
-            filepath = os.path.join(posts_dir, filename)
-            with open(filepath, 'r', encoding='utf-8') as f:
-                post = frontmatter.load(f)
-
-                # Create item element for each post
-                item = ET.SubElement(channel, 'item')
-                ET.SubElement(item, 'title').text = post.get('title', '')
-                ET.SubElement(item, 'dc:creator').text = post.get('author', 'Admin')
-                ET.SubElement(item, 'description').text = post.get('description', '')
-                ET.SubElement(item, 'content:encoded').text = f'<![CDATA[{post.content}]]>'
-                ET.SubElement(item, 'wp:post_type').text = 'post'
-                ET.SubElement(item, 'wp:status').text = 'publish'
-
-                # Date
-                if 'date' in post:
-                    date_obj = post['date']
-                    if isinstance(date_obj, str):
-                        date_obj = datetime.fromisoformat(date_obj)
-                    date_str = date_obj.strftime('%Y-%m-%d %H:%M:%S')
-                    ET.SubElement(item, 'wp:post_date').text = date_str
-                    ET.SubElement(item, 'pubDate').text = date_obj.strftime('%a, %d %b %Y %H:%M:%S +0000')
-
-                # Categories
-                if 'categories' in post:
-                    for category in post['categories']:
-                        cat = ET.SubElement(item, 'category', domain='category')
-                        cat.text = category
-
-                # Tags
-                if 'tags' in post:
-                    for tag in post['tags']:
-                        tag_elem = ET.SubElement(item, 'category', domain='post_tag')
-                        tag_elem.text = tag
-
-    # Write XML file
-    tree = ET.ElementTree(rss)
-    ET.indent(tree, space='  ')
-    tree.write(output_file, encoding='utf-8', xml_declaration=True)
-    print(f'WordPress export file created: {output_file}')
-
-# Usage
-hugo_to_wordpress_xml('/home/user/osbox/content', 'wordpress-import.xml')
-```
+**Output:**
+- `wordpress-import.xml` - Ready to import into WordPress
 
 #### Step 2: Import to WordPress
 
