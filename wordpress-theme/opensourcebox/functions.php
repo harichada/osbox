@@ -337,3 +337,237 @@ function opensourcebox_footer_text() {
     $footer_text = get_theme_mod( 'opensourcebox_footer_text', '&copy; ' . date( 'Y' ) . ' OpenSourceBox. All rights reserved.' );
     return wp_kses_post( $footer_text );
 }
+
+/**
+ * Add SEO Meta Tags
+ */
+function opensourcebox_seo_meta_tags() {
+    // Don't output if SEO plugin is active
+    if ( defined( 'WPSEO_VERSION' ) || class_exists( 'RankMath' ) || class_exists( 'AIOSEO_Core' ) ) {
+        return;
+    }
+
+    // Get meta description
+    $description = '';
+    if ( is_singular() ) {
+        $post = get_queried_object();
+        if ( ! empty( $post->post_excerpt ) ) {
+            $description = wp_trim_words( $post->post_excerpt, 30, '...' );
+        } else {
+            $description = wp_trim_words( strip_shortcodes( $post->post_content ), 30, '...' );
+        }
+    } elseif ( is_category() ) {
+        $description = category_description();
+    } elseif ( is_tag() ) {
+        $description = tag_description();
+    } elseif ( is_home() || is_front_page() ) {
+        $description = get_bloginfo( 'description' );
+    }
+
+    if ( ! empty( $description ) ) {
+        echo '<meta name="description" content="' . esc_attr( strip_tags( $description ) ) . '">' . "\n";
+    }
+
+    // Canonical URL
+    if ( is_singular() ) {
+        echo '<link rel="canonical" href="' . esc_url( get_permalink() ) . '">' . "\n";
+    }
+}
+add_action( 'wp_head', 'opensourcebox_seo_meta_tags', 1 );
+
+/**
+ * Add Open Graph Meta Tags
+ */
+function opensourcebox_open_graph_tags() {
+    // Don't output if SEO plugin is active
+    if ( defined( 'WPSEO_VERSION' ) || class_exists( 'RankMath' ) || class_exists( 'AIOSEO_Core' ) ) {
+        return;
+    }
+
+    echo '<meta property="og:site_name" content="' . esc_attr( get_bloginfo( 'name' ) ) . '">' . "\n";
+
+    if ( is_singular() ) {
+        $post = get_queried_object();
+
+        // OG Title
+        echo '<meta property="og:title" content="' . esc_attr( get_the_title() ) . '">' . "\n";
+
+        // OG Type
+        echo '<meta property="og:type" content="article">' . "\n";
+
+        // OG URL
+        echo '<meta property="og:url" content="' . esc_url( get_permalink() ) . '">' . "\n";
+
+        // OG Description
+        $description = '';
+        if ( ! empty( $post->post_excerpt ) ) {
+            $description = wp_trim_words( $post->post_excerpt, 30, '...' );
+        } else {
+            $description = wp_trim_words( strip_shortcodes( $post->post_content ), 30, '...' );
+        }
+        if ( ! empty( $description ) ) {
+            echo '<meta property="og:description" content="' . esc_attr( strip_tags( $description ) ) . '">' . "\n";
+        }
+
+        // OG Image
+        if ( has_post_thumbnail() ) {
+            $thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large' );
+            if ( $thumbnail ) {
+                echo '<meta property="og:image" content="' . esc_url( $thumbnail[0] ) . '">' . "\n";
+                echo '<meta property="og:image:width" content="' . esc_attr( $thumbnail[1] ) . '">' . "\n";
+                echo '<meta property="og:image:height" content="' . esc_attr( $thumbnail[2] ) . '">' . "\n";
+            }
+        } else {
+            // Fallback to site logo
+            $logo_url = get_template_directory_uri() . '/images/logo.svg';
+            echo '<meta property="og:image" content="' . esc_url( $logo_url ) . '">' . "\n";
+        }
+
+        // Article meta
+        echo '<meta property="article:published_time" content="' . esc_attr( get_the_date( 'c' ) ) . '">' . "\n";
+        echo '<meta property="article:modified_time" content="' . esc_attr( get_the_modified_date( 'c' ) ) . '">' . "\n";
+
+    } else {
+        // Homepage or archives
+        echo '<meta property="og:title" content="' . esc_attr( get_bloginfo( 'name' ) ) . '">' . "\n";
+        echo '<meta property="og:type" content="website">' . "\n";
+        echo '<meta property="og:url" content="' . esc_url( home_url( '/' ) ) . '">' . "\n";
+        echo '<meta property="og:description" content="' . esc_attr( get_bloginfo( 'description' ) ) . '">' . "\n";
+
+        $logo_url = get_template_directory_uri() . '/images/logo.svg';
+        echo '<meta property="og:image" content="' . esc_url( $logo_url ) . '">' . "\n";
+    }
+}
+add_action( 'wp_head', 'opensourcebox_open_graph_tags', 2 );
+
+/**
+ * Add Twitter Card Meta Tags
+ */
+function opensourcebox_twitter_card_tags() {
+    // Don't output if SEO plugin is active
+    if ( defined( 'WPSEO_VERSION' ) || class_exists( 'RankMath' ) || class_exists( 'AIOSEO_Core' ) ) {
+        return;
+    }
+
+    echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
+
+    if ( is_singular() ) {
+        $post = get_queried_object();
+
+        echo '<meta name="twitter:title" content="' . esc_attr( get_the_title() ) . '">' . "\n";
+
+        $description = '';
+        if ( ! empty( $post->post_excerpt ) ) {
+            $description = wp_trim_words( $post->post_excerpt, 30, '...' );
+        } else {
+            $description = wp_trim_words( strip_shortcodes( $post->post_content ), 30, '...' );
+        }
+        if ( ! empty( $description ) ) {
+            echo '<meta name="twitter:description" content="' . esc_attr( strip_tags( $description ) ) . '">' . "\n";
+        }
+
+        if ( has_post_thumbnail() ) {
+            $thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large' );
+            if ( $thumbnail ) {
+                echo '<meta name="twitter:image" content="' . esc_url( $thumbnail[0] ) . '">' . "\n";
+            }
+        } else {
+            $logo_url = get_template_directory_uri() . '/images/logo.svg';
+            echo '<meta name="twitter:image" content="' . esc_url( $logo_url ) . '">' . "\n";
+        }
+    } else {
+        echo '<meta name="twitter:title" content="' . esc_attr( get_bloginfo( 'name' ) ) . '">' . "\n";
+        echo '<meta name="twitter:description" content="' . esc_attr( get_bloginfo( 'description' ) ) . '">' . "\n";
+
+        $logo_url = get_template_directory_uri() . '/images/logo.svg';
+        echo '<meta name="twitter:image" content="' . esc_url( $logo_url ) . '">' . "\n";
+    }
+}
+add_action( 'wp_head', 'opensourcebox_twitter_card_tags', 3 );
+
+/**
+ * Add Schema.org JSON-LD structured data
+ */
+function opensourcebox_schema_markup() {
+    // Don't output if SEO plugin is active
+    if ( defined( 'WPSEO_VERSION' ) || class_exists( 'RankMath' ) || class_exists( 'AIOSEO_Core' ) ) {
+        return;
+    }
+
+    $schema = array();
+
+    // Website schema
+    $schema['@context'] = 'https://schema.org';
+    $schema['@type'] = 'WebSite';
+    $schema['name'] = get_bloginfo( 'name' );
+    $schema['url'] = home_url( '/' );
+    $schema['description'] = get_bloginfo( 'description' );
+
+    if ( is_singular( 'post' ) ) {
+        $post = get_queried_object();
+
+        $article = array();
+        $article['@context'] = 'https://schema.org';
+        $article['@type'] = 'Article';
+        $article['headline'] = get_the_title();
+        $article['datePublished'] = get_the_date( 'c' );
+        $article['dateModified'] = get_the_modified_date( 'c' );
+        $article['author'] = array(
+            '@type' => 'Person',
+            'name' => get_the_author()
+        );
+        $article['publisher'] = array(
+            '@type' => 'Organization',
+            'name' => get_bloginfo( 'name' ),
+            'logo' => array(
+                '@type' => 'ImageObject',
+                'url' => get_template_directory_uri() . '/images/logo.svg'
+            )
+        );
+
+        if ( has_post_thumbnail() ) {
+            $thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large' );
+            if ( $thumbnail ) {
+                $article['image'] = $thumbnail[0];
+            }
+        }
+
+        echo '<script type="application/ld+json">' . wp_json_encode( $article, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ) . '</script>' . "\n";
+    }
+
+    echo '<script type="application/ld+json">' . wp_json_encode( $schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ) . '</script>' . "\n";
+}
+add_action( 'wp_head', 'opensourcebox_schema_markup', 4 );
+
+/**
+ * Disable robots meta tag in production
+ * NOTE: WordPress adds noindex in certain conditions. This ensures it's removed.
+ */
+function opensourcebox_remove_noindex() {
+    // Remove noindex from search results, categories, tags, etc.
+    // Only keep noindex for privacy-related pages
+    if ( ! is_privacy_policy() ) {
+        remove_action( 'wp_head', 'wp_robots' );
+        remove_action( 'wp_head', 'noindex', 1 );
+    }
+}
+add_action( 'init', 'opensourcebox_remove_noindex' );
+
+/**
+ * Ensure blog is public and indexable
+ * This adds proper robots meta tag
+ */
+function opensourcebox_robots_meta() {
+    // Check if blog is set to be indexed
+    if ( ! get_option( 'blog_public' ) ) {
+        // Blog is set to discourage search engines - output noindex
+        echo '<meta name="robots" content="noindex, nofollow">' . "\n";
+    } else {
+        // Blog is public - ensure it's indexable
+        // Only add noindex to specific pages that shouldn't be indexed
+        if ( is_search() || is_404() || is_privacy_policy() ) {
+            echo '<meta name="robots" content="noindex, follow">' . "\n";
+        }
+    }
+}
+add_action( 'wp_head', 'opensourcebox_robots_meta', 0 );
