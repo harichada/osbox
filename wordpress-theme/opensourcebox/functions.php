@@ -571,3 +571,332 @@ function opensourcebox_robots_meta() {
     }
 }
 add_action( 'wp_head', 'opensourcebox_robots_meta', 0 );
+
+/**
+ * ==================================
+ * MONETIZATION FEATURES v2.2
+ * ==================================
+ */
+
+/**
+ * Add CTA Widget
+ */
+class OpenSourceBox_CTA_Widget extends WP_Widget {
+    public function __construct() {
+        parent::__construct(
+            'opensourcebox_cta',
+            'OpenSourceBox: CTA Widget',
+            array( 'description' => 'Display a call-to-action box in sidebar' )
+        );
+    }
+
+    public function widget( $args, $instance ) {
+        echo $args['before_widget'];
+        ?>
+        <div class="cta-widget">
+            <h3><?php echo esc_html( $instance['title'] ); ?></h3>
+            <p><?php echo esc_html( $instance['text'] ); ?></p>
+            <a href="<?php echo esc_url( $instance['button_url'] ); ?>" class="btn btn-primary">
+                <?php echo esc_html( $instance['button_text'] ); ?>
+            </a>
+        </div>
+        <?php
+        echo $args['after_widget'];
+    }
+
+    public function form( $instance ) {
+        $title = ! empty( $instance['title'] ) ? $instance['title'] : 'Get Free AI Guide';
+        $text = ! empty( $instance['text'] ) ? $instance['text'] : 'Subscribe to get our comprehensive AI implementation guide.';
+        $button_text = ! empty( $instance['button_text'] ) ? $instance['button_text'] : 'Download Now';
+        $button_url = ! empty( $instance['button_url'] ) ? $instance['button_url'] : '#';
+        ?>
+        <p>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">Title:</label>
+            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+        </p>
+        <p>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'text' ) ); ?>">Text:</label>
+            <textarea class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'text' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'text' ) ); ?>" rows="4"><?php echo esc_textarea( $text ); ?></textarea>
+        </p>
+        <p>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'button_text' ) ); ?>">Button Text:</label>
+            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'button_text' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'button_text' ) ); ?>" type="text" value="<?php echo esc_attr( $button_text ); ?>">
+        </p>
+        <p>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'button_url' ) ); ?>">Button URL:</label>
+            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'button_url' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'button_url' ) ); ?>" type="text" value="<?php echo esc_attr( $button_url ); ?>">
+        </p>
+        <?php
+    }
+
+    public function update( $new_instance, $old_instance ) {
+        $instance = array();
+        $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
+        $instance['text'] = ( ! empty( $new_instance['text'] ) ) ? sanitize_textarea_field( $new_instance['text'] ) : '';
+        $instance['button_text'] = ( ! empty( $new_instance['button_text'] ) ) ? sanitize_text_field( $new_instance['button_text'] ) : '';
+        $instance['button_url'] = ( ! empty( $new_instance['button_url'] ) ) ? esc_url_raw( $new_instance['button_url'] ) : '';
+        return $instance;
+    }
+}
+
+/**
+ * Register CTA Widget
+ */
+function opensourcebox_register_widgets() {
+    register_widget( 'OpenSourceBox_CTA_Widget' );
+}
+add_action( 'widgets_init', 'opensourcebox_register_widgets' );
+
+/**
+ * Add email signup form shortcode
+ * Usage: [email_signup title="Get Free Guide" button="Subscribe"]
+ */
+function opensourcebox_email_signup_shortcode( $atts ) {
+    $atts = shortcode_atts( array(
+        'title' => 'Subscribe to Our Newsletter',
+        'description' => 'Get the latest AI and ML tutorials delivered to your inbox',
+        'button' => 'Subscribe',
+        'placeholder' => 'Enter your email',
+    ), $atts );
+
+    ob_start();
+    ?>
+    <div class="email-signup-box">
+        <h3><?php echo esc_html( $atts['title'] ); ?></h3>
+        <p><?php echo esc_html( $atts['description'] ); ?></p>
+        <form class="email-signup-form" method="post" action="">
+            <input type="email" name="email" placeholder="<?php echo esc_attr( $atts['placeholder'] ); ?>" required>
+            <button type="submit" class="btn btn-primary"><?php echo esc_html( $atts['button'] ); ?></button>
+            <input type="hidden" name="action" value="opensourcebox_subscribe">
+            <?php wp_nonce_field( 'opensourcebox_subscribe', 'subscribe_nonce' ); ?>
+        </form>
+        <p class="privacy-note">We respect your privacy. Unsubscribe anytime.</p>
+    </div>
+    <?php
+    return ob_get_clean();
+}
+add_shortcode( 'email_signup', 'opensourcebox_email_signup_shortcode' );
+
+/**
+ * Add CTA box shortcode
+ * Usage: [cta_box title="Need Help?" button_text="Contact Us" button_url="/contact"]Your text here[/cta_box]
+ */
+function opensourcebox_cta_box_shortcode( $atts, $content = null ) {
+    $atts = shortcode_atts( array(
+        'title' => 'Ready to Get Started?',
+        'button_text' => 'Learn More',
+        'button_url' => '#',
+        'style' => 'gradient', // gradient, outline, solid
+    ), $atts );
+
+    $style_class = 'cta-box-' . sanitize_html_class( $atts['style'] );
+
+    ob_start();
+    ?>
+    <div class="cta-box <?php echo esc_attr( $style_class ); ?>">
+        <h3><?php echo esc_html( $atts['title'] ); ?></h3>
+        <?php if ( $content ) : ?>
+            <p><?php echo wp_kses_post( $content ); ?></p>
+        <?php endif; ?>
+        <a href="<?php echo esc_url( $atts['button_url'] ); ?>" class="btn btn-primary btn-large">
+            <?php echo esc_html( $atts['button_text'] ); ?>
+        </a>
+    </div>
+    <?php
+    return ob_get_clean();
+}
+add_shortcode( 'cta_box', 'opensourcebox_cta_box_shortcode' );
+
+/**
+ * Add service card shortcode
+ * Usage: [service_card title="Consulting" price="$200/hour" icon="💡"]Description here[/service_card]
+ */
+function opensourcebox_service_card_shortcode( $atts, $content = null ) {
+    $atts = shortcode_atts( array(
+        'title' => 'Our Service',
+        'price' => 'Contact for pricing',
+        'icon' => '⭐',
+        'button_text' => 'Learn More',
+        'button_url' => '#',
+    ), $atts );
+
+    ob_start();
+    ?>
+    <div class="service-card-shortcode">
+        <div class="service-icon-shortcode"><?php echo wp_kses_post( $atts['icon'] ); ?></div>
+        <h3><?php echo esc_html( $atts['title'] ); ?></h3>
+        <?php if ( $content ) : ?>
+            <div class="service-description"><?php echo wp_kses_post( wpautop( $content ) ); ?></div>
+        <?php endif; ?>
+        <div class="service-price"><?php echo esc_html( $atts['price'] ); ?></div>
+        <a href="<?php echo esc_url( $atts['button_url'] ); ?>" class="btn btn-primary">
+            <?php echo esc_html( $atts['button_text'] ); ?>
+        </a>
+    </div>
+    <?php
+    return ob_get_clean();
+}
+add_shortcode( 'service_card', 'opensourcebox_service_card_shortcode' );
+
+/**
+ * Add testimonial shortcode
+ * Usage: [testimonial author="John Doe" role="CEO, TechCorp" rating="5"]Great service![/testimonial]
+ */
+function opensourcebox_testimonial_shortcode( $atts, $content = null ) {
+    $atts = shortcode_atts( array(
+        'author' => 'Anonymous',
+        'role' => '',
+        'rating' => '5',
+        'image' => '',
+    ), $atts );
+
+    $stars = str_repeat( '⭐', intval( $atts['rating'] ) );
+
+    ob_start();
+    ?>
+    <div class="testimonial-shortcode">
+        <?php if ( $atts['image'] ) : ?>
+            <img src="<?php echo esc_url( $atts['image'] ); ?>" alt="<?php echo esc_attr( $atts['author'] ); ?>" class="testimonial-image">
+        <?php endif; ?>
+        <div class="testimonial-stars"><?php echo $stars; ?></div>
+        <div class="testimonial-content"><?php echo wp_kses_post( wpautop( $content ) ); ?></div>
+        <div class="testimonial-author">
+            <strong><?php echo esc_html( $atts['author'] ); ?></strong>
+            <?php if ( $atts['role'] ) : ?>
+                <span class="testimonial-role"><?php echo esc_html( $atts['role'] ); ?></span>
+            <?php endif; ?>
+        </div>
+    </div>
+    <?php
+    return ob_get_clean();
+}
+add_shortcode( 'testimonial', 'opensourcebox_testimonial_shortcode' );
+
+/**
+ * Add pricing table shortcode
+ * Usage: [pricing_table]
+ */
+function opensourcebox_pricing_table_shortcode() {
+    ob_start();
+    ?>
+    <div class="pricing-table">
+        <div class="pricing-column">
+            <h3>Basic</h3>
+            <div class="price">$99<span>/month</span></div>
+            <ul class="pricing-features">
+                <li>✓ 10 Projects</li>
+                <li>✓ Email Support</li>
+                <li>✓ Basic Analytics</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline">Get Started</a>
+        </div>
+        <div class="pricing-column featured">
+            <div class="popular-badge">Most Popular</div>
+            <h3>Professional</h3>
+            <div class="price">$299<span>/month</span></div>
+            <ul class="pricing-features">
+                <li>✓ Unlimited Projects</li>
+                <li>✓ Priority Support</li>
+                <li>✓ Advanced Analytics</li>
+                <li>✓ Custom Integrations</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary">Get Started</a>
+        </div>
+        <div class="pricing-column">
+            <h3>Enterprise</h3>
+            <div class="price">Custom</div>
+            <ul class="pricing-features">
+                <li>✓ Everything in Pro</li>
+                <li>✓ Dedicated Support</li>
+                <li>✓ Custom Solutions</li>
+                <li>✓ SLA Guarantee</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline">Contact Sales</a>
+        </div>
+    </div>
+    <?php
+    return ob_get_clean();
+}
+add_shortcode( 'pricing_table', 'opensourcebox_pricing_table_shortcode' );
+
+/**
+ * Add content upgrade box after post content
+ */
+function opensourcebox_add_content_upgrade( $content ) {
+    if ( is_single() && ! is_admin() ) {
+        $upgrade_box = '
+        <div class="content-upgrade-box">
+            <div class="content-upgrade-icon">📥</div>
+            <h3>Want to Save This Guide?</h3>
+            <p>Download the PDF version of this tutorial + get exclusive bonus checklists</p>
+            <a href="#newsletter" class="btn btn-primary">Get Free Download</a>
+        </div>
+        ';
+        $content .= $upgrade_box;
+    }
+    return $content;
+}
+add_filter( 'the_content', 'opensourcebox_add_content_upgrade', 20 );
+
+/**
+ * Add affiliate link disclosure
+ */
+function opensourcebox_affiliate_disclosure() {
+    if ( is_single() ) {
+        echo '<div class="affiliate-disclosure">';
+        echo '<p><small>ℹ️ This post may contain affiliate links. We may earn a commission if you click through and make a purchase, at no additional cost to you.</small></p>';
+        echo '</div>';
+    }
+}
+add_action( 'opensourcebox_before_content', 'opensourcebox_affiliate_disclosure' );
+
+/**
+ * Add estimated reading time
+ */
+function opensourcebox_reading_time() {
+    $content = get_post_field( 'post_content', get_the_ID() );
+    $word_count = str_word_count( strip_tags( $content ) );
+    $reading_time = ceil( $word_count / 200 ); // 200 words per minute
+
+    return $reading_time . ' min read';
+}
+
+/**
+ * Display reading time in post meta
+ */
+function opensourcebox_display_reading_time() {
+    if ( is_single() ) {
+        echo '<span class="reading-time">📖 ' . opensourcebox_reading_time() . '</span>';
+    }
+}
+add_action( 'opensourcebox_post_meta', 'opensourcebox_display_reading_time' );
+
+/**
+ * Add custom admin dashboard widget for monetization tips
+ */
+function opensourcebox_monetization_dashboard_widget() {
+    wp_add_dashboard_widget(
+        'opensourcebox_monetization',
+        '💰 OpenSourceBox Monetization Tips',
+        'opensourcebox_monetization_widget_content'
+    );
+}
+add_action( 'wp_dashboard_setup', 'opensourcebox_monetization_dashboard_widget' );
+
+function opensourcebox_monetization_widget_content() {
+    ?>
+    <div class="opensourcebox-dashboard-widget">
+        <h3>Quick Monetization Checklist</h3>
+        <ul>
+            <li>✓ Email newsletter signup on homepage</li>
+            <li>✓ CTA widgets in sidebar</li>
+            <li>✓ Services page with pricing</li>
+            <li>✓ Lead magnets (free guides/downloads)</li>
+            <li>✓ Testimonials for social proof</li>
+            <li>✓ Content upgrades on popular posts</li>
+        </ul>
+        <p><strong>Pro Tip:</strong> Add at least 3 CTAs on your homepage to maximize conversions!</p>
+        <a href="/wp-admin/widgets.php" class="button button-primary">Manage Widgets</a>
+    </div>
+    <?php
+}
