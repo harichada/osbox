@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="iconAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="url(#iconGradient)"/>
+
+  <!-- Open box icon -->
+  <g transform="translate(100, 90)">
+    <!-- Box back -->
+    <polygon points="-35,-20 0,-35 35,-20 35,10 0,25 -35,10"
+             fill="#ffffff"
+             opacity="0.3"/>
+
+    <!-- Box left -->
+    <polygon points="-35,-20 -35,10 0,25 0,-5"
+             fill="#ffffff"
+             opacity="0.5"/>
+
+    <!-- Box right -->
+    <polygon points="35,-20 35,10 0,25 0,-5"
+             fill="#ffffff"
+             opacity="0.7"/>
+
+    <!-- Box lid -->
+    <g transform="rotate(-15, 0, -20)">
+      <polygon points="-35,-20 0,-35 35,-20 0,-5"
+               fill="url(#iconAccent)"/>
+    </g>
+
+    <!-- Code symbols -->
+    <text x="-18" y="12" font-family="monospace"
+          font-size="20" font-weight="bold"
+          fill="white">&lt;</text>
+    <text x="0" y="12" font-family="monospace"
+          font-size="20" font-weight="bold"
+          fill="white" text-anchor="middle">/</text>
+    <text x="18" y="12" font-family="monospace"
+          font-size="20" font-weight="bold"
+          fill="white" text-anchor="end">&gt;</text>
+  </g>
+</svg>

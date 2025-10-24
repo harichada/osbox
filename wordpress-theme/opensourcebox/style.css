@@ -123,6 +123,29 @@ body {
     width: 100%;
 }
 
+/* Custom Logo Styles */
+.custom-logo-link {
+    display: inline-block;
+    line-height: 0;
+}
+
+.custom-logo {
+    height: 50px;
+    width: auto;
+    max-width: 100%;
+    transition: var(--transition);
+}
+
+.custom-logo:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .custom-logo {
+        height: 40px;
+    }
+}
+
 .site-description {
     font-size: 15px;
     color: var(--text-secondary);

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" width="800" height="200">
+  <defs>
+    <linearGradient id="hGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="hAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Icon on left -->
+  <g transform="translate(80, 100)">
+    <!-- Box -->
+    <polygon points="-30,-15 0,-30 30,-15 30,8 0,23 -30,8"
+             fill="url(#hGradient)" opacity="0.6"/>
+    <polygon points="-30,-15 -30,8 0,23 0,-7"
+             fill="url(#hGradient)" opacity="0.8"/>
+    <polygon points="30,-15 30,8 0,23 0,-7"
+             fill="url(#hGradient)"/>
+
+    <!-- Lid -->
+    <g transform="rotate(-20, 0, -15)">
+      <polygon points="-30,-15 0,-30 30,-15 0,0"
+               fill="url(#hAccent)"/>
+    </g>
+
+    <!-- Code -->
+    <text x="-15" y="10" font-family="monospace" font-size="18" font-weight="bold" fill="white">&lt;</text>
+    <text x="0" y="10" font-family="monospace" font-size="18" font-weight="bold" fill="white" text-anchor="middle">/</text>
+    <text x="15" y="10" font-family="monospace" font-size="18" font-weight="bold" fill="white" text-anchor="end">&gt;</text>
+  </g>
+
+  <!-- Text -->
+  <g transform="translate(180, 100)">
+    <text x="0" y="15"
+          font-family="'Inter', 'Arial', sans-serif"
+          font-size="56"
+          font-weight="800"
+          fill="url(#hGradient)"
+          letter-spacing="-2">OpenSource<tspan font-weight="900" fill="url(#hAccent)">Box</tspan></text>
+
+    <text x="0" y="45"
+          font-family="'Inter', 'Arial', sans-serif"
+          font-size="18"
+          font-weight="600"
+          fill="#718096"
+          letter-spacing="1">AI • Machine Learning • Open Source</text>
+  </g>
+</svg>

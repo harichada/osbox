@@ -12,6 +12,11 @@
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="<?php echo get_template_directory_uri(); ?>/images/favicon.svg">
+    <link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/images/logo-icon.svg">
+
     <?php wp_head(); ?>
 </head>
 
@@ -27,11 +32,12 @@
                     the_custom_logo();
                 } else {
                     ?>
-                    <h1 class="site-title">
-                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-                            <?php bloginfo( 'name' ); ?>
-                        </a>
-                    </h1>
+                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="custom-logo-link">
+                        <img src="<?php echo get_template_directory_uri(); ?>/images/logo-horizontal.svg"
+                             alt="<?php bloginfo( 'name' ); ?> Logo"
+                             class="custom-logo"
+                             height="50">
+                    </a>
                     <?php
                     $description = get_bloginfo( 'description', 'display' );
                     if ( $description || is_customize_preview() ) :
